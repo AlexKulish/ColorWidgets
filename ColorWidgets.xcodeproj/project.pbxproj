@@ -19,6 +19,8 @@
 		59FED96E27FAE07A009509E9 /* CaloriesWhiteMainWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FED96D27FAE07A009509E9 /* CaloriesWhiteMainWidgetView.swift */; };
 		59FED97027FAE097009509E9 /* CarbsBlackMainWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FED96F27FAE097009509E9 /* CarbsBlackMainWidgetView.swift */; };
 		59FED97227FAE0A6009509E9 /* CaloriesBlackMainWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FED97127FAE0A6009509E9 /* CaloriesBlackMainWidgetView.swift */; };
+		59FED97527FB0FD4009509E9 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FED97427FB0FD4009509E9 /* GradientView.swift */; };
+		59FED97727FB105D009509E9 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FED97627FB105D009509E9 /* CircularProgressView.swift */; };
 		C824A7C0DDC6755D5FB644EF /* Pods_ColorWidgets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573E785ABEFBE55A27032A2B /* Pods_ColorWidgets.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 		59FED96D27FAE07A009509E9 /* CaloriesWhiteMainWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesWhiteMainWidgetView.swift; sourceTree = "<group>"; };
 		59FED96F27FAE097009509E9 /* CarbsBlackMainWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbsBlackMainWidgetView.swift; sourceTree = "<group>"; };
 		59FED97127FAE0A6009509E9 /* CaloriesBlackMainWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesBlackMainWidgetView.swift; sourceTree = "<group>"; };
+		59FED97427FB0FD4009509E9 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		59FED97627FB105D009509E9 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		7432576ABF4C84871E081B4B /* Pods-ColorWidgets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorWidgets.release.xcconfig"; path = "Target Support Files/Pods-ColorWidgets/Pods-ColorWidgets.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +79,7 @@
 		59FED94D27FADE19009509E9 /* ColorWidgets */ = {
 			isa = PBXGroup;
 			children = (
+				59FED97327FB0FC1009509E9 /* Views */,
 				59FED96427FADEAB009509E9 /* ViewControllers */,
 				59FED96627FADED9009509E9 /* Model */,
 				59FED96227FADE7E009509E9 /* Storyboards */,
@@ -130,6 +135,15 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		59FED97327FB0FC1009509E9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				59FED97427FB0FD4009509E9 /* GradientView.swift */,
+				59FED97627FB105D009509E9 /* CircularProgressView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		6620F51F88F47E0C1B830416 /* Pods */ = {
@@ -266,6 +280,7 @@
 			files = (
 				59FED97227FAE0A6009509E9 /* CaloriesBlackMainWidgetView.swift in Sources */,
 				59FED95327FADE19009509E9 /* ViewController.swift in Sources */,
+				59FED97527FB0FD4009509E9 /* GradientView.swift in Sources */,
 				59FED96C27FAE064009509E9 /* CarbsWhiteMainWidgetView.swift in Sources */,
 				59FED94F27FADE19009509E9 /* AppDelegate.swift in Sources */,
 				59FED95127FADE19009509E9 /* SceneDelegate.swift in Sources */,
@@ -273,6 +288,7 @@
 				59FED97027FAE097009509E9 /* CarbsBlackMainWidgetView.swift in Sources */,
 				59FED96A27FAE045009509E9 /* CaloriesColorMainWidgetView.swift in Sources */,
 				59FED96827FAE006009509E9 /* CarbsColorMainWidgetView.swift in Sources */,
+				59FED97727FB105D009509E9 /* CircularProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
