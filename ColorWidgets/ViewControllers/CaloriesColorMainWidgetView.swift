@@ -58,19 +58,19 @@ class CaloriesColorMainWidgetView: UIView, MainWidget {
         eatenStackView.spacing = 5
         eatenStackView.alignment = .center
         
-        let foodImage = UIImage(systemName: "person")
-        foodImage?.size.equalTo(CGSize(width: 11, height: 20))
+        let iconEat = UIImage(named: "IconEat")
+        iconEat?.size.equalTo(CGSize(width: 11, height: 20))
         
         let eatenCaloriesCountLabel = UILabel()
         eatenCaloriesCountLabel.text = "1283"
-        eatenCaloriesCountLabel.font = .systemFont(ofSize: 24)
+        eatenCaloriesCountLabel.font = .systemFont(ofSize: 24, weight: .semibold)
         eatenCaloriesCountLabel.textColor = .white
         let eatenLabel = UILabel()
         eatenLabel.text = "Съедено"
         eatenLabel.font = .systemFont(ofSize: 12)
         eatenLabel.textColor = .white
         
-        eatenStackView.addArrangedSubview(UIImageView(image: foodImage))
+        eatenStackView.addArrangedSubview(UIImageView(image: iconEat))
         eatenStackView.addArrangedSubview(eatenCaloriesCountLabel)
         eatenStackView.addArrangedSubview(eatenLabel)
         
@@ -105,12 +105,12 @@ class CaloriesColorMainWidgetView: UIView, MainWidget {
         // количество и осталось внутри круга
         let caloriesStackView = UIStackView()
         caloriesStackView.axis = .vertical
-//        caloriesStackView.distribution = .equalSpacing
+        caloriesStackView.distribution = .fillEqually
         caloriesStackView.alignment = .center
         
         let caloriesCountLabel = UILabel()
         caloriesCountLabel.text = "1265"
-        caloriesCountLabel.font = .systemFont(ofSize: 32)
+        caloriesCountLabel.font = .systemFont(ofSize: 32, weight: .bold)
         caloriesCountLabel.textColor = .white
         let caloriesLeftLabel = UILabel()
         caloriesLeftLabel.text = "Осталось"
@@ -124,7 +124,7 @@ class CaloriesColorMainWidgetView: UIView, MainWidget {
 
         caloriesStackView.snp.makeConstraints { make in
             make.left.equalTo(caloriesColorMainWidgetView.snp_leftMargin).inset(134)
-            make.top.equalTo(caloriesLabel.snp_topMargin).inset(9)
+            make.top.equalTo(caloriesColorMainWidgetView.snp_topMargin).inset(66)
         }
         
         // правый стэк вью
@@ -134,12 +134,12 @@ class CaloriesColorMainWidgetView: UIView, MainWidget {
         burnedCaloriesStackView.spacing = 5
         burnedCaloriesStackView.alignment = .center
         
-        let runImage = UIImage(systemName: "person")
+        let runImage = UIImage(named: "IconRun")
         runImage?.size.equalTo(CGSize(width: 11, height: 20))
         
         let burnedCaloriesCountLabel = UILabel()
         burnedCaloriesCountLabel.text = "1583"
-        burnedCaloriesCountLabel.font = .systemFont(ofSize: 24)
+        burnedCaloriesCountLabel.font = .systemFont(ofSize: 24, weight: .semibold)
         burnedCaloriesCountLabel.textColor = .white
         let burnedLabel = UILabel()
         burnedLabel.text = "Сожжено"
@@ -162,12 +162,10 @@ class CaloriesColorMainWidgetView: UIView, MainWidget {
         let carbsStackView = UIStackView()
         carbsStackView.axis = .vertical
         carbsStackView.spacing = 7
-//        carbsStackView.alignment = .center
-//        carbsStackView.distribution = .equalSpacing
         
         let carbsLabel = UILabel()
         carbsLabel.text = "Углеводы"
-        carbsLabel.font = .systemFont(ofSize: 12)
+        carbsLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         carbsLabel.textColor = .white
         carbsLabel.textAlignment = .center
         
@@ -191,12 +189,10 @@ class CaloriesColorMainWidgetView: UIView, MainWidget {
         let proteinStackView = UIStackView()
         proteinStackView.axis = .vertical
         proteinStackView.spacing = 7
-//        proteinStackView.alignment = .fill
-//        proteinStackView.distribution = .equalSpacing
         
         let proteinLabel = UILabel()
         proteinLabel.text = "Белки"
-        proteinLabel.font = .systemFont(ofSize: 12)
+        proteinLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         proteinLabel.textColor = .white
         proteinLabel.textAlignment = .center
         
@@ -219,12 +215,10 @@ class CaloriesColorMainWidgetView: UIView, MainWidget {
         let fatsStackView = UIStackView()
         fatsStackView.axis = .vertical
         fatsStackView.spacing = 7
-//        fatsStackView.alignment = .center
-//        fatsStackView.distribution = .equalSpacing
         
         let fatsLabel = UILabel()
         fatsLabel.text = "Жиры"
-        fatsLabel.font = .systemFont(ofSize: 12)
+        fatsLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         fatsLabel.textColor = .white
         fatsLabel.textAlignment = .center
         
@@ -248,7 +242,6 @@ class CaloriesColorMainWidgetView: UIView, MainWidget {
         overallStackView.axis = .horizontal
         overallStackView.spacing = 25
         overallStackView.distribution = .fillEqually
-//        overallStackView.alignment = .center
         
         overallStackView.addArrangedSubview(carbsStackView)
         overallStackView.addArrangedSubview(proteinStackView)
