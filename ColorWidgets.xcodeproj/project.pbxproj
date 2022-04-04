@@ -13,9 +13,18 @@
 		59FED95627FADE19009509E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59FED95427FADE19009509E9 /* Main.storyboard */; };
 		59FED95827FADE1B009509E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59FED95727FADE1B009509E9 /* Assets.xcassets */; };
 		59FED95B27FADE1B009509E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59FED95927FADE1B009509E9 /* LaunchScreen.storyboard */; };
+		59FED96827FAE006009509E9 /* CarbsColorMainWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FED96727FAE006009509E9 /* CarbsColorMainWidgetView.swift */; };
+		59FED96A27FAE045009509E9 /* CaloriesColorMainWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FED96927FAE045009509E9 /* CaloriesColorMainWidgetView.swift */; };
+		59FED96C27FAE064009509E9 /* CarbsWhiteMainWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FED96B27FAE064009509E9 /* CarbsWhiteMainWidgetView.swift */; };
+		59FED96E27FAE07A009509E9 /* CaloriesWhiteMainWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FED96D27FAE07A009509E9 /* CaloriesWhiteMainWidgetView.swift */; };
+		59FED97027FAE097009509E9 /* CarbsBlackMainWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FED96F27FAE097009509E9 /* CarbsBlackMainWidgetView.swift */; };
+		59FED97227FAE0A6009509E9 /* CaloriesBlackMainWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FED97127FAE0A6009509E9 /* CaloriesBlackMainWidgetView.swift */; };
+		C824A7C0DDC6755D5FB644EF /* Pods_ColorWidgets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573E785ABEFBE55A27032A2B /* Pods_ColorWidgets.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D1C40BA7CCF13381C1AF453 /* Pods-ColorWidgets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorWidgets.debug.xcconfig"; path = "Target Support Files/Pods-ColorWidgets/Pods-ColorWidgets.debug.xcconfig"; sourceTree = "<group>"; };
+		573E785ABEFBE55A27032A2B /* Pods_ColorWidgets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorWidgets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59FED94B27FADE19009509E9 /* ColorWidgets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorWidgets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59FED94E27FADE19009509E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59FED95027FADE19009509E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +33,13 @@
 		59FED95727FADE1B009509E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		59FED95A27FADE1B009509E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		59FED95C27FADE1B009509E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		59FED96727FAE006009509E9 /* CarbsColorMainWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbsColorMainWidgetView.swift; sourceTree = "<group>"; };
+		59FED96927FAE045009509E9 /* CaloriesColorMainWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesColorMainWidgetView.swift; sourceTree = "<group>"; };
+		59FED96B27FAE064009509E9 /* CarbsWhiteMainWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbsWhiteMainWidgetView.swift; sourceTree = "<group>"; };
+		59FED96D27FAE07A009509E9 /* CaloriesWhiteMainWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesWhiteMainWidgetView.swift; sourceTree = "<group>"; };
+		59FED96F27FAE097009509E9 /* CarbsBlackMainWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbsBlackMainWidgetView.swift; sourceTree = "<group>"; };
+		59FED97127FAE0A6009509E9 /* CaloriesBlackMainWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesBlackMainWidgetView.swift; sourceTree = "<group>"; };
+		7432576ABF4C84871E081B4B /* Pods-ColorWidgets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorWidgets.release.xcconfig"; path = "Target Support Files/Pods-ColorWidgets/Pods-ColorWidgets.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C824A7C0DDC6755D5FB644EF /* Pods_ColorWidgets.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +59,8 @@
 			children = (
 				59FED94D27FADE19009509E9 /* ColorWidgets */,
 				59FED94C27FADE19009509E9 /* Products */,
+				6620F51F88F47E0C1B830416 /* Pods */,
+				FDDF65BCFC6161F7414AEE36 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,6 +107,12 @@
 			isa = PBXGroup;
 			children = (
 				59FED95227FADE19009509E9 /* ViewController.swift */,
+				59FED96727FAE006009509E9 /* CarbsColorMainWidgetView.swift */,
+				59FED96927FAE045009509E9 /* CaloriesColorMainWidgetView.swift */,
+				59FED96B27FAE064009509E9 /* CarbsWhiteMainWidgetView.swift */,
+				59FED96D27FAE07A009509E9 /* CaloriesWhiteMainWidgetView.swift */,
+				59FED96F27FAE097009509E9 /* CarbsBlackMainWidgetView.swift */,
+				59FED97127FAE0A6009509E9 /* CaloriesBlackMainWidgetView.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -107,6 +132,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		6620F51F88F47E0C1B830416 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0D1C40BA7CCF13381C1AF453 /* Pods-ColorWidgets.debug.xcconfig */,
+				7432576ABF4C84871E081B4B /* Pods-ColorWidgets.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FDDF65BCFC6161F7414AEE36 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				573E785ABEFBE55A27032A2B /* Pods_ColorWidgets.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -114,9 +156,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 59FED95F27FADE1B009509E9 /* Build configuration list for PBXNativeTarget "ColorWidgets" */;
 			buildPhases = (
+				391CAF0C2047BFA485E78522 /* [CP] Check Pods Manifest.lock */,
 				59FED94727FADE19009509E9 /* Sources */,
 				59FED94827FADE19009509E9 /* Frameworks */,
 				59FED94927FADE19009509E9 /* Resources */,
+				FDA1AD380FBC6CECB599F577 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -173,14 +217,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		391CAF0C2047BFA485E78522 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ColorWidgets-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FDA1AD380FBC6CECB599F577 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ColorWidgets/Pods-ColorWidgets-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ColorWidgets/Pods-ColorWidgets-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ColorWidgets/Pods-ColorWidgets-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		59FED94727FADE19009509E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59FED97227FAE0A6009509E9 /* CaloriesBlackMainWidgetView.swift in Sources */,
 				59FED95327FADE19009509E9 /* ViewController.swift in Sources */,
+				59FED96C27FAE064009509E9 /* CarbsWhiteMainWidgetView.swift in Sources */,
 				59FED94F27FADE19009509E9 /* AppDelegate.swift in Sources */,
 				59FED95127FADE19009509E9 /* SceneDelegate.swift in Sources */,
+				59FED96E27FAE07A009509E9 /* CaloriesWhiteMainWidgetView.swift in Sources */,
+				59FED97027FAE097009509E9 /* CarbsBlackMainWidgetView.swift in Sources */,
+				59FED96A27FAE045009509E9 /* CaloriesColorMainWidgetView.swift in Sources */,
+				59FED96827FAE006009509E9 /* CarbsColorMainWidgetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +416,7 @@
 		};
 		59FED96027FADE1B009509E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D1C40BA7CCF13381C1AF453 /* Pods-ColorWidgets.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -352,6 +445,7 @@
 		};
 		59FED96127FADE1B009509E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7432576ABF4C84871E081B4B /* Pods-ColorWidgets.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -11,9 +11,22 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
 
 }
+
+protocol MainWidget: UIView {
+    func set(theme: ColorTheme)
+    func update()
+}
+
+enum ColorTheme {
+    case orangeGradient
+    case orangeFlat
+    case greenGradient
+    case greenFlat
+}
+
+
 
