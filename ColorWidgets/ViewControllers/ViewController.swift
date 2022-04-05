@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     
     
     private let caloriesColorMainWidget = CaloriesColorMainWidgetView()
+    private let carbsColorMainWidget = CarbsColorMainWidgetView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,16 +20,25 @@ class ViewController: UIViewController {
     }
     
     
-    
+
     private func setupView() {
-        view.addSubview(caloriesColorMainWidget)
         
-        caloriesColorMainWidget.snp.makeConstraints { make in
+//        view.addSubview(caloriesColorMainWidget)
+//
+//        caloriesColorMainWidget.snp.makeConstraints { make in
+//            make.center.equalToSuperview()
+//            make.width.equalToSuperview().inset(16)
+//            make.height.equalTo(225)
+//        }
+        
+        view.addSubview(carbsColorMainWidget)
+        
+        carbsColorMainWidget.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.width.equalToSuperview().inset(16)
             make.height.equalTo(225)
         }
-        
+
     }
 
 

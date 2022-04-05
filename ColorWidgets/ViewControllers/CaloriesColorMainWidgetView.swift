@@ -78,7 +78,7 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
         
         // круглый прогресс вью
         
-        let circularView = CircularProgressView(progressColor: .white, circleColor: .white.withAlphaComponent(0.2), isClosed: false, radius: 65)
+        let circularView = CircularProgressView(progressColor: .white, circleColor: .white.withAlphaComponent(0.2), isClosed: false, radius: 66)
         circularView.progressAnimation(duration: 5, value: 1)
         addSubview(circularView)
         circularView.snp.makeConstraints { make in
