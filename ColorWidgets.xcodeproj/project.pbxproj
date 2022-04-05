@@ -21,6 +21,7 @@
 		59FED97227FAE0A6009509E9 /* CaloriesBlackMainWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FED97127FAE0A6009509E9 /* CaloriesBlackMainWidgetView.swift */; };
 		59FED97527FB0FD4009509E9 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FED97427FB0FD4009509E9 /* GradientView.swift */; };
 		59FED97727FB105D009509E9 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FED97627FB105D009509E9 /* CircularProgressView.swift */; };
+		59FED97927FC5383009509E9 /* KetoDiet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FED97827FC5382009509E9 /* KetoDiet.swift */; };
 		C824A7C0DDC6755D5FB644EF /* Pods_ColorWidgets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573E785ABEFBE55A27032A2B /* Pods_ColorWidgets.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		59FED97127FAE0A6009509E9 /* CaloriesBlackMainWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesBlackMainWidgetView.swift; sourceTree = "<group>"; };
 		59FED97427FB0FD4009509E9 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		59FED97627FB105D009509E9 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		59FED97827FC5382009509E9 /* KetoDiet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KetoDiet.swift; sourceTree = "<group>"; };
 		7432576ABF4C84871E081B4B /* Pods-ColorWidgets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorWidgets.release.xcconfig"; path = "Target Support Files/Pods-ColorWidgets/Pods-ColorWidgets.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +135,7 @@
 		59FED96627FADED9009509E9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				59FED97827FC5382009509E9 /* KetoDiet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				59FED97027FAE097009509E9 /* CarbsBlackMainWidgetView.swift in Sources */,
 				59FED96A27FAE045009509E9 /* CaloriesColorMainWidgetView.swift in Sources */,
 				59FED96827FAE006009509E9 /* CarbsColorMainWidgetView.swift in Sources */,
+				59FED97927FC5383009509E9 /* KetoDiet.swift in Sources */,
 				59FED97727FB105D009509E9 /* CircularProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

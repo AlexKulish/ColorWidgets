@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ViewController: UIViewController {
     
@@ -17,13 +18,14 @@ class ViewController: UIViewController {
         setupView()
     }
     
-    func setupView() {
+    
+    
+    private func setupView() {
         view.addSubview(caloriesColorMainWidget)
         
-        caloriesColorMainWidget.caloriesColorMainWidgetView.snp.makeConstraints { make in
-            make.top.equalTo(view).inset(140)
-            make.left.equalTo(view).inset(16)
-            make.right.equalTo(view).inset(16)
+        caloriesColorMainWidget.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().inset(16)
             make.height.equalTo(225)
         }
         
