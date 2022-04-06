@@ -12,8 +12,8 @@ class GradientView: UIView {
     private lazy var gradientLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
         layer.frame = self.bounds
-        layer.colors = [hexColor(hex: "FCAD80").cgColor,
-                           hexColor(hex: "F8637E").cgColor]
+        layer.colors = [hexColor(hex: "FFFFFF").cgColor,
+                           hexColor(hex: "FFFFFF").cgColor]
         layer.startPoint = CGPoint(x: 0.0, y: 0.0)
         layer.endPoint = CGPoint(x: 0.0, y: 1.0)
         self.layer.insertSublayer(layer, at: 0)
