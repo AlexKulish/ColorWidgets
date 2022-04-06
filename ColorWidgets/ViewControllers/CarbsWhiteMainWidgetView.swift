@@ -12,7 +12,9 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
     
     let ketoDiet = KetoDiet.getDiet()
     
-    let circularView = CircularProgressView(progressColor: .red, circleColor: .gray.withAlphaComponent(0.2), isClosed: false, radius: 66)
+    private var circularView: CircularProgressView! // ! для пробы
+    
+//    let circularView = CircularProgressView(progressColor: .red, circleColor: .gray.withAlphaComponent(0.2), isClosed: false, radius: 66)
     
 //    let circularView = CircularProgressView()
     
@@ -22,6 +24,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.circularView = CircularProgressView(progressColor: setProgressColor("FCAD80"), circleColor: .gray.withAlphaComponent(0.2), isClosed: false, radius: 66)
         set(cornerRadius: 25)
         setupView()
 //        set(theme: .orangeGradient)
@@ -31,6 +34,9 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setProgressColor(_ hexOne: String) -> UIColor {
+        hexColor(hex: hexOne)
+    }
     
     func set(theme: ColorTheme) {
         switch theme {
@@ -82,30 +88,31 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         let carbsLabel = UILabel()
         carbsLabel.text = "Углеводы"
+        carbsLabel.textAlignment = .center
         carbsLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         carbsLabel.textColor = .black
         addSubview(carbsLabel)
         
         carbsLabel.snp.makeConstraints { make in
-            make.leading.equalTo(circularView.snp_leadingMargin).inset(28)
+            make.width.equalTo(60)
+            make.leading.equalTo(circularView.snp_leadingMargin).inset(26)
             make.top.equalTo(circularView.snp_topMargin).inset(28)
         }
         
         // количество углеводов
         
         let carbsCountLabel = UILabel()
-        // если ввести 1 или 150 то сбиваются констрейнты!
         
-        carbsCountLabel.text = "1" //String(format: "%.0f", (ketoDiet.markCarbs - ketoDiet.eatCarbs))
+        carbsCountLabel.text = "\(String(format: "%.0f", (ketoDiet.markCarbs - ketoDiet.eatCarbs)))"
+        carbsCountLabel.textAlignment = .center
         carbsCountLabel.font = .systemFont(ofSize: 32, weight: .bold)
         carbsCountLabel.textColor = .black
         addSubview(carbsCountLabel)
         
         carbsCountLabel.snp.makeConstraints { make in
+            make.width.equalTo(100)
             make.top.equalTo(carbsLabel.snp_bottomMargin).offset(8)
-            make.leading.equalTo(circularView.snp_leadingMargin).inset(46)
-//            make.trailing.equalTo(circularView.snp_trailingMargin).offset(105)
-//            make.trailing.equalTo(circularView.snp_leadingMargin).inset(81)
+            make.leading.equalTo(circularView.snp_leadingMargin).inset(7)
         }
         
         // осталось углеводов
@@ -122,8 +129,9 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         addSubview(carbsLeftLabel)
         
         carbsLeftLabel.snp.makeConstraints { make in
+            make.width.equalTo(60)
             make.top.equalTo(carbsCountLabel.snp_bottomMargin).offset(8)
-            make.leading.equalTo(circularView.snp_leadingMargin).inset(32)
+            make.leading.equalTo(circularView.snp_leadingMargin).inset(27)
         }
         
         // белки

@@ -28,13 +28,13 @@ class ViewController: UIViewController {
         
         // КАЛОРИИ ЦВЕТНОЙ ВИДЖЕТ
         
-        view.addSubview(caloriesColorMainWidget)
-
-        caloriesColorMainWidget.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.width.equalToSuperview().inset(16)
-            make.height.equalTo(225)
-        }
+//        view.addSubview(caloriesColorMainWidget)
+//
+//        caloriesColorMainWidget.snp.makeConstraints { make in
+//            make.center.equalToSuperview()
+//            make.width.equalToSuperview().inset(16)
+//            make.height.equalTo(225)
+//        }
         
         // УГЛЕВОДЫ ЦВЕТНОЙ ВИДЖЕТ
         
@@ -48,13 +48,13 @@ class ViewController: UIViewController {
         
         // УГЛЕВОДЫ БЕЛЫЙ ВИДЖЕТ
         
-//        view.addSubview(carbsWhiteMainWidget)
-//
-//        carbsWhiteMainWidget.snp.makeConstraints { make in
-//            make.center.equalToSuperview()
-//            make.width.equalToSuperview().inset(16)
-//            make.height.equalTo(225)
-//        }
+        view.addSubview(carbsWhiteMainWidget)
+
+        carbsWhiteMainWidget.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().inset(16)
+            make.height.equalTo(225)
+        }
         
         
 //        let button = UIButton()

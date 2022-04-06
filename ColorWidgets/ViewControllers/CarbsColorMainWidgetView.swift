@@ -61,30 +61,30 @@ class CarbsColorMainWidgetView: GradientView, MainWidget {
         
         let carbsLabel = UILabel()
         carbsLabel.text = "Углеводы"
+        carbsLabel.textAlignment = .center
         carbsLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         carbsLabel.textColor = .white
         addSubview(carbsLabel)
         
         carbsLabel.snp.makeConstraints { make in
-            make.leading.equalTo(circularView.snp_leadingMargin).inset(28)
+            make.width.equalTo(60)
+            make.leading.equalTo(circularView.snp_leadingMargin).inset(26)
             make.top.equalTo(circularView.snp_topMargin).inset(28)
         }
         
         // количество углеводов
         
         let carbsCountLabel = UILabel()
-        // если ввести 1 или 150 то сбиваются констрейнты!
-        
-        carbsCountLabel.text = "4" //String(format: "%.0f", (ketoDiet.markCarbs - ketoDiet.eatCarbs))
+        carbsCountLabel.text = "\(String(format: "%.0f", (ketoDiet.markCarbs - ketoDiet.eatCarbs)))"
+        carbsCountLabel.textAlignment = .center
         carbsCountLabel.font = .systemFont(ofSize: 32, weight: .bold)
         carbsCountLabel.textColor = .white
         addSubview(carbsCountLabel)
         
         carbsCountLabel.snp.makeConstraints { make in
+            make.width.equalTo(100)
             make.top.equalTo(carbsLabel.snp_bottomMargin).offset(8)
-            make.leading.equalTo(circularView.snp_leadingMargin).inset(46)
-//            make.trailing.equalTo(circularView.snp_trailingMargin).offset(105)
-//            make.trailing.equalTo(circularView.snp_leadingMargin).inset(81)
+            make.leading.equalTo(circularView.snp_leadingMargin).inset(7)
         }
         
         // осталось углеводов
@@ -101,8 +101,9 @@ class CarbsColorMainWidgetView: GradientView, MainWidget {
         addSubview(carbsLeftLabel)
         
         carbsLeftLabel.snp.makeConstraints { make in
+            make.width.equalTo(60)
             make.top.equalTo(carbsCountLabel.snp_bottomMargin).offset(8)
-            make.leading.equalTo(circularView.snp_leadingMargin).inset(32)
+            make.leading.equalTo(circularView.snp_leadingMargin).inset(27)
         }
         
         // белки
