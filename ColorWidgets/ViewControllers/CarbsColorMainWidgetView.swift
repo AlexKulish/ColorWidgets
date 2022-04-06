@@ -10,11 +10,13 @@ import SnapKit
 
 class CarbsColorMainWidgetView: GradientView, MainWidget {
     
+    let ketoDiet = KetoDiet.getDiet()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         set(cornerRadius: 25)
         setupView()
-        set(theme: .orangeGradient)
+        set(theme: .greenGradient)
     }
     
     required init?(coder: NSCoder) {
@@ -30,8 +32,8 @@ class CarbsColorMainWidgetView: GradientView, MainWidget {
             set(colors: [hexColor(hex: "FB825B").cgColor,
                          hexColor(hex: "FB825B").cgColor])
         case .greenGradient:
-            set(colors: [hexColor(hex: "58C3AA").cgColor,
-                         hexColor(hex: "92F5C7").cgColor])
+            set(colors: [hexColor(hex: "92F5C7").cgColor,
+                         hexColor(hex: "58C3AA").cgColor])
         case .greenFlat:
             set(colors: [hexColor(hex: "65D29A").cgColor,
                          hexColor(hex: "65D29A").cgColor])
@@ -71,7 +73,9 @@ class CarbsColorMainWidgetView: GradientView, MainWidget {
         // количество углеводов
         
         let carbsCountLabel = UILabel()
-        carbsCountLabel.text = "15"
+        // если ввести 1 или 150 то сбиваются констрейнты!
+        
+        carbsCountLabel.text = "15"//String(format: "%.0f", (ketoDiet.markCarbs - ketoDiet.eatCarbs))
         carbsCountLabel.font = .systemFont(ofSize: 32, weight: .bold)
         carbsCountLabel.textColor = .white
         addSubview(carbsCountLabel)
@@ -86,7 +90,7 @@ class CarbsColorMainWidgetView: GradientView, MainWidget {
         let carbsLeftLabel = UILabel()
         carbsLeftLabel.text = """
                                 осталось
-                                из 18 г
+                                из \(String(format: "%.0f", ketoDiet.markCarbs)) г
                                 """
         carbsLeftLabel.font = .systemFont(ofSize: 12)
         carbsLeftLabel.numberOfLines = 0
@@ -141,7 +145,7 @@ class CarbsColorMainWidgetView: GradientView, MainWidget {
         // белки лейбл прогресс
         
         let proteinProgressLabel = UILabel()
-        proteinProgressLabel.text = "155 / 180 г"
+        proteinProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatProteins)) / \(String(format: "%.0f", ketoDiet.markProteins)) г"
         proteinProgressLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         proteinProgressLabel.textColor = .white
         addSubview(proteinProgressLabel)
@@ -154,7 +158,7 @@ class CarbsColorMainWidgetView: GradientView, MainWidget {
         // жиры лейбл прогресс
         
         let fatsProgressLabel = UILabel()
-        fatsProgressLabel.text = "120 / 150 г"
+        fatsProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatFats)) / \(String(format: "%.0f", ketoDiet.markFats)) г"
         fatsProgressLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         fatsProgressLabel.textColor = .white
         addSubview(fatsProgressLabel)
@@ -167,7 +171,7 @@ class CarbsColorMainWidgetView: GradientView, MainWidget {
         // калории лейбл прогресс
         
         let caloriesProgressLabel = UILabel()
-        caloriesProgressLabel.text = "1580 / 2250 ккал"
+        caloriesProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatCalories)) / \(String(format: "%.0f", ketoDiet.markCalories)) ккал"
         caloriesProgressLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         caloriesProgressLabel.textColor = .white
         addSubview(caloriesProgressLabel)
@@ -278,7 +282,7 @@ class CarbsColorMainWidgetView: GradientView, MainWidget {
         overallProgressBar.snp.makeConstraints { make in
             make.height.equalTo(4)
             make.leading.equalTo(self.snp_leadingMargin).inset(16)
-            make.trailing.equalTo(self.snp_trailingMargin).inset(10)
+            make.trailing.equalTo(self.snp_trailingMargin).inset(20)
             make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(12)
         }
         
