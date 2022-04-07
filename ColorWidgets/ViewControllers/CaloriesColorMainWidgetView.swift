@@ -46,214 +46,342 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
     
     private func setupView() {
         
-        // левый стэк вью
-    
-        let eatenStackView = UIStackView()
-        eatenStackView.axis = .vertical
-        eatenStackView.spacing = 5
-        eatenStackView.alignment = .center
-
-        let iconEat = UIImage(named: "IconEat")
-        iconEat?.size.equalTo(CGSize(width: 11, height: 20))
-
-        let eatenCaloriesCountLabel = UILabel()
-        eatenCaloriesCountLabel.text = String(format: "%.0f", ketoDiet.eatCalories)
-        eatenCaloriesCountLabel.font = .systemFont(ofSize: 24, weight: .semibold)
-        eatenCaloriesCountLabel.textColor = .white
-        let eatenLabel = UILabel()
-        eatenLabel.text = "Съедено"
-        eatenLabel.font = .systemFont(ofSize: 12)
-        eatenLabel.textColor = .white
-
-        eatenStackView.addArrangedSubview(UIImageView(image: iconEat))
-        eatenStackView.addArrangedSubview(eatenCaloriesCountLabel)
-        eatenStackView.addArrangedSubview(eatenLabel)
-
-        addSubview(eatenStackView)
-
-        eatenStackView.snp.makeConstraints { make in
-            make.top.equalTo(self.snp_topMargin).inset(48)
-            make.left.equalTo(self.snp_leftMargin).inset(20)
-        }
-        
-        // круглый прогресс вью
+        // круглый прогресс бар
         
         let circularView = CircularProgressView(progressColor: .white, circleColor: .white.withAlphaComponent(0.2), isClosed: false, radius: 66)
         circularView.progressAnimation(duration: 5, value: 1)
         addSubview(circularView)
+        
         circularView.snp.makeConstraints { make in
+            // если хочешь поменять расположение по центру, меняй высоту и ширину
+            make.height.equalTo(130)
+            make.width.equalTo(130)
             make.top.equalTo(self.snp_topMargin).inset(21)
-            make.left.greaterThanOrEqualTo(self.snp_leftMargin).inset(105) // было 105 на 13 айфоне все ок
+            make.centerX.equalTo(self.snp.centerX)
         }
         
         // калории лейбл внутри круга
         
         let caloriesLabel = UILabel()
         caloriesLabel.text = "ккал"
-        caloriesLabel.font = .systemFont(ofSize: 12)
+        caloriesLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         caloriesLabel.textColor = .white
-        
         addSubview(caloriesLabel)
         
         caloriesLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.snp_topMargin).inset(49)
-            make.left.equalTo(self.snp_leftMargin).inset(158)
+            make.top.equalTo(circularView.snp_topMargin).inset(22)
+            make.leading.equalTo(circularView.snp_leadingMargin).inset(44)
         }
         
-        // количество и осталось внутри круга
-        
-        let caloriesStackView = UIStackView()
-        caloriesStackView.axis = .vertical
-        caloriesStackView.distribution = .fillEqually
-        caloriesStackView.alignment = .center
+        // калории осталось число внутри круга
         
         let caloriesCountLabel = UILabel()
         caloriesCountLabel.text = String(format: "%.0f", ketoDiet.markCalories)
         caloriesCountLabel.font = .systemFont(ofSize: 32, weight: .bold)
+        caloriesCountLabel.textAlignment = .center
         caloriesCountLabel.textColor = .white
+        addSubview(caloriesCountLabel)
+        
+        caloriesCountLabel.snp.makeConstraints { make in
+            make.width.equalTo(80)
+            make.top.equalTo(caloriesLabel.snp_bottomMargin).offset(8)
+            make.leading.equalTo(circularView.snp_leadingMargin).inset(20)
+        }
+        
+        // калории осталось слово внутри круга
+        
         let caloriesLeftLabel = UILabel()
         caloriesLeftLabel.text = "Осталось"
         caloriesLeftLabel.font = .systemFont(ofSize: 12)
+        caloriesLeftLabel.textAlignment = .center
         caloriesLeftLabel.textColor = .white
+        addSubview(caloriesLeftLabel)
         
-        caloriesStackView.addArrangedSubview(caloriesCountLabel)
-        caloriesStackView.addArrangedSubview(caloriesLeftLabel)
-        
-        addSubview(caloriesStackView)
-
-        caloriesStackView.snp.makeConstraints { make in
-            make.left.equalTo(self.snp_leftMargin).inset(134)
-            make.top.equalTo(self.snp_topMargin).inset(66)
+        caloriesLeftLabel.snp.makeConstraints { make in
+            make.width.equalTo(60)
+            make.top.equalTo(caloriesCountLabel.snp_bottomMargin).offset(6)
+            make.leading.equalTo(circularView.snp_leadingMargin).inset(30)
         }
         
-        // правый стэк вью
+        // картинка еда
         
-        let burnedCaloriesStackView = UIStackView()
-        burnedCaloriesStackView.axis = .vertical
-        burnedCaloriesStackView.spacing = 5
-        burnedCaloriesStackView.alignment = .center
+        let eatImage = UIImage(named: "IconEat")
+//        eatImage?.size.equalTo(CGSize(width: 11, height: 20))
+        let eatImageView = UIImageView(image: eatImage)
+        addSubview(eatImageView)
+        
+        eatImageView.snp.makeConstraints { make in
+            make.width.equalTo(30)
+            make.height.equalTo(22)
+            make.top.equalTo(self.snp_topMargin).inset(48)
+            make.leading.equalTo(self.snp_leadingMargin).inset(34)
+        }
+        
+        // съедено калорий число
+        
+        let eatenCaloriesCountLabel = UILabel()
+        eatenCaloriesCountLabel.text = String(format: "%.0f", ketoDiet.eatCalories)
+        eatenCaloriesCountLabel.font = .systemFont(ofSize: 24, weight: .semibold)
+        eatenCaloriesCountLabel.textAlignment = .center
+        eatenCaloriesCountLabel.textColor = .white
+        addSubview(eatenCaloriesCountLabel)
+        
+        eatenCaloriesCountLabel.snp.makeConstraints { make in
+            make.width.equalTo(60)
+            make.top.equalTo(eatImageView.snp_bottomMargin).offset(10)
+            make.leading.equalTo(self.snp_leadingMargin).inset(20)
+            make.trailing.lessThanOrEqualTo(circularView.snp_leadingMargin).inset(-26)
+            
+//            make.leading.greaterThanOrEqualTo(self.snp_leadingMargin).inset(20)
+//            make.trailing.equalTo(circularView.snp_leadingMargin).inset(-26)
+        }
+        
+        // съедено калорий слово
+        
+        let eatenLabel = UILabel()
+        eatenLabel.text = "Съедено"
+        eatenLabel.font = .systemFont(ofSize: 12)
+        eatenLabel.textAlignment = .center
+        eatenLabel.textColor = .white
+        addSubview(eatenLabel)
+        
+        eatenLabel.snp.makeConstraints { make in
+            make.width.equalTo(60)
+            make.top.equalTo(eatenCaloriesCountLabel.snp_bottomMargin).offset(10)
+            make.leading.equalTo(eatenCaloriesCountLabel.snp_leadingMargin).inset(-7)
+        }
+        
+        // картинка человечек
         
         let runImage = UIImage(named: "IconRun")
-        runImage?.size.equalTo(CGSize(width: 11, height: 20))
+//        runImage?.size.equalTo(CGSize(width: 11, height: 20))
+        let runImageView = UIImageView(image: runImage)
+        addSubview(runImageView)
+        
+        runImageView.snp.makeConstraints { make in
+            make.width.equalTo(30)
+            make.height.equalTo(22)
+            make.top.equalTo(self.snp_topMargin).inset(48)
+            make.trailing.equalTo(self.snp_trailingMargin).inset(34)
+        }
+        
+        // сожжено калорий число
         
         let burnedCaloriesCountLabel = UILabel()
         burnedCaloriesCountLabel.text = String(format: "%.0f", ketoDiet.burnedCalories)
         burnedCaloriesCountLabel.font = .systemFont(ofSize: 24, weight: .semibold)
+        burnedCaloriesCountLabel.textAlignment = .center
         burnedCaloriesCountLabel.textColor = .white
+        addSubview(burnedCaloriesCountLabel)
+        
+        burnedCaloriesCountLabel.snp.makeConstraints { make in
+            make.width.equalTo(60)
+            make.top.equalTo(runImageView.snp_bottomMargin).offset(10)
+            make.leading.greaterThanOrEqualTo(circularView.snp_trailingMargin).inset(26)
+            make.trailing.equalTo(self.snp_trailingMargin).inset(20)
+        }
+        
+        // сожжено калорий слово
+        
         let burnedLabel = UILabel()
         burnedLabel.text = "Сожжено"
         burnedLabel.font = .systemFont(ofSize: 12)
+        burnedLabel.textAlignment = .center
         burnedLabel.textColor = .white
+        addSubview(burnedLabel)
         
-        burnedCaloriesStackView.addArrangedSubview(UIImageView(image: runImage))
-        burnedCaloriesStackView.addArrangedSubview(burnedCaloriesCountLabel)
-        burnedCaloriesStackView.addArrangedSubview(burnedLabel)
-        
-        addSubview(burnedCaloriesStackView)
-        
-        burnedCaloriesStackView.snp.makeConstraints { make in
-            make.top.equalTo(self.snp_topMargin).inset(48)
-            make.right.equalTo(self.snp_rightMargin).inset(20)
+        burnedLabel.snp.makeConstraints { make in
+            make.width.equalTo(60)
+            make.top.equalTo(burnedCaloriesCountLabel.snp_bottomMargin).offset(10)
+            make.leading.equalTo(burnedCaloriesCountLabel.snp_leadingMargin).inset(-7)
         }
         
-        // углеводы стэк вью
-        
-        let carbsStackView = UIStackView()
-        carbsStackView.axis = .vertical
-        carbsStackView.spacing = 7
-        
-        let carbsLabel = UILabel()
-        carbsLabel.text = "Углеводы"
-        carbsLabel.font = .systemFont(ofSize: 12, weight: .semibold)
-        carbsLabel.textColor = .white
-        carbsLabel.textAlignment = .center
-        
-        let carbsProgressView = UIProgressView()
-        carbsProgressView.progress = Float(ketoDiet.eatCarbs / ketoDiet.markCarbs)
-        carbsProgressView.progressTintColor = .white
-        
-        let carbsProgressLabel = UILabel()
-        carbsProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatCarbs)) / \(String(format: "%.0f", ketoDiet.markCarbs)) г"
-        carbsProgressLabel.font = .systemFont(ofSize: 12)
-        carbsProgressLabel.textColor = .white
-        carbsProgressLabel.textAlignment = .center
-        
-        carbsStackView.addArrangedSubview(carbsLabel)
-        carbsStackView.addArrangedSubview(carbsProgressView)
-        carbsStackView.addArrangedSubview(carbsProgressLabel)
-        
-        
-        // белки стэк вью
-        
-        let proteinStackView = UIStackView()
-        proteinStackView.axis = .vertical
-        proteinStackView.spacing = 7
+        // белки лейбл
         
         let proteinLabel = UILabel()
         proteinLabel.text = "Белки"
         proteinLabel.font = .systemFont(ofSize: 12, weight: .semibold)
-        proteinLabel.textColor = .white
         proteinLabel.textAlignment = .center
+        proteinLabel.textColor = .white
+        addSubview(proteinLabel)
         
-        let proteinProgressView = UIProgressView()
-        proteinProgressView.progress = Float(ketoDiet.eatProteins / ketoDiet.markProteins)
-        proteinProgressView.progressTintColor = .white
+        proteinLabel.snp.makeConstraints { make in
+            make.width.equalTo(60)
+            make.top.equalTo(circularView.snp_bottomMargin).offset(10)
+            make.leading.equalTo(caloriesLeftLabel.snp_leadingMargin).inset(-14)
+//            make.leading.equalTo(circularView.snp_leadingMargin).inset(26)
+        }
         
-        let proteinProgressLabel = UILabel()
-        proteinProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatProteins)) / \(String(format: "%.0f", ketoDiet.markProteins)) г"
-        proteinProgressLabel.font = .systemFont(ofSize: 12)
-        proteinProgressLabel.textColor = .white
-        proteinProgressLabel.textAlignment = .center
+        // углеводы лейбл
         
-        proteinStackView.addArrangedSubview(proteinLabel)
-        proteinStackView.addArrangedSubview(proteinProgressView)
-        proteinStackView.addArrangedSubview(proteinProgressLabel)
+        let carbsLabel = UILabel()
+        carbsLabel.text = "Углеводы"
+        carbsLabel.font = .systemFont(ofSize: 12, weight: .semibold)
+        carbsLabel.textAlignment = .center
+        carbsLabel.textColor = .white
+        addSubview(carbsLabel)
         
-        // жиры стэк вью
+        carbsLabel.snp.makeConstraints { make in
+            make.width.equalTo(60)
+            make.top.equalTo(circularView.snp_bottomMargin).offset(10)
+            make.leading.equalTo(eatenLabel.snp_leadingMargin)
+        }
         
-        let fatsStackView = UIStackView()
-        fatsStackView.axis = .vertical
-        fatsStackView.spacing = 7
+        
+        // жиры лейбл
         
         let fatsLabel = UILabel()
         fatsLabel.text = "Жиры"
         fatsLabel.font = .systemFont(ofSize: 12, weight: .semibold)
-        fatsLabel.textColor = .white
         fatsLabel.textAlignment = .center
+        fatsLabel.textColor = .white
+        addSubview(fatsLabel)
         
-        let fatsProgressView = UIProgressView()
-        fatsProgressView.progress = Float(ketoDiet.eatFats / ketoDiet.markFats)
-        fatsProgressView.progressTintColor = .white
+        fatsLabel.snp.makeConstraints { make in
+            make.width.equalTo(60)
+            make.top.equalTo(circularView.snp_bottomMargin).offset(10)
+            make.leading.equalTo(circularView.snp_trailingMargin).offset(23)
+        }
+        
+        // общий прогресс бар чтобы наложить остальные
+        
+        let overallProgressBar = UIView()
+        overallProgressBar.layer.cornerRadius = 2
+        overallProgressBar.backgroundColor = .white.withAlphaComponent(0)
+        addSubview(overallProgressBar)
+        
+        overallProgressBar.snp.makeConstraints { make in
+            make.height.equalTo(4)
+            make.leading.equalTo(self.snp_leadingMargin).inset(16)
+            make.trailing.equalTo(self.snp_trailingMargin).inset(16)
+            make.top.equalTo(proteinLabel.snp_bottomMargin).offset(12)
+        }
+        
+        // углеводы прогресс вью
+        
+        let carbsProgressBackground = UIView()
+        carbsProgressBackground.backgroundColor = .white.withAlphaComponent(0.2)
+        carbsProgressBackground.layer.cornerRadius = 2
+        addSubview(carbsProgressBackground)
+        
+        carbsProgressBackground.snp.makeConstraints { make in
+            make.height.equalTo(4)
+            make.top.equalTo(carbsLabel.snp_bottomMargin).offset(12)
+            make.leading.equalTo(self.snp_leadingMargin).inset(16)
+            make.width.equalTo(overallProgressBar).multipliedBy(0.3)
+        }
+        
+        let carbsProgressBar = UIView()
+        carbsProgressBar.backgroundColor = .white
+        addSubview(carbsProgressBar)
+        
+        carbsProgressBar.snp.makeConstraints { make in
+            make.height.equalTo(4)
+            make.top.equalTo(carbsLabel.snp_bottomMargin).offset(12)
+            make.leading.equalTo(self.snp_leadingMargin).inset(16)
+            make.width.equalTo(carbsProgressBackground).multipliedBy(0.5)
+            
+        }
+        
+        // белки прогресс вью
+        
+        let proteinProgressBackground = UIView()
+        proteinProgressBackground.backgroundColor = .white.withAlphaComponent(0.2)
+        proteinProgressBackground.layer.cornerRadius = 2
+        addSubview(proteinProgressBackground)
+        
+        proteinProgressBackground.snp.makeConstraints { make in
+            make.height.equalTo(4)
+            make.top.equalTo(proteinLabel.snp_bottomMargin).offset(12)
+            make.leading.equalTo(carbsProgressBackground.snp_trailingMargin).offset(23)
+            make.width.equalTo(overallProgressBar).multipliedBy(0.3)
+        }
+        
+        let proteinProgressBar = UIView()
+        proteinProgressBar.backgroundColor = .white
+        addSubview(proteinProgressBar)
+        
+        proteinProgressBar.snp.makeConstraints { make in
+            make.height.equalTo(4)
+            make.top.equalTo(proteinLabel.snp_bottomMargin).offset(12)
+            make.leading.equalTo(carbsProgressBackground.snp_trailingMargin).offset(23)
+            make.width.equalTo(proteinProgressBackground).multipliedBy(0.5)
+            
+        }
+        
+        // жиры прогресс вью
+        
+        let fatsProgressBackground = UIView()
+        fatsProgressBackground.backgroundColor = .white.withAlphaComponent(0.2)
+        fatsProgressBackground.layer.cornerRadius = 2
+        addSubview(fatsProgressBackground)
+        
+        fatsProgressBackground.snp.makeConstraints { make in
+            make.height.equalTo(4)
+            make.top.equalTo(fatsLabel.snp_bottomMargin).offset(12)
+            make.leading.equalTo(proteinProgressBackground.snp_trailingMargin).offset(23)
+            make.width.equalTo(overallProgressBar).multipliedBy(0.33)
+        }
+        
+        let fatsProgressBar = UIView()
+        fatsProgressBar.backgroundColor = .white
+        addSubview(fatsProgressBar)
+        
+        fatsProgressBar.snp.makeConstraints { make in
+            make.height.equalTo(4)
+            make.top.equalTo(fatsLabel.snp_bottomMargin).offset(12)
+            make.leading.equalTo(proteinProgressBackground.snp_trailingMargin).offset(23)
+            make.width.equalTo(fatsProgressBackground).multipliedBy(0.5)
+            
+        }
+        
+        // углеводы прогресс лейбл
+        
+        let carbsProgressLabel = UILabel()
+        carbsProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatCarbs)) / \(String(format: "%.0f", ketoDiet.markCarbs)) г"
+        carbsProgressLabel.font = .systemFont(ofSize: 12)
+        carbsProgressLabel.textAlignment = .center
+        carbsProgressLabel.textColor = .white
+        addSubview(carbsProgressLabel)
+        
+        carbsProgressLabel.snp.makeConstraints { make in
+            make.width.equalTo(65)
+            make.top.equalTo(carbsProgressBackground.snp_bottomMargin).offset(12)
+            make.leading.equalTo(eatenLabel.snp_leadingMargin)
+
+//            make.leading.equalTo(carbsLabel.snp_leadingMargin).inset(-4)
+        }
+        
+        // белки прогресс лейбл
+        
+        let proteinProgressLabel = UILabel()
+        proteinProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatProteins)) / \(String(format: "%.0f", ketoDiet.markProteins)) г"
+        proteinProgressLabel.font = .systemFont(ofSize: 12)
+        proteinProgressLabel.textAlignment = .center
+        proteinProgressLabel.textColor = .white
+        addSubview(proteinProgressLabel)
+        
+        proteinProgressLabel.snp.makeConstraints { make in
+            make.width.equalTo(65)
+            make.top.equalTo(carbsProgressBackground.snp_bottomMargin).offset(12)
+            make.leading.equalTo(caloriesLeftLabel.snp_leadingMargin).inset(-14)
+        }
+        
+        // жиры прогресс лейбл
         
         let fatsProgressLabel = UILabel()
         fatsProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatFats)) / \(String(format: "%.0f", ketoDiet.markFats)) г"
         fatsProgressLabel.font = .systemFont(ofSize: 12)
-        fatsProgressLabel.textColor = .white
         fatsProgressLabel.textAlignment = .center
+        fatsProgressLabel.textColor = .white
+        addSubview(fatsProgressLabel)
         
-        fatsStackView.addArrangedSubview(fatsLabel)
-        fatsStackView.addArrangedSubview(fatsProgressView)
-        fatsStackView.addArrangedSubview(fatsProgressLabel)
-        
-        // общий стэк вью нижний
-        
-        let overallStackView = UIStackView()
-        overallStackView.axis = .horizontal
-        overallStackView.spacing = 25
-        overallStackView.distribution = .fillEqually
-        
-        overallStackView.addArrangedSubview(carbsStackView)
-        overallStackView.addArrangedSubview(proteinStackView)
-        overallStackView.addArrangedSubview(fatsStackView)
-        
-        addSubview(overallStackView)
-        
-        overallStackView.snp.makeConstraints { make in
-            make.top.equalTo(caloriesLeftLabel.snp_topMargin).inset(39)
-            make.left.equalTo(self.snp_leftMargin).inset(16)
-            make.right.equalTo(self.snp_rightMargin).inset(16)
-            make.bottom.equalTo(self.snp_bottomMargin).inset(16)
+        fatsProgressLabel.snp.makeConstraints { make in
+            make.width.equalTo(65)
+            make.top.equalTo(carbsProgressBackground.snp_bottomMargin).offset(12)
+            make.leading.equalTo(circularView.snp_trailingMargin).offset(23)
         }
+        
     }
     
 }
