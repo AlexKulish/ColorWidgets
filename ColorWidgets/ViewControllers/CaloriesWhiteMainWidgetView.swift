@@ -16,10 +16,10 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.circularView = CircularProgressView(progressColor: setProgressColor("FCAD80"), circleColor: .gray.withAlphaComponent(0.2), isClosed: false, radius: 66)
+//        self.circularView = CircularProgressView(progressColor: setProgressColor("FCAD80"), circleColor: .gray.withAlphaComponent(0.2), isClosed: false, radius: 66)
+        set(theme: .orangeGradient)
         set(cornerRadius: 25)
         setupView()
-//        set(theme: .orangeGradient)
     }
     
     required init?(coder: NSCoder) {
@@ -34,8 +34,9 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
     func set(theme: ColorTheme) {
         switch theme {
         case .orangeGradient:
-            set(colors: [hexColor(hex: "FCAD80").cgColor,
-                         hexColor(hex: "F8637E").cgColor])
+            circularView = CircularProgressView(progressColor: setProgressColor("FCAD80"), circleColor: .gray.withAlphaComponent(0.2), isClosed: false, radius: 66)
+//            set(colors: [hexColor(hex: "FCAD80").cgColor,
+//                         hexColor(hex: "F8637E").cgColor])
         case .orangeFlat:
             set(colors: [hexColor(hex: "FB825B").cgColor,
                          hexColor(hex: "FB825B").cgColor])
