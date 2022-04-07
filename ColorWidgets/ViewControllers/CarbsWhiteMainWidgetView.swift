@@ -368,8 +368,8 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         addSubview(carbsInPercentLabel)
         
         carbsInPercentLabel.snp.makeConstraints { make in
-            make.leading.equalTo(self.snp_leadingMargin).inset(24)
             make.top.equalTo(carbsProgressBarInPercent.snp_bottomMargin).offset(12)
+            make.centerX.equalTo(self.snp.centerX).multipliedBy(0.35)
         }
         
         // жиры в процентах лейбл
@@ -381,8 +381,8 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         addSubview(fatsInPercentLabel)
         
         fatsInPercentLabel.snp.makeConstraints { make in
-            make.leading.equalTo(carbsInPercentLabel.snp_trailingMargin).offset(50)
             make.top.equalTo(carbsProgressBarInPercent.snp_bottomMargin).offset(12)
+            make.centerX.equalTo(self.snp.centerX)
         }
         
         // белки в процентах лейбл
@@ -394,8 +394,8 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         addSubview(proteinsInPercentLabel)
         
         proteinsInPercentLabel.snp.makeConstraints { make in
-            make.trailing.equalTo(self.snp_trailingMargin).inset(24)
             make.top.equalTo(carbsProgressBarInPercent.snp_bottomMargin).offset(12)
+            make.centerX.equalTo(self.snp.centerX).multipliedBy(1.65)
         }
         
         

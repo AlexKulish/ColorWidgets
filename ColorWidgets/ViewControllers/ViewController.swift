@@ -49,23 +49,23 @@ class ViewController: UIViewController {
         
         // УГЛЕВОДЫ БЕЛЫЙ ВИДЖЕТ
         
-//        view.addSubview(carbsWhiteMainWidget)
-//
-//        carbsWhiteMainWidget.snp.makeConstraints { make in
-//            make.center.equalToSuperview()
-//            make.width.equalToSuperview().inset(16)
-//            make.height.equalTo(225)
-//        }
-        
-        // КАЛОРИИ БЕЛЫЙ ВИДЖЕТ
-        
-        view.addSubview(caloriesWhiteMainWidget)
-        
-        caloriesWhiteMainWidget.snp.makeConstraints { make in
+        view.addSubview(carbsWhiteMainWidget)
+
+        carbsWhiteMainWidget.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.width.equalToSuperview().inset(16)
             make.height.equalTo(225)
         }
+        
+        // КАЛОРИИ БЕЛЫЙ ВИДЖЕТ
+        
+//        view.addSubview(caloriesWhiteMainWidget)
+//
+//        caloriesWhiteMainWidget.snp.makeConstraints { make in
+//            make.center.equalToSuperview()
+//            make.width.equalToSuperview().inset(16)
+//            make.height.equalTo(225)
+//        }
         
 //        let button = UIButton()
 //        button.backgroundColor = .black

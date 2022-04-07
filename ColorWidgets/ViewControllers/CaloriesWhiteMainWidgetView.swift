@@ -114,15 +114,12 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
         // картинка еда
         
         let eatImage = UIImage(named: "IconEatBlack")
-//        eatImage?.size.equalTo(CGSize(width: 11, height: 20))
         let eatImageView = UIImageView(image: eatImage)
         addSubview(eatImageView)
         
         eatImageView.snp.makeConstraints { make in
-            make.width.equalTo(30)
-            make.height.equalTo(22)
             make.top.equalTo(self.snp_topMargin).inset(48)
-            make.leading.equalTo(self.snp_leadingMargin).inset(34)
+            make.centerX.equalTo(self.snp.centerX).multipliedBy(0.35)
         }
         
         // съедено калорий число
@@ -137,11 +134,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
         eatenCaloriesCountLabel.snp.makeConstraints { make in
             make.width.equalTo(60)
             make.top.equalTo(eatImageView.snp_bottomMargin).offset(10)
-            make.leading.equalTo(self.snp_leadingMargin).inset(20)
-            make.trailing.lessThanOrEqualTo(circularView.snp_leadingMargin).inset(-26)
-            
-//            make.leading.greaterThanOrEqualTo(self.snp_leadingMargin).inset(20)
-//            make.trailing.equalTo(circularView.snp_leadingMargin).inset(-26)
+            make.centerX.equalTo(self.snp.centerX).multipliedBy(0.35)
         }
         
         // съедено калорий слово
@@ -156,21 +149,18 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
         eatenLabel.snp.makeConstraints { make in
             make.width.equalTo(60)
             make.top.equalTo(eatenCaloriesCountLabel.snp_bottomMargin).offset(10)
-            make.leading.equalTo(eatenCaloriesCountLabel.snp_leadingMargin).inset(-7)
+            make.centerX.equalTo(self.snp.centerX).multipliedBy(0.35)
         }
         
         // картинка человечек
         
         let runImage = UIImage(named: "IconRunBlack")
-//        runImage?.size.equalTo(CGSize(width: 11, height: 20))
         let runImageView = UIImageView(image: runImage)
         addSubview(runImageView)
         
         runImageView.snp.makeConstraints { make in
-            make.width.equalTo(30)
-            make.height.equalTo(22)
             make.top.equalTo(self.snp_topMargin).inset(48)
-            make.trailing.equalTo(self.snp_trailingMargin).inset(34)
+            make.centerX.equalTo(self.snp.centerX).multipliedBy(1.65)
         }
         
         // сожжено калорий число
@@ -185,8 +175,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
         burnedCaloriesCountLabel.snp.makeConstraints { make in
             make.width.equalTo(60)
             make.top.equalTo(runImageView.snp_bottomMargin).offset(10)
-            make.leading.greaterThanOrEqualTo(circularView.snp_trailingMargin).inset(26)
-            make.trailing.equalTo(self.snp_trailingMargin).inset(20)
+            make.centerX.equalTo(self.snp.centerX).multipliedBy(1.65)
         }
         
         // сожжено калорий слово
@@ -201,7 +190,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
         burnedLabel.snp.makeConstraints { make in
             make.width.equalTo(60)
             make.top.equalTo(burnedCaloriesCountLabel.snp_bottomMargin).offset(10)
-            make.leading.equalTo(burnedCaloriesCountLabel.snp_leadingMargin).inset(-7)
+            make.centerX.equalTo(self.snp.centerX).multipliedBy(1.65)
         }
         
         // белки лейбл
@@ -216,8 +205,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
         proteinLabel.snp.makeConstraints { make in
             make.width.equalTo(60)
             make.top.equalTo(circularView.snp_bottomMargin).offset(10)
-            make.leading.equalTo(caloriesLeftLabel.snp_leadingMargin).inset(-14)
-//            make.leading.equalTo(circularView.snp_leadingMargin).inset(26)
+            make.centerX.equalTo(self.snp.centerX)
         }
         
         // углеводы лейбл
@@ -232,7 +220,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
         carbsLabel.snp.makeConstraints { make in
             make.width.equalTo(60)
             make.top.equalTo(circularView.snp_bottomMargin).offset(10)
-            make.leading.equalTo(eatenLabel.snp_leadingMargin)
+            make.centerX.equalTo(self.snp.centerX).multipliedBy(0.4)
         }
         
         
@@ -246,9 +234,9 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
         addSubview(fatsLabel)
         
         fatsLabel.snp.makeConstraints { make in
-            make.width.equalTo(60)
+            make.width.equalTo(70)
             make.top.equalTo(circularView.snp_bottomMargin).offset(10)
-            make.leading.equalTo(circularView.snp_trailingMargin).offset(23)
+            make.centerX.equalTo(self.snp.centerX).multipliedBy(1.6)
         }
         
         // общий прогресс бар чтобы наложить остальные
@@ -288,7 +276,6 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.top.equalTo(carbsLabel.snp_bottomMargin).offset(12)
             make.leading.equalTo(self.snp_leadingMargin).inset(16)
             make.width.equalTo(carbsProgressBackground).multipliedBy(0.5)
-            
         }
         
         // белки прогресс вью
@@ -314,7 +301,6 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.top.equalTo(proteinLabel.snp_bottomMargin).offset(12)
             make.leading.equalTo(carbsProgressBackground.snp_trailingMargin).offset(23)
             make.width.equalTo(proteinProgressBackground).multipliedBy(0.5)
-            
         }
         
         // жиры прогресс вью
@@ -340,7 +326,6 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.top.equalTo(fatsLabel.snp_bottomMargin).offset(12)
             make.leading.equalTo(proteinProgressBackground.snp_trailingMargin).offset(23)
             make.width.equalTo(fatsProgressBackground).multipliedBy(0.5)
-            
         }
         
         // углеводы прогресс лейбл
@@ -355,9 +340,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
         carbsProgressLabel.snp.makeConstraints { make in
             make.width.equalTo(65)
             make.top.equalTo(carbsProgressBackground.snp_bottomMargin).offset(12)
-            make.leading.equalTo(eatenLabel.snp_leadingMargin)
-
-//            make.leading.equalTo(carbsLabel.snp_leadingMargin).inset(-4)
+            make.centerX.equalTo(self.snp.centerX).multipliedBy(0.4)
         }
         
         // белки прогресс лейбл
@@ -372,7 +355,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
         proteinProgressLabel.snp.makeConstraints { make in
             make.width.equalTo(65)
             make.top.equalTo(carbsProgressBackground.snp_bottomMargin).offset(12)
-            make.leading.equalTo(caloriesLeftLabel.snp_leadingMargin).inset(-14)
+            make.centerX.equalTo(self.snp.centerX)
         }
         
         // жиры прогресс лейбл
@@ -387,7 +370,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
         fatsProgressLabel.snp.makeConstraints { make in
             make.width.equalTo(65)
             make.top.equalTo(carbsProgressBackground.snp_bottomMargin).offset(12)
-            make.leading.equalTo(circularView.snp_trailingMargin).offset(23)
+            make.centerX.equalTo(self.snp.centerX).multipliedBy(1.6)
         }
         
     }
