@@ -55,7 +55,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
     
     private func setupView() {
         
-        // круглый прогресс бар
+        // MARK: - КРУГЛЫЙ ЦЕНТРАЛЬНЫЙ ПРОГРЕСС БАР
         
 //        let circularView = CircularProgressView(progressColor: .white, circleColor: .white.withAlphaComponent(0.2), isClosed: false, radius: 66)
         circularView.progressAnimation(duration: 5, value: 1)
@@ -69,7 +69,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.centerX.equalTo(self.snp.centerX)
         }
         
-        // калории лейбл внутри круга
+        // MARK: - КАЛОРИИ ЛЕЙБЛ ВНУТРИ КРУГА
         
         let caloriesLabel = UILabel()
         caloriesLabel.text = "ккал"
@@ -82,7 +82,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.leading.equalTo(circularView.snp_leadingMargin).inset(44)
         }
         
-        // калории осталось число внутри круга
+        // MARK: - КАЛОРИИ ОСТАЛОСЬ ЧИСЛО ВНУТРИ КРУГА
         
         let caloriesCountLabel = UILabel()
         caloriesCountLabel.text = String(format: "%.0f", ketoDiet.markCalories)
@@ -97,7 +97,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.leading.equalTo(circularView.snp_leadingMargin).inset(20)
         }
         
-        // калории осталось слово внутри круга
+        // MARK: - КАЛОРИИ ОСТАЛОСЬ СЛОВО ВНУТРИ КРУГА
         
         let caloriesLeftLabel = UILabel()
         caloriesLeftLabel.text = "Осталось"
@@ -112,7 +112,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.leading.equalTo(circularView.snp_leadingMargin).inset(30)
         }
         
-        // картинка еда
+        // MARK: - КАРТИНКА ЕДА
         
         let eatImage = UIImage(named: "IconEatBlack")
         let eatImageView = UIImageView(image: eatImage)
@@ -123,7 +123,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.centerX.equalTo(self.snp.centerX).multipliedBy(0.35)
         }
         
-        // съедено калорий число
+        // MARK: - СЪЕДЕНО КАЛОРИЙ ЧИСЛО
         
         let eatenCaloriesCountLabel = UILabel()
         eatenCaloriesCountLabel.text = String(format: "%.0f", ketoDiet.eatCalories)
@@ -138,7 +138,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.centerX.equalTo(self.snp.centerX).multipliedBy(0.35)
         }
         
-        // съедено калорий слово
+        // MARK: - СЪЕДЕНО КАЛОРИЙ СЛОВО
         
         let eatenLabel = UILabel()
         eatenLabel.text = "Съедено"
@@ -153,7 +153,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.centerX.equalTo(self.snp.centerX).multipliedBy(0.35)
         }
         
-        // картинка человечек
+        // MARK: - КАРТИНКА ЧЕЛОВЕЧЕК
         
         let runImage = UIImage(named: "IconRunBlack")
         let runImageView = UIImageView(image: runImage)
@@ -164,7 +164,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.centerX.equalTo(self.snp.centerX).multipliedBy(1.65)
         }
         
-        // сожжено калорий число
+        // MARK: - СОЖЖЕНО КАЛОРИЙ ЧИСЛО
         
         let burnedCaloriesCountLabel = UILabel()
         burnedCaloriesCountLabel.text = String(format: "%.0f", ketoDiet.burnedCalories)
@@ -179,7 +179,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.centerX.equalTo(self.snp.centerX).multipliedBy(1.65)
         }
         
-        // сожжено калорий слово
+        // MARK: - СОЖЖЕНО КАЛОРИЙ СЛОВО
         
         let burnedLabel = UILabel()
         burnedLabel.text = "Сожжено"
@@ -194,7 +194,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.centerX.equalTo(self.snp.centerX).multipliedBy(1.65)
         }
         
-        // белки лейбл
+        // MARK: - БЕЛКИ ЛЕЙБЛ
         
         let proteinLabel = UILabel()
         proteinLabel.text = "Белки"
@@ -209,7 +209,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.centerX.equalTo(self.snp.centerX)
         }
         
-        // углеводы лейбл
+        // MARK: - УГЛЕВОДЫ ЛЕЙБЛ
         
         let carbsLabel = UILabel()
         carbsLabel.text = "Углеводы"
@@ -225,7 +225,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
         }
         
         
-        // жиры лейбл
+        // MARK: - ЖИРЫ ЛЕЙБЛ
         
         let fatsLabel = UILabel()
         fatsLabel.text = "Жиры"
@@ -240,7 +240,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.centerX.equalTo(self.snp.centerX).multipliedBy(1.6)
         }
         
-        // общий прогресс бар чтобы наложить остальные
+        // MARK: - ОБЩИЙ ПРОГРЕСС БАР ЧТОБЫ НАЛОЖИТЬ ОСТАЛЬНЫЕ НА НЕЕ
         
         let overallProgressBar = UIView()
         overallProgressBar.layer.cornerRadius = 2
@@ -254,7 +254,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.top.equalTo(proteinLabel.snp_bottomMargin).offset(12)
         }
         
-        // углеводы прогресс вью
+        // MARK: - УГЛЕВОДЫ ПРОГРЕСС БАР
         
         let carbsProgressBackground = UIView()
         carbsProgressBackground.backgroundColor = .gray.withAlphaComponent(0.2)
@@ -279,7 +279,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.width.equalTo(carbsProgressBackground).multipliedBy(0.5)
         }
         
-        // белки прогресс вью
+        // MARK: - БЕЛКИ ПРОГРЕСС БАР
         
         let proteinProgressBackground = UIView()
         proteinProgressBackground.backgroundColor = .gray.withAlphaComponent(0.2)
@@ -304,7 +304,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.width.equalTo(proteinProgressBackground).multipliedBy(0.5)
         }
         
-        // жиры прогресс вью
+        // MARK: - ЖИРЫ ПРОГРЕСС БАР
         
         let fatsProgressBackground = UIView()
         fatsProgressBackground.backgroundColor = .gray.withAlphaComponent(0.2)
@@ -329,7 +329,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.width.equalTo(fatsProgressBackground).multipliedBy(0.5)
         }
         
-        // углеводы прогресс лейбл
+        // MARK: - УГЛЕВОДЫ ПРОГРЕСС ЛЕЙБЛ
         
         let carbsProgressLabel = UILabel()
         carbsProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatCarbs)) / \(String(format: "%.0f", ketoDiet.markCarbs)) г"
@@ -344,7 +344,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.centerX.equalTo(self.snp.centerX).multipliedBy(0.4)
         }
         
-        // белки прогресс лейбл
+        // MARK: - БЕЛКИ ПРОГРЕСС ЛЕЙБЛ
         
         let proteinProgressLabel = UILabel()
         proteinProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatProteins)) / \(String(format: "%.0f", ketoDiet.markProteins)) г"
@@ -359,7 +359,7 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.centerX.equalTo(self.snp.centerX)
         }
         
-        // жиры прогресс лейбл
+        // MARK: - ЖИРЫ ПРОГРЕСС ЛЕЙБЛ
         
         let fatsProgressLabel = UILabel()
         fatsProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatFats)) / \(String(format: "%.0f", ketoDiet.markFats)) г"

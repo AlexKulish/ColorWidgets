@@ -73,7 +73,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
     
     private func setupView() {
         
-        // круглый прогресс бар
+        // MARK: - КРУГЛЫЙ ПРОГРЕСС БАР
         
 //        let circularView = CircularProgressView(progressColor: .red, circleColor: .gray.withAlphaComponent(0.2), isClosed: false, radius: 66)
         circularView.progressAnimation(duration: 5, value: 1)
@@ -84,7 +84,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.top.equalTo(self.snp_topMargin).inset(21)
         }
         
-        // углеводы
+        // MARK: - УГЛЕВОДЫ ЛЕЙБЛ
         
         let carbsLabel = UILabel()
         carbsLabel.text = "Углеводы"
@@ -99,7 +99,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.top.equalTo(circularView.snp_topMargin).inset(28)
         }
         
-        // количество углеводов
+        // MARK: - КОЛИЧЕСТВО УГЛЕВОДОВ
         
         let carbsCountLabel = UILabel()
         
@@ -115,7 +115,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.leading.equalTo(circularView.snp_leadingMargin).inset(7)
         }
         
-        // осталось углеводов
+        // MARK: - ОСТАЛОСЬ УГЛЕВОДОВ
         
         let carbsLeftLabel = UILabel()
         carbsLeftLabel.text = """
@@ -134,7 +134,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.leading.equalTo(circularView.snp_leadingMargin).inset(27)
         }
         
-        // белки
+        // MARK: - БЕЛКИ ЛЕЙБЛ
         
 //        let proteinLabel = UILabel()
         proteinLabel.text = "Белки"
@@ -147,7 +147,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.leading.equalTo(circularView.snp_leadingMargin).inset(140)
         }
         
-        // жиры
+        // MARK: - ЖИРЫ ЛЕЙБЛ
         
         let fatsLabel = UILabel()
         fatsLabel.text = "Жиры"
@@ -160,7 +160,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.leading.equalTo(circularView.snp_leadingMargin).inset(140)
         }
         
-        // калории
+        // MARK: - КАЛОРИИ ЛЕЙБЛ
         
         let caloriesLabel = UILabel()
         caloriesLabel.text = "Калории"
@@ -173,7 +173,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.leading.equalTo(circularView.snp_leadingMargin).inset(140)
         }
         
-        // белки лейбл прогресс
+        // MARK: - БЕЛКИ ПРОГРЕСС ЛЕЙБЛ
         
         let proteinProgressLabel = UILabel()
         proteinProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatProteins)) / \(String(format: "%.0f", ketoDiet.markProteins)) г"
@@ -186,7 +186,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.trailing.equalTo(self.snp_trailingMargin).inset(10)
         }
         
-        // жиры лейбл прогресс
+        // MARK: - ЖИРЫ ПРОГРЕСС ЛЕЙБЛ
         
         let fatsProgressLabel = UILabel()
         fatsProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatFats)) / \(String(format: "%.0f", ketoDiet.markFats)) г"
@@ -199,7 +199,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.trailing.equalTo(self.snp_trailingMargin).inset(10)
         }
         
-        // калории лейбл прогресс
+        // MARK: - КАЛОРИИ ПРОГРЕСС ЛЕЙБЛ
         
         let caloriesProgressLabel = UILabel()
         caloriesProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatCalories)) / \(String(format: "%.0f", ketoDiet.markCalories)) ккал"
@@ -212,7 +212,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.trailing.equalTo(self.snp_trailingMargin).inset(10)
         }
         
-        // белки прогресс вью
+        // MARK: - БЕЛКИ ПРОГРЕСС БАР
         
 //        let proteinProgressBackground = UIView()
         proteinProgressBackground.backgroundColor = .gray.withAlphaComponent(0.2)
@@ -238,7 +238,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             
         }
         
-        // жиры прогресс вью
+        // MARK: - ЖИРЫ ПРОГРЕСС БАР
         
         let fatsProgressBackground = UIView()
         fatsProgressBackground.backgroundColor = .gray.withAlphaComponent(0.2)
@@ -264,7 +264,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             
         }
         
-        // калории прогресс вью
+        // MARK: - КАЛОРИИ ПРОГРЕСС БАР
         
         let caloriesProgressBackground = UIView()
         caloriesProgressBackground.backgroundColor = .gray.withAlphaComponent(0.2)
@@ -290,7 +290,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             
         }
         
-        // калории в процентах
+        // MARK: - КАЛОРИИ В ПРОЦЕНТАХ
         
         let caloriesInPercentLabel = UILabel()
         caloriesInPercentLabel.text = "Калории в процентах"
@@ -303,7 +303,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.leading.equalTo(self.snp_leadingMargin).inset(16)
         }
         
-        // общий прогресс бар чтобы наложить остальные на нее
+        // MARK: - ОБЩИЙ ПРОГРЕСС БАР ЧТОБЫ НАЛОЖИТЬ ОСТАЛЬНЫЕ НА НЕЕ
         
         let overallProgressBar = UIView()
         overallProgressBar.layer.cornerRadius = 2
@@ -317,7 +317,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(12)
         }
         
-        // углеводы в процентах прогресс вью
+        // MARK: - УГЛЕВОДЫ В ПРОЦЕНТАХ ПРОГРЕСС БАР
         
         let carbsProgressBarInPercent = UIView()
         carbsProgressBarInPercent.layer.cornerRadius = 2
@@ -331,7 +331,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.width.equalTo(overallProgressBar).multipliedBy(0.35)
         }
         
-        // жиры в процентах прогресс вью
+        // MARK: - ЖИРЫ В ПРОЦЕНТАХ ПРОГРЕСС БАР
         
         let fatsProgressBarInPercent = UIView()
         fatsProgressBarInPercent.layer.cornerRadius = 2
@@ -345,7 +345,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.width.equalTo(overallProgressBar).multipliedBy(0.45)
         }
         
-        // белки в процентах прогресс вью
+        // MARK: - БЕЛКИ В ПРОЦЕНТАХ ПРОГРЕСС БАР
         
         let proteinProgressBarInPercent = UIView()
         proteinProgressBarInPercent.layer.cornerRadius = 2
@@ -359,7 +359,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.width.equalTo(overallProgressBar).multipliedBy(0.2)
         }
         
-        // углеводы в процентах лейбл
+        // MARK: - УГЛЕВОДЫ В ПРОЦЕНТАХ ЛЕЙБЛ
         
         let carbsInPercentLabel = UILabel()
         carbsInPercentLabel.text = "35% углеводы"
@@ -372,7 +372,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.centerX.equalTo(self.snp.centerX).multipliedBy(0.35)
         }
         
-        // жиры в процентах лейбл
+        // MARK: - ЖИРЫ В ПРОЦЕНТАХ ЛЕЙБЛ
         
         let fatsInPercentLabel = UILabel()
         fatsInPercentLabel.text = "45% жиры"
@@ -385,7 +385,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.centerX.equalTo(self.snp.centerX)
         }
         
-        // белки в процентах лейбл
+        // MARK: - БЕЛКИ В ПРОЦЕНТАХ ЛЕЙБЛ
         
         let proteinsInPercentLabel = UILabel()
         proteinsInPercentLabel.text = "20% белки"
