@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     private let carbsWhiteMainWidget = CarbsWhiteMainWidgetView()
     private let caloriesWhiteMainWidget = CaloriesWhiteMainWidgetView()
     private let caloriesBlackMainWidget = CaloriesBlackMainWidgetView()
+    private let carbsBlackMainWidget = CarbsBlackMainWidgetView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,13 +61,13 @@ class ViewController: UIViewController {
         
         // КАЛОРИИ БЕЛЫЙ ВИДЖЕТ
         
-        view.addSubview(caloriesWhiteMainWidget)
-
-        caloriesWhiteMainWidget.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.width.equalToSuperview().inset(16)
-            make.height.equalTo(225)
-        }
+//        view.addSubview(caloriesWhiteMainWidget)
+//
+//        caloriesWhiteMainWidget.snp.makeConstraints { make in
+//            make.center.equalToSuperview()
+//            make.width.equalToSuperview().inset(16)
+//            make.height.equalTo(225)
+//        }
         
         // КАЛОРИИ ЧЕРНЫЙ ВИДЖЕТ
         
@@ -77,6 +78,16 @@ class ViewController: UIViewController {
 //            make.width.equalToSuperview().inset(16)
 //            make.height.equalTo(264)
 //        }
+        
+        // УГЛЕВОДЫ ЧЕРНЫЙ ВИДЖЕТ
+        
+        view.addSubview(carbsBlackMainWidget)
+        
+        carbsBlackMainWidget.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().inset(16)
+            make.height.equalTo(264)
+        }
         
         
 //        let button = UIButton()
