@@ -68,8 +68,8 @@ class CarbsColorMainWidgetView: GradientView, MainWidget {
         
         carbsLabel.snp.makeConstraints { make in
             make.width.equalTo(60)
-            make.leading.equalTo(circularView.snp_leadingMargin).inset(26)
-            make.top.equalTo(circularView.snp_topMargin).inset(28)
+            make.leading.equalTo(circularView.snp_leadingMargin).inset(28)
+            make.top.equalTo(circularView.snp_topMargin).inset(20)
         }
         
         // MARK: - КОЛИЧЕСТВО УГЛЕВОДОВ
@@ -84,7 +84,7 @@ class CarbsColorMainWidgetView: GradientView, MainWidget {
         carbsCountLabel.snp.makeConstraints { make in
             make.width.equalTo(100)
             make.top.equalTo(carbsLabel.snp_bottomMargin).offset(8)
-            make.leading.equalTo(circularView.snp_leadingMargin).inset(7)
+            make.leading.equalTo(circularView.snp_leadingMargin).inset(10)
         }
         
         // MARK: - ОСТАЛОСЬ УГЛЕВОДОВ
@@ -103,7 +103,7 @@ class CarbsColorMainWidgetView: GradientView, MainWidget {
         carbsLeftLabel.snp.makeConstraints { make in
             make.width.equalTo(60)
             make.top.equalTo(carbsCountLabel.snp_bottomMargin).offset(8)
-            make.leading.equalTo(circularView.snp_leadingMargin).inset(27)
+            make.leading.equalTo(circularView.snp_leadingMargin).inset(30)
         }
         
         // MARK: - БЕЛКИ ЛЕЙБЛ
