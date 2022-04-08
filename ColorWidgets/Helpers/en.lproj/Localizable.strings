@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  ColorWidgets
+
+  Created by Alex Kulish on 08.04.2022.
+  
+*/
+
+"mainWidget.eaten" = "Eaten";
+"mainWidget.eatenSmall" = "eaten";
+"mainWidget.remained" = "Remained";
+"mainWidget.remainedSmall" = "remained";
+"mainWidget.burned" = "Burned";
+"mainWidget.kcal" = "kcal";
+"mainWidget.carbs" = "Carbs";
+"mainWidget.carbsSmall" = "carbs";
+"mainWidget.proteins" = "Proteins";
+"mainWidget.proteinsSmall" = "proteins";
+"mainWidget.fats" = "Fats";
+"mainWidget.fatsSmall" = "fats";
+"mainWidget.g" = "g";
+"mainWidget.carbsInPlural" = "carbs";
+"mainWidget.maximum" = "maximum";
+"mainWidget.сomposition" = "Composition, %";
+"mainWidget.yourMaximum" = "You have limit";
+"mainWidget.from" = "from";
+"mainWidget.calories" = "Calories";
+

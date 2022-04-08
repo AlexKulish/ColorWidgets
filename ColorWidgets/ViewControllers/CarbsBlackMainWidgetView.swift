@@ -63,7 +63,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - ВЫ ДОСТИГЛИ ПРЕДЕЛА ЛЕЙБЛ
         
         let doneLabel = UILabel()
-        doneLabel.text = "Вы достигли предела"
+        doneLabel.text = NSLocalizedString("mainWidget.yourMaximum", comment: "")
         doneLabel.font = .systemFont(ofSize: 20, weight: .semibold)
         doneLabel.textColor = .white
         addSubview(doneLabel)
@@ -76,7 +76,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - КОЛИЧЕСТВО УГЛЕВОДОВ ОСТАЛОСЬ ЛЕЙБЛ
         
         let carbsLeftLabel = UILabel()
-        carbsLeftLabel.text = "\(String(format: "%.0f", (ketoDiet.markCarbs - ketoDiet.eatCarbs))) г углеводов осталось"
+        carbsLeftLabel.text = "\(String(format: "%.0f", (ketoDiet.markCarbs - ketoDiet.eatCarbs))) \(NSLocalizedString("mainWidget.g", comment: "")) \(NSLocalizedString("mainWidget.carbsInPlural", comment: "")) \(NSLocalizedString("mainWidget.remainedSmall", comment: ""))"
         carbsLeftLabel.font = .systemFont(ofSize: 14)
         carbsLeftLabel.textColor = .white
         addSubview(carbsLeftLabel)
@@ -89,7 +89,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - УГЛЕВОДЫ ГЛАВНЫЙ ПРОГРЕСС ЛЕЙБЛ
         
         let carbsMainProgressLabel = UILabel()
-        carbsMainProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatCarbs)) г съедено / \(String(format: "%.0f", ketoDiet.markCarbs)) г максимум"
+        carbsMainProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatCarbs)) \(NSLocalizedString("mainWidget.g", comment: "")) \(NSLocalizedString("mainWidget.eatenSmall", comment: "")) / \(String(format: "%.0f", ketoDiet.markCarbs)) \(NSLocalizedString("mainWidget.g", comment: "")) \(NSLocalizedString("mainWidget.maximum", comment: ""))"
         carbsMainProgressLabel.font = .systemFont(ofSize: 14)
         carbsMainProgressLabel.textColor = hexColor(hex: "A9A9A9")
         addSubview(carbsMainProgressLabel)
@@ -114,7 +114,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - УГЛЕВОДЫ ЛЕЙБЛ
         
         let carbsLabel = UILabel()
-        carbsLabel.text = "Углеводы"
+        carbsLabel.text = NSLocalizedString("mainWidget.carbs", comment: "")
         carbsLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         carbsLabel.textColor = .white
         addSubview(carbsLabel)
@@ -127,7 +127,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - УГЛЕВОДЫ ПРОГРЕСС ЛЕЙБЛ
         
         let carbsProgressLabel = UILabel()
-        carbsProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatCarbs)) / \(String(format: "%.0f", ketoDiet.markCarbs)) г"
+        carbsProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatCarbs)) / \(String(format: "%.0f", ketoDiet.markCarbs)) \(NSLocalizedString("mainWidget.g", comment: ""))"
         carbsProgressLabel.font = .systemFont(ofSize: 12)
         carbsProgressLabel.textColor = .white
         addSubview(carbsProgressLabel)
@@ -151,7 +151,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - БЕЛКИ ЛЕЙБЛ
         
         let proteinsLabel = UILabel()
-        proteinsLabel.text = "Белки"
+        proteinsLabel.text = NSLocalizedString("mainWidget.proteins", comment: "")
         proteinsLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         proteinsLabel.textColor = .white
         addSubview(proteinsLabel)
@@ -164,7 +164,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - БЕЛКИ ПРОГРЕСС ЛЕЙБЛ
         
         let proteinsProgressLabel = UILabel()
-        proteinsProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatProteins)) / \(String(format: "%.0f", ketoDiet.markProteins)) г"
+        proteinsProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatProteins)) / \(String(format: "%.0f", ketoDiet.markProteins)) \(NSLocalizedString("mainWidget.g", comment: ""))"
         proteinsProgressLabel.font = .systemFont(ofSize: 12)
         proteinsProgressLabel.textColor = .white
         addSubview(proteinsProgressLabel)
@@ -188,7 +188,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - ЖИРЫ ЛЕЙБЛ
         
         let fatsLabel = UILabel()
-        fatsLabel.text = "Жиры"
+        fatsLabel.text = NSLocalizedString("mainWidget.fats", comment: "")
         fatsLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         fatsLabel.textColor = .white
         addSubview(fatsLabel)
@@ -201,7 +201,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - ЖИРЫ ПРОГРЕСС ЛЕЙБЛ
         
         let fatsProgressLabel = UILabel()
-        fatsProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatFats)) / \(String(format: "%.0f", ketoDiet.markFats)) г"
+        fatsProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatFats)) / \(String(format: "%.0f", ketoDiet.markFats)) \(NSLocalizedString("mainWidget.g", comment: ""))"
         fatsProgressLabel.font = .systemFont(ofSize: 12)
         fatsProgressLabel.textColor = .white
         addSubview(fatsProgressLabel)
@@ -214,7 +214,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - КАЛОРИИ В ПРОЦЕНТАХ
         
         let caloriesInPercentLabel = UILabel()
-        caloriesInPercentLabel.text = "Калории в процентах"
+        caloriesInPercentLabel.text = NSLocalizedString("mainWidget.сomposition", comment: "")
         caloriesInPercentLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         caloriesInPercentLabel.textColor = hexColor(hex: "A9A9A9")
         addSubview(caloriesInPercentLabel)
@@ -283,7 +283,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - УГЛЕВОДЫ В ПРОЦЕНТАХ ЛЕЙБЛ
         
         let carbsInPercentLabel = UILabel()
-        carbsInPercentLabel.text = "35% углеводы"
+        carbsInPercentLabel.text = "35% \(NSLocalizedString("mainWidget.carbsSmall", comment: ""))"
         carbsInPercentLabel.font = .systemFont(ofSize: 12)
         carbsInPercentLabel.textColor = hexColor(hex: "A9A9A9")
         addSubview(carbsInPercentLabel)
@@ -296,7 +296,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - ЖИРЫ В ПРОЦЕНТАХ ЛЕЙБЛ
         
         let fatsInPercentLabel = UILabel()
-        fatsInPercentLabel.text = "45% жиры"
+        fatsInPercentLabel.text = "45% \(NSLocalizedString("mainWidget.fatsSmall", comment: ""))"
         fatsInPercentLabel.font = .systemFont(ofSize: 12)
         fatsInPercentLabel.textColor = hexColor(hex: "A9A9A9")
         addSubview(fatsInPercentLabel)
@@ -309,7 +309,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - БЕЛКИ В ПРОЦЕНТАХ ЛЕЙБЛ
         
         let proteinsInPercentLabel = UILabel()
-        proteinsInPercentLabel.text = "20% белки"
+        proteinsInPercentLabel.text = "20% \(NSLocalizedString("mainWidget.proteinsSmall", comment: ""))"
         proteinsInPercentLabel.font = .systemFont(ofSize: 12)
         proteinsInPercentLabel.textColor = hexColor(hex: "A9A9A9")
         addSubview(proteinsInPercentLabel)

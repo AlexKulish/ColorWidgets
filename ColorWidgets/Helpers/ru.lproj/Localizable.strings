@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  ColorWidgets
+
+  Created by Alex Kulish on 08.04.2022.
+  
+*/
+
+"mainWidget.eaten" = "Съедено";
+"mainWidget.eatenSmall" = "съедено";
+"mainWidget.remained" = "Осталось";
+"mainWidget.remainedSmall" = "осталось";
+"mainWidget.burned" = "Сожжено";
+"mainWidget.kcal" = "ккал";
+"mainWidget.carbs" = "Углеводы";
+"mainWidget.carbsSmall" = "углеводы";
+"mainWidget.proteins" = "Белки";
+"mainWidget.proteinsSmall" = "белки";
+"mainWidget.fats" = "Жиры";
+"mainWidget.fatsSmall" = "жиры";
+"mainWidget.g" = "г";
+"mainWidget.carbsInPlural" = "углеводов";
+"mainWidget.maximum" = "максимум";
+"mainWidget.сomposition" = "Калории в процентах";
+"mainWidget.yourMaximum" = "Вы достигли предела";
+"mainWidget.from" = "из";
+"mainWidget.calories" = "Калории";
