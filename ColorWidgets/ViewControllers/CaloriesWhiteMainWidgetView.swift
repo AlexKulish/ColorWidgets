@@ -53,6 +53,16 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
         print("")
     }
     
+    private func setProgressBar(valueOne: Double, valueTwo: Double) -> Double {
+        
+        if valueOne > valueTwo {
+            return 1
+        }
+        
+        return valueOne / valueTwo
+        
+    }
+    
     private func setupView() {
         
         // MARK: - КРУГЛЫЙ ЦЕНТРАЛЬНЫЙ ПРОГРЕСС БАР
@@ -272,13 +282,14 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
         
         let carbsProgressBar = UIView()
         carbsProgressBar.backgroundColor = hexColor(hex: "F79498")
+        carbsProgressBar.layer.cornerRadius = 2
         addSubview(carbsProgressBar)
         
         carbsProgressBar.snp.makeConstraints { make in
             make.height.equalTo(4)
             make.top.equalTo(carbsLabel.snp_bottomMargin).offset(12)
             make.leading.equalTo(self.snp_leadingMargin).inset(16)
-            make.width.equalTo(carbsProgressBackground).multipliedBy(0.5)
+            make.width.equalTo(carbsProgressBackground).multipliedBy(setProgressBar(valueOne: ketoDiet.eatCarbs, valueTwo: ketoDiet.markCarbs))
         }
         
         // MARK: - БЕЛКИ ПРОГРЕСС БАР
@@ -297,13 +308,14 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
         
         let proteinProgressBar = UIView()
         proteinProgressBar.backgroundColor = hexColor(hex: "FDBE7D")
+        proteinProgressBar.layer.cornerRadius = 2
         addSubview(proteinProgressBar)
         
         proteinProgressBar.snp.makeConstraints { make in
             make.height.equalTo(4)
             make.top.equalTo(proteinLabel.snp_bottomMargin).offset(12)
             make.leading.equalTo(carbsProgressBackground.snp_trailingMargin).offset(23)
-            make.width.equalTo(proteinProgressBackground).multipliedBy(0.5)
+            make.width.equalTo(proteinProgressBackground).multipliedBy(setProgressBar(valueOne: ketoDiet.eatProteins, valueTwo: ketoDiet.markProteins))
         }
         
         // MARK: - ЖИРЫ ПРОГРЕСС БАР
@@ -322,13 +334,14 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
         
         let fatsProgressBar = UIView()
         fatsProgressBar.backgroundColor = hexColor(hex: "B5B3DC")
+        fatsProgressBar.layer.cornerRadius = 2
         addSubview(fatsProgressBar)
         
         fatsProgressBar.snp.makeConstraints { make in
             make.height.equalTo(4)
             make.top.equalTo(fatsLabel.snp_bottomMargin).offset(12)
             make.leading.equalTo(proteinProgressBackground.snp_trailingMargin).offset(23)
-            make.width.equalTo(fatsProgressBackground).multipliedBy(0.5)
+            make.width.equalTo(fatsProgressBackground).multipliedBy(setProgressBar(valueOne: ketoDiet.eatFats, valueTwo: ketoDiet.markFats))
         }
         
         // MARK: - УГЛЕВОДЫ ПРОГРЕСС ЛЕЙБЛ

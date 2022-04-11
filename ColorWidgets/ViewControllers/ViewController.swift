@@ -31,25 +31,25 @@ class ViewController: UIViewController {
         
         // КАЛОРИИ ЦВЕТНОЙ ВИДЖЕТ
         
-//        view.addSubview(caloriesColorMainWidget)
-//
-//        caloriesColorMainWidget.snp.makeConstraints { make in
-//            make.top.equalTo(view.snp_topMargin).inset(40)
-//            make.centerX.equalTo(view.snp.centerX)
-//            make.width.equalToSuperview().inset(16)
-//            make.height.equalTo(225)
-//        }
+        view.addSubview(caloriesColorMainWidget)
+
+        caloriesColorMainWidget.snp.makeConstraints { make in
+            make.top.equalTo(view.snp_topMargin).inset(40)
+            make.centerX.equalTo(view.snp.centerX)
+            make.width.equalToSuperview().inset(16)
+            make.height.equalTo(225)
+        }
         
         // КАЛОРИИ БЕЛЫЙ ВИДЖЕТ
         
-//        view.addSubview(caloriesWhiteMainWidget)
-//
-//        caloriesWhiteMainWidget.snp.makeConstraints { make in
-//            make.top.equalTo(caloriesColorMainWidget.snp_bottomMargin).offset(20)
-//            make.centerX.equalTo(view.snp.centerX)
-//            make.width.equalToSuperview().inset(16)
-//            make.height.equalTo(225)
-//        }
+        view.addSubview(caloriesWhiteMainWidget)
+
+        caloriesWhiteMainWidget.snp.makeConstraints { make in
+            make.top.equalTo(caloriesColorMainWidget.snp_bottomMargin).offset(20)
+            make.centerX.equalTo(view.snp.centerX)
+            make.width.equalToSuperview().inset(16)
+            make.height.equalTo(225)
+        }
         
         
         // УГЛЕВОДЫ ЦВЕТНОЙ ВИДЖЕТ
@@ -77,25 +77,25 @@ class ViewController: UIViewController {
         
         // КАЛОРИИ ЧЕРНЫЙ ВИДЖЕТ
         
-        view.addSubview(caloriesBlackMainWidget)
-
-        caloriesBlackMainWidget.snp.makeConstraints { make in
-            make.top.equalTo(view.snp_topMargin).inset(40)
-            make.centerX.equalTo(view.snp.centerX)
-            make.width.equalToSuperview().inset(16)
-            make.height.equalTo(264)
-        }
+//        view.addSubview(caloriesBlackMainWidget)
+//
+//        caloriesBlackMainWidget.snp.makeConstraints { make in
+//            make.top.equalTo(view.snp_topMargin).inset(40)
+//            make.centerX.equalTo(view.snp.centerX)
+//            make.width.equalToSuperview().inset(16)
+//            make.height.equalTo(264)
+//        }
         
         // УГЛЕВОДЫ ЧЕРНЫЙ ВИДЖЕТ
         
-        view.addSubview(carbsBlackMainWidget)
-
-        carbsBlackMainWidget.snp.makeConstraints { make in
-            make.top.equalTo(caloriesBlackMainWidget.snp_bottomMargin).offset(20)
-            make.centerX.equalTo(view.snp.centerX)
-            make.width.equalToSuperview().inset(16)
-            make.height.equalTo(264)
-        }
+//        view.addSubview(carbsBlackMainWidget)
+//
+//        carbsBlackMainWidget.snp.makeConstraints { make in
+//            make.top.equalTo(caloriesBlackMainWidget.snp_bottomMargin).offset(20)
+//            make.centerX.equalTo(view.snp.centerX)
+//            make.width.equalToSuperview().inset(16)
+//            make.height.equalTo(264)
+//        }
         
         
 //        let button = UIButton()

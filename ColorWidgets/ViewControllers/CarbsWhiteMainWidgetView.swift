@@ -254,6 +254,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
 //        let proteinProgressBar = UIView()
         proteinProgressBar.backgroundColor = hexColor(hex: "FDBE7D")
+        proteinProgressBar.layer.cornerRadius = 2
         addSubview(proteinProgressBar)
         
         proteinProgressBar.snp.makeConstraints { make in
@@ -280,6 +281,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         let fatsProgressBar = UIView()
         fatsProgressBar.backgroundColor = hexColor(hex: "B5B3DC")
+        fatsProgressBar.layer.cornerRadius = 2
         addSubview(fatsProgressBar)
         
         fatsProgressBar.snp.makeConstraints { make in
@@ -306,6 +308,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         let caloriesProgressBar = UIView()
         caloriesProgressBar.backgroundColor = hexColor(hex: "F79498")
+        caloriesProgressBar.layer.cornerRadius = 2
         addSubview(caloriesProgressBar)
         
         caloriesProgressBar.snp.makeConstraints { make in
