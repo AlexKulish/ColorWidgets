@@ -18,15 +18,15 @@ struct KetoDiet {
     
     static func getDiet() -> KetoDiet {
         
-        KetoDiet(eatCalories: 1250,
+        KetoDiet(eatCalories: 950,
                  markCalories: 1750,
                  burnedCalories: 1550,
-                 eatCarbs: 150,
-                 eatProteins: 100,
-                 eatFats: 90,
-                 markCarbs: 480,
-                 markProteins: 150,
-                 markFats: 120)
+                 eatCarbs: 15,
+                 eatProteins: 3,
+                 eatFats: 140,
+                 markCarbs: 80,
+                 markProteins: 61,
+                 markFats: 145)
         
     }
 }

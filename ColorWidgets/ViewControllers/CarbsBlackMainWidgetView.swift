@@ -45,6 +45,33 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         print("")
     }
     
+    private func getPercent(value: Double) -> String {
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.minimumIntegerDigits = 1
+        formatter.maximumIntegerDigits = 2
+        formatter.maximumFractionDigits = 1
+        
+        return formatter.string(from: NSNumber(value: value)) ?? ""
+        
+    }
+    
+    private func getSumOfPFC() -> Double {
+        ketoDiet.markProteins + ketoDiet.markCarbs + ketoDiet.markFats
+    }
+    
+    
+    private func setProgressBar(valueOne: Double, valueTwo: Double) -> Double {
+        
+        if valueOne > valueTwo {
+            return 1
+        }
+        
+        return valueOne / valueTwo
+        
+    }
+    
     private func setupView() {
         
         // MARK: - КРУГЛЫЙ ГЛАВНЫЙ ПРОГРЕСС БАР
@@ -249,7 +276,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
             make.height.equalTo(4)
             make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(12)
             make.leading.equalTo(self.snp_leadingMargin).inset(10)
-            make.width.equalTo(overallProgressBar).multipliedBy(0.35)
+            make.width.equalTo(overallProgressBar).multipliedBy(ketoDiet.markCarbs / getSumOfPFC())
         }
         
         // MARK: - ЖИРЫ В ПРОЦЕНТАХ ПРОГРЕСС БАР
@@ -263,7 +290,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
             make.height.equalTo(4)
             make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(12)
             make.leading.equalTo(carbsProgressBarInPercent.snp_trailingMargin).offset(14)
-            make.width.equalTo(overallProgressBar).multipliedBy(0.45)
+            make.width.equalTo(overallProgressBar).multipliedBy(ketoDiet.markFats / getSumOfPFC())
         }
         
         // MARK: - БЕЛКИ В ПРОЦЕНТАХ ПРОГРЕСС БАР
@@ -277,13 +304,13 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
             make.height.equalTo(4)
             make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(12)
             make.leading.equalTo(fatsProgressBarInPercent.snp_trailingMargin).offset(14)
-            make.width.equalTo(overallProgressBar).multipliedBy(0.2)
+            make.width.equalTo(overallProgressBar).multipliedBy(ketoDiet.markProteins / getSumOfPFC())
         }
         
         // MARK: - УГЛЕВОДЫ В ПРОЦЕНТАХ ЛЕЙБЛ
         
         let carbsInPercentLabel = UILabel()
-        carbsInPercentLabel.text = "35% \(NSLocalizedString("mainWidget.carbsSmall", comment: ""))"
+        carbsInPercentLabel.text = "\(getPercent(value: ketoDiet.markCarbs / getSumOfPFC())) \(NSLocalizedString("mainWidget.carbsSmall", comment: ""))"
         carbsInPercentLabel.font = .systemFont(ofSize: 12)
         carbsInPercentLabel.textColor = hexColor(hex: "A9A9A9")
         addSubview(carbsInPercentLabel)
@@ -296,7 +323,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - ЖИРЫ В ПРОЦЕНТАХ ЛЕЙБЛ
         
         let fatsInPercentLabel = UILabel()
-        fatsInPercentLabel.text = "45% \(NSLocalizedString("mainWidget.fatsSmall", comment: ""))"
+        fatsInPercentLabel.text = "\(getPercent(value: ketoDiet.markFats / getSumOfPFC())) \(NSLocalizedString("mainWidget.fatsSmall", comment: ""))"
         fatsInPercentLabel.font = .systemFont(ofSize: 12)
         fatsInPercentLabel.textColor = hexColor(hex: "A9A9A9")
         addSubview(fatsInPercentLabel)
@@ -309,7 +336,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - БЕЛКИ В ПРОЦЕНТАХ ЛЕЙБЛ
         
         let proteinsInPercentLabel = UILabel()
-        proteinsInPercentLabel.text = "20% \(NSLocalizedString("mainWidget.proteinsSmall", comment: ""))"
+        proteinsInPercentLabel.text = "\(getPercent(value: ketoDiet.markProteins / getSumOfPFC())) \(NSLocalizedString("mainWidget.proteinsSmall", comment: ""))"
         proteinsInPercentLabel.font = .systemFont(ofSize: 12)
         proteinsInPercentLabel.textColor = hexColor(hex: "A9A9A9")
         addSubview(proteinsInPercentLabel)
