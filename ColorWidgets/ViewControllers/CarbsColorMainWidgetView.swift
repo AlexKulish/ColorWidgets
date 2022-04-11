@@ -75,7 +75,7 @@ class CarbsColorMainWidgetView: GradientView, MainWidget {
         // MARK: - КРУГЛЫЙ ПРОГРЕСС БАР
         
         let circularView = CircularProgressView(progressColor: .white, circleColor: .white.withAlphaComponent(0.2), isClosed: false, radius: 66)
-        circularView.progressAnimation(duration: 5, value: 1)
+        circularView.progressAnimation(duration: 5, value: setProgressBar(valueOne: ketoDiet.eatCarbs, valueTwo: ketoDiet.markCarbs))
         addSubview(circularView)
         
         circularView.snp.makeConstraints { make in

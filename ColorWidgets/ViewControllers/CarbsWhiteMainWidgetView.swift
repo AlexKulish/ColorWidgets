@@ -57,12 +57,15 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
     
     func update() {
         
+        
         proteinProgressBar.snp.remakeConstraints { make in
             make.height.equalTo(4)
             make.top.equalTo(proteinLabel.snp_bottomMargin).offset(12)
             make.leading.equalTo(circularView.snp_leadingMargin).inset(140)
             make.width.equalTo(proteinProgressBackground).multipliedBy(0.9)
         }
+        
+        // setProgressBar(valueOne: ketoDiet.eatProteins, valueTwo: ketoDiet.markProteins)
         
         UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseOut) {
                     self.layoutIfNeeded()
@@ -102,7 +105,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         // MARK: - КРУГЛЫЙ ПРОГРЕСС БАР
         
 //        let circularView = CircularProgressView(progressColor: .red, circleColor: .gray.withAlphaComponent(0.2), isClosed: false, radius: 66)
-        circularView.progressAnimation(duration: 5, value: 1)
+        circularView.progressAnimation(duration: 5, value: setProgressBar(valueOne: ketoDiet.eatCarbs, valueTwo: ketoDiet.markCarbs))
         addSubview(circularView)
         
         circularView.snp.makeConstraints { make in

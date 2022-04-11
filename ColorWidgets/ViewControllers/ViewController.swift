@@ -70,6 +70,7 @@ class ViewController: UIViewController {
 //        carbsWhiteMainWidget.snp.makeConstraints { make in
 //            make.top.equalTo(carbsColorMainWidget.snp_bottomMargin).offset(20)
 //            make.centerX.equalTo(view.snp.centerX)
+////            make.center.equalToSuperview()
 //            make.width.equalToSuperview().inset(16)
 //            make.height.equalTo(225)
 //        }
@@ -110,15 +111,17 @@ class ViewController: UIViewController {
 //            make.height.equalTo(50)
 //            make.width.equalTo(200)
 //        }
-
+//
 //        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        
-
-    }
+//
+//
+//    }
     
 //    private var count = 0
-
+//
 //    @objc func buttonTapped() {
+//
+//
 //
 //        carbsWhiteMainWidget.update()
 //
@@ -133,7 +136,7 @@ class ViewController: UIViewController {
 ////            carbsColorMainWidget.set(theme: .orangeFlat)
 ////        }
 //
-//    }
+    }
 
 
 }

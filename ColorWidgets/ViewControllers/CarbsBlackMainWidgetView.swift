@@ -77,7 +77,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - КРУГЛЫЙ ГЛАВНЫЙ ПРОГРЕСС БАР
         
         let mainCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 45, lineWidth: 14, progressWidth: 14)
-        mainCircularView.progressAnimation(duration: 5, value: 1)
+        mainCircularView.progressAnimation(duration: 5, value: setProgressBar(valueOne: ketoDiet.eatCarbs, valueTwo: ketoDiet.markCarbs))
         addSubview(mainCircularView)
         
         mainCircularView.snp.makeConstraints { make in
@@ -130,7 +130,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - КРУГЛЫЙ УГЛЕВОДЫ ПРОГРЕСС БАР
         
         let carbsCircularView = CircularProgressView(progressColor: hexColor(hex: "FF794F"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 17, lineWidth: 5, progressWidth: 5)
-        carbsCircularView.progressAnimation(duration: 5, value: 1)
+        carbsCircularView.progressAnimation(duration: 5, value: setProgressBar(valueOne: ketoDiet.eatCarbs, valueTwo: ketoDiet.markCarbs))
         addSubview(carbsCircularView)
         
         carbsCircularView.snp.makeConstraints { make in
@@ -167,7 +167,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - КРУГЛЫЙ БЕЛКИ ПРОГРЕСС БАР
         
         let proteinCircularView = CircularProgressView(progressColor: hexColor(hex: "EDDE5A"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 17, lineWidth: 5, progressWidth: 5)
-        proteinCircularView.progressAnimation(duration: 5, value: 1)
+        proteinCircularView.progressAnimation(duration: 5, value: setProgressBar(valueOne: ketoDiet.eatProteins, valueTwo: ketoDiet.markProteins))
         addSubview(proteinCircularView)
         
         proteinCircularView.snp.makeConstraints { make in
@@ -204,7 +204,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - КРУГЛЫЙ ЖИРЫ ПРОГРЕСС БАР
         
         let fatsCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 17, lineWidth: 5, progressWidth: 5)
-        fatsCircularView.progressAnimation(duration: 5, value: 1)
+        fatsCircularView.progressAnimation(duration: 5, value: setProgressBar(valueOne: ketoDiet.eatFats, valueTwo: ketoDiet.markFats))
         addSubview(fatsCircularView)
         
         fatsCircularView.snp.makeConstraints { make in
