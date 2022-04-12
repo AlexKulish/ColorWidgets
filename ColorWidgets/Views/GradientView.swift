@@ -34,6 +34,10 @@ class GradientView: UIView {
         gradientLayer.colors = colors
     }
     
+    func set(maskedCorners: CACornerMask) {
+        gradientLayer.maskedCorners = maskedCorners
+    }
+    
     func set(cornerRadius: CGFloat) {
         gradientLayer.cornerRadius = cornerRadius
     }

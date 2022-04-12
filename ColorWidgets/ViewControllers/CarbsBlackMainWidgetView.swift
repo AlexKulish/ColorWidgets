@@ -40,6 +40,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         self.fatsCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 17, lineWidth: 5, progressWidth: 5)
         
         set(cornerRadius: 25)
+        set(maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
         setupView()
         set(colors: [hexColor(hex: "222122").cgColor,
                      hexColor(hex: "222122").cgColor])

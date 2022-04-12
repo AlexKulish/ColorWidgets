@@ -152,35 +152,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
     }
     
-    func drawLinearGradient(inside path:UIBezierPath, start:CGPoint, end:CGPoint, colors:[UIColor]) {
-        guard let ctx = UIGraphicsGetCurrentContext() else { return }
-
-        ctx.saveGState()
-        defer { ctx.restoreGState() } // clean up graphics state changes when the method returns
-
-        path.addClip() // use the path as the clipping region
-
-        let cgColors = colors.map({ $0.cgColor })
-        guard let gradient = CGGradient(colorsSpace: nil, colors: cgColors as CFArray, locations: nil)
-            else { return }
-
-        ctx.drawLinearGradient(gradient, start: start, end: end, options: [])
-    }
-    
-//    private func getGradient() {
-//
-//        let gradient = CAGradientLayer()
-//        gradient.frame = circularView.bounds
-//        gradient.colors = [UIColor.magenta.cgColor, UIColor.cyan.cgColor]
-//
-//        let shapeMask = CAShapeLayer()
-//        shapeMask.path = path.cgPath
-//
-//        gradient.mask = shapeMask
-//        circularView.layer.addSublayer(gradient)
-//
-//    }
-    
     private func getPercent(value: Double) -> String {
         
         let formatter = NumberFormatter()
