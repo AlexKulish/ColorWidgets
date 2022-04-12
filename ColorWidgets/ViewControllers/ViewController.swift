@@ -121,83 +121,117 @@ class ViewController: UIViewController {
 //        }
         
         
-        let button = UIButton()
-        button.backgroundColor = .black
-        button.setTitle("Test", for: .normal)
+        let testValuesButton = UIButton()
+        testValuesButton.backgroundColor = .black
+        testValuesButton.setTitle("Test values", for: .normal)
 
-        view.addSubview(button)
+        view.addSubview(testValuesButton)
 
-        button.snp.makeConstraints { make in
-            make.top.equalTo(carbsWhiteMainWidget.snp_bottomMargin).offset(100)
+        testValuesButton.snp.makeConstraints { make in
+            make.top.equalTo(carbsWhiteMainWidget.snp_bottomMargin).offset(50)
+            make.centerX.equalTo(view.snp.centerX)
+            make.height.equalTo(50)
+            make.width.equalTo(200)
+        }
+        
+        let testColorButton = UIButton()
+        testColorButton.backgroundColor = .black
+        testColorButton.setTitle("Test colors", for: .normal)
+
+        view.addSubview(testColorButton)
+
+        testColorButton.snp.makeConstraints { make in
+            make.top.equalTo(testValuesButton.snp_bottomMargin).offset(50)
             make.centerX.equalTo(view.snp.centerX)
             make.height.equalTo(50)
             make.width.equalTo(200)
         }
 
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        testValuesButton.addTarget(self, action: #selector(testValueButtonTapped), for: .touchUpInside)
+        
+        testColorButton.addTarget(self, action: #selector(testColorButtonTapped), for: .touchUpInside)
 
 
     }
-    
-    private var count = 0
 
-    @objc func buttonTapped() {
-
-
-        if count == 0 {
+    @objc func testValueButtonTapped() {
+        
+        for _ in 0...10 {
             
             caloriesColorMainWidget.ketoDiet = KetoDiet.getRandomDiet()
             caloriesColorMainWidget.update()
             
-
-            caloriesColorMainWidget.set(theme: .greenGradient)
-            carbsColorMainWidget.set(theme: .greenGradient)
-            
-            count += 1
-        } else if count == 1 {
-            
             caloriesWhiteMainWidget.ketoDiet = KetoDiet.getRandomDiet()
             caloriesWhiteMainWidget.update()
             
-            
-            
-            caloriesColorMainWidget.set(theme: .greenFlat)
-            carbsColorMainWidget.set(theme: .greenFlat)
-            
-            count += 1
-        } else if count == 2 {
-            
             carbsColorMainWidget.ketoDiet = KetoDiet.getRandomDiet()
             carbsColorMainWidget.update()
-        
-            caloriesColorMainWidget.set(theme: .orangeFlat)
-            carbsColorMainWidget.set(theme: .orangeFlat)
-            
-            count += 1
-            
-        } else if count == 3 {
             
             carbsWhiteMainWidget.ketoDiet = KetoDiet.getRandomDiet()
             carbsWhiteMainWidget.update()
             
-            count += 1
-            
-        } else if count == 4 {
-            
             caloriesBlackMainWidget.ketoDiet = KetoDiet.getRandomDiet()
-            
             caloriesBlackMainWidget.update()
-
-            
-            count += 1
-            
-        } else if count == 5 {
             
             carbsBlackMainWidget.ketoDiet = KetoDiet.getRandomDiet()
             carbsBlackMainWidget.update()
             
         }
-
+    }
+    
+    private var count = 0
+    
+    @objc func testColorButtonTapped() {
+            
+        if count == 0 {
+            caloriesColorMainWidget.set(theme: .greenGradient)
+            carbsColorMainWidget.set(theme: .greenGradient)
+            count += 1
+        } else if count == 1 {
+            caloriesColorMainWidget.set(theme: .greenFlat)
+            carbsColorMainWidget.set(theme: .greenFlat)
+            count += 1
+        } else if count == 2 {
+            caloriesColorMainWidget.set(theme: .orangeFlat)
+            carbsColorMainWidget.set(theme: .orangeFlat)
+            count += 1
+        } else if count == 3 {
+            caloriesColorMainWidget.set(theme: .orangeGradient)
+            carbsColorMainWidget.set(theme: .orangeGradient)
+            count += 1
+        } else if count == 4 {
+            caloriesColorMainWidget.set(theme: .greenGradient)
+            carbsColorMainWidget.set(theme: .greenGradient)
+            count += 1
+        } else if count == 5 {
+            caloriesColorMainWidget.set(theme: .greenFlat)
+            carbsColorMainWidget.set(theme: .greenFlat)
+            count += 1
+        } else if count == 6 {
+            caloriesColorMainWidget.set(theme: .orangeFlat)
+            carbsColorMainWidget.set(theme: .orangeFlat)
+            count += 1
+        } else if count == 7 {
+            caloriesColorMainWidget.set(theme: .orangeGradient)
+            carbsColorMainWidget.set(theme: .orangeGradient)
+            count += 1
+        } else if count == 8 {
+            caloriesColorMainWidget.set(theme: .greenGradient)
+            carbsColorMainWidget.set(theme: .greenGradient)
+            count += 1
+        } else if count == 9 {
+            caloriesColorMainWidget.set(theme: .greenFlat)
+            carbsColorMainWidget.set(theme: .greenFlat)
+            count += 1
+        } else if count == 10{
+            caloriesColorMainWidget.set(theme: .orangeFlat)
+            carbsColorMainWidget.set(theme: .orangeFlat)
+            count += 1
+        } else {
+            caloriesColorMainWidget.set(theme: .orangeGradient)
+            carbsColorMainWidget.set(theme: .orangeGradient)
+        }
+        
     }
 
 
