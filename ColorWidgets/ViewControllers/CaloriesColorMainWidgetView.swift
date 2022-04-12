@@ -32,8 +32,8 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
             set(colors: [hexColor(hex: "FB825B").cgColor,
                          hexColor(hex: "FB825B").cgColor])
         case .greenGradient:
-            set(colors: [hexColor(hex: "58C3AA").cgColor,
-                         hexColor(hex: "92F5C7").cgColor])
+            set(colors: [hexColor(hex: "92F5C7").cgColor,
+                         hexColor(hex: "58C3AA").cgColor])
         case .greenFlat:
             set(colors: [hexColor(hex: "65D29A").cgColor,
                          hexColor(hex: "65D29A").cgColor])

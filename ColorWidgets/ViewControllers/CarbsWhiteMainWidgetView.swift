@@ -16,15 +16,37 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
     
 //    let circularView = CircularProgressView(progressColor: .red, circleColor: .gray.withAlphaComponent(0.2), isClosed: false, radius: 66)
     
-//    let circularView = CircularProgressView()
     
-    let proteinLabel = UILabel()
-    let proteinProgressBackground = UIView()
-    let proteinProgressBar = UIView()
+    private let proteinLabel = UILabel()
+    private let proteinProgressLabel = UILabel()
+    private let proteinProgressBackground = UIView()
+    private let proteinProgressBar = UIView()
+    
+    private let fatsLabel = UILabel()
+    private let fatsProgressLabel = UILabel()
+    private let fatsProgressBackground = UIView()
+    private let fatsProgressBar = UIView()
+    
+    private let caloriesLabel = UILabel()
+    private let caloriesProgressLabel = UILabel()
+    private let caloriesProgressBackground = UIView()
+    private let caloriesProgressBar = UIView()
+    
+    private let carbsCountLabel = UILabel()
+    private let carbsLeftLabel = UILabel()
+    
+    private let caloriesInPercentLabel = UILabel()
+    private let overallProgressBar = UIView()
+    private let carbsProgressBarInPercent = UIView()
+    private let fatsProgressBarInPercent = UIView()
+    private let proteinProgressBarInPercent = UIView()
+    private let carbsInPercentLabel = UILabel()
+    private let fatsInPercentLabel = UILabel()
+    private let proteinsInPercentLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.circularView = CircularProgressView(progressColor: setProgressColor("FCAD80"), circleColor: .gray.withAlphaComponent(0.2), isClosed: false, radius: 66)
+        self.circularView = CircularProgressView(progressColor: setProgressColor("FB825B"), circleColor: .gray.withAlphaComponent(0.2), isClosed: false, radius: 66)
         set(cornerRadius: 25)
         setupView()
 //        set(theme: .orangeGradient)
@@ -41,7 +63,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
     func set(theme: ColorTheme) {
         switch theme {
         case .orangeGradient:
-            set(colors: [hexColor(hex: "FCAD80").cgColor, 
+            set(colors: [hexColor(hex: "FCAD80").cgColor,
                          hexColor(hex: "F8637E").cgColor])
         case .orangeFlat:
             set(colors: [hexColor(hex: "FB825B").cgColor,
@@ -57,21 +79,107 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
     
     func update() {
         
+        circularView.progressAnimation(duration: 5, value: setProgressBar(valueOne: ketoDiet.eatCarbs, valueTwo: ketoDiet.markCarbs))
+        
+        carbsCountLabel.text = "\(String(format: "%.0f", setCarbsRemained(valueOne: ketoDiet.markCarbs, valueTwo: ketoDiet.eatCarbs)))"
+        
+        carbsLeftLabel.text = """
+                                \(NSLocalizedString("mainWidget.remainedSmall", comment: ""))
+                                \(NSLocalizedString("mainWidget.from", comment: "")) \(String(format: "%.0f", ketoDiet.markCarbs)) \(NSLocalizedString("mainWidget.g", comment: ""))
+                                """
+        
+        
+        
+        proteinProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatProteins)) / \(String(format: "%.0f", ketoDiet.markProteins)) \(NSLocalizedString("mainWidget.g", comment: ""))"
+        
+        fatsProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatFats)) / \(String(format: "%.0f", ketoDiet.markFats)) \(NSLocalizedString("mainWidget.g", comment: ""))"
+        
+        caloriesProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatCalories)) / \(String(format: "%.0f", ketoDiet.markCalories)) \(NSLocalizedString("mainWidget.kcal", comment: ""))"
+        
+        carbsInPercentLabel.text = "\(getPercent(value: ketoDiet.markCarbs / getSumOfPFC())) \(NSLocalizedString("mainWidget.carbsSmall", comment: ""))"
+        
+        fatsInPercentLabel.text = "\(getPercent(value: ketoDiet.markFats / getSumOfPFC())) \(NSLocalizedString("mainWidget.fatsSmall", comment: ""))"
+        
+        proteinsInPercentLabel.text = "\(getPercent(value: ketoDiet.markProteins / getSumOfPFC())) \(NSLocalizedString("mainWidget.proteinsSmall", comment: ""))"
         
         proteinProgressBar.snp.remakeConstraints { make in
             make.height.equalTo(4)
             make.top.equalTo(proteinLabel.snp_bottomMargin).offset(12)
             make.leading.equalTo(circularView.snp_leadingMargin).inset(140)
-            make.width.equalTo(proteinProgressBackground).multipliedBy(0.9)
+            make.width.equalTo(proteinProgressBackground).multipliedBy(setProgressBar(valueOne: ketoDiet.eatProteins, valueTwo: ketoDiet.markProteins))
         }
         
-        // setProgressBar(valueOne: ketoDiet.eatProteins, valueTwo: ketoDiet.markProteins)
+        fatsProgressBar.snp.remakeConstraints { make in
+            make.height.equalTo(4)
+            make.top.equalTo(fatsLabel.snp_bottomMargin).offset(12)
+            make.leading.equalTo(circularView.snp_leadingMargin).inset(140)
+            make.width.equalTo(fatsProgressBackground).multipliedBy(setProgressBar(valueOne: ketoDiet.eatFats, valueTwo: ketoDiet.markFats))
+            
+        }
+        
+        caloriesProgressBar.snp.remakeConstraints { make in
+            make.height.equalTo(4)
+            make.top.equalTo(caloriesLabel.snp_bottomMargin).offset(12)
+            make.leading.equalTo(circularView.snp_leadingMargin).inset(140)
+            make.width.equalTo(caloriesProgressBackground).multipliedBy(setProgressBar(valueOne: ketoDiet.eatCalories, valueTwo: ketoDiet.markCalories))
+            
+        }
+        
+        carbsProgressBarInPercent.snp.remakeConstraints { make in
+            make.height.equalTo(4)
+            make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(12)
+            make.leading.equalTo(self.snp_leadingMargin).inset(16)
+            make.width.equalTo(overallProgressBar).multipliedBy(ketoDiet.markCarbs / getSumOfPFC())
+        }
+        
+        fatsProgressBarInPercent.snp.remakeConstraints { make in
+            make.height.equalTo(4)
+            make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(12)
+            make.leading.equalTo(carbsProgressBarInPercent.snp_trailingMargin).offset(14)
+            make.width.equalTo(overallProgressBar).multipliedBy(ketoDiet.markFats / getSumOfPFC())
+        }
+        
+        proteinProgressBarInPercent.snp.remakeConstraints { make in
+            make.height.equalTo(4)
+            make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(12)
+            make.leading.equalTo(fatsProgressBarInPercent.snp_trailingMargin).offset(14)
+            make.width.equalTo(overallProgressBar).multipliedBy(ketoDiet.markProteins / getSumOfPFC())
+        }
         
         UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseOut) {
                     self.layoutIfNeeded()
                 }
         
     }
+    
+    func drawLinearGradient(inside path:UIBezierPath, start:CGPoint, end:CGPoint, colors:[UIColor]) {
+        guard let ctx = UIGraphicsGetCurrentContext() else { return }
+
+        ctx.saveGState()
+        defer { ctx.restoreGState() } // clean up graphics state changes when the method returns
+
+        path.addClip() // use the path as the clipping region
+
+        let cgColors = colors.map({ $0.cgColor })
+        guard let gradient = CGGradient(colorsSpace: nil, colors: cgColors as CFArray, locations: nil)
+            else { return }
+
+        ctx.drawLinearGradient(gradient, start: start, end: end, options: [])
+    }
+    
+//    private func getGradient() {
+//
+//        let gradient = CAGradientLayer()
+//        gradient.frame = circularView.bounds
+//        gradient.colors = [UIColor.magenta.cgColor, UIColor.cyan.cgColor]
+//
+//        let shapeMask = CAShapeLayer()
+//        shapeMask.path = path.cgPath
+//
+//        gradient.mask = shapeMask
+//        circularView.layer.addSublayer(gradient)
+//
+//    }
     
     private func getPercent(value: Double) -> String {
         
@@ -98,13 +206,22 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         return valueOne / valueTwo
         
     }
+    
+    private func setCarbsRemained(valueOne: Double, valueTwo: Double) -> Double {
+        
+        if valueTwo > valueOne {
+            return 0
+        }
+        
+        return valueOne - valueTwo
+        
+    }
 
     
     private func setupView() {
         
         // MARK: - КРУГЛЫЙ ПРОГРЕСС БАР
         
-//        let circularView = CircularProgressView(progressColor: .red, circleColor: .gray.withAlphaComponent(0.2), isClosed: false, radius: 66)
         circularView.progressAnimation(duration: 5, value: setProgressBar(valueOne: ketoDiet.eatCarbs, valueTwo: ketoDiet.markCarbs))
         addSubview(circularView)
         
@@ -130,9 +247,7 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         // MARK: - КОЛИЧЕСТВО УГЛЕВОДОВ
         
-        let carbsCountLabel = UILabel()
-        
-        carbsCountLabel.text = "\(String(format: "%.0f", (ketoDiet.markCarbs - ketoDiet.eatCarbs)))"
+        carbsCountLabel.text = "\(String(format: "%.0f", setCarbsRemained(valueOne: ketoDiet.markCarbs, valueTwo: ketoDiet.eatCarbs)))"
         carbsCountLabel.textAlignment = .center
         carbsCountLabel.font = .systemFont(ofSize: 32, weight: .bold)
         carbsCountLabel.textColor = .black
@@ -146,7 +261,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         // MARK: - ОСТАЛОСЬ УГЛЕВОДОВ
         
-        let carbsLeftLabel = UILabel()
         carbsLeftLabel.text = """
                                 \(NSLocalizedString("mainWidget.remainedSmall", comment: ""))
                                 \(NSLocalizedString("mainWidget.from", comment: "")) \(String(format: "%.0f", ketoDiet.markCarbs)) \(NSLocalizedString("mainWidget.g", comment: ""))
@@ -165,7 +279,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         // MARK: - БЕЛКИ ЛЕЙБЛ
         
-//        let proteinLabel = UILabel()
         proteinLabel.text = NSLocalizedString("mainWidget.proteins", comment: "")
         proteinLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         proteinLabel.textColor = .black
@@ -178,7 +291,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         // MARK: - ЖИРЫ ЛЕЙБЛ
         
-        let fatsLabel = UILabel()
         fatsLabel.text = NSLocalizedString("mainWidget.fats", comment: "")
         fatsLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         fatsLabel.textColor = .black
@@ -191,7 +303,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         // MARK: - КАЛОРИИ ЛЕЙБЛ
         
-        let caloriesLabel = UILabel()
         caloriesLabel.text = NSLocalizedString("mainWidget.calories", comment: "")
         caloriesLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         caloriesLabel.textColor = .black
@@ -204,7 +315,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         // MARK: - БЕЛКИ ПРОГРЕСС ЛЕЙБЛ
         
-        let proteinProgressLabel = UILabel()
         proteinProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatProteins)) / \(String(format: "%.0f", ketoDiet.markProteins)) \(NSLocalizedString("mainWidget.g", comment: ""))"
         proteinProgressLabel.font = .systemFont(ofSize: 12)
         proteinProgressLabel.textColor = .black
@@ -217,7 +327,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         // MARK: - ЖИРЫ ПРОГРЕСС ЛЕЙБЛ
         
-        let fatsProgressLabel = UILabel()
         fatsProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatFats)) / \(String(format: "%.0f", ketoDiet.markFats)) \(NSLocalizedString("mainWidget.g", comment: ""))"
         fatsProgressLabel.font = .systemFont(ofSize: 12)
         fatsProgressLabel.textColor = .black
@@ -230,7 +339,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         // MARK: - КАЛОРИИ ПРОГРЕСС ЛЕЙБЛ
         
-        let caloriesProgressLabel = UILabel()
         caloriesProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatCalories)) / \(String(format: "%.0f", ketoDiet.markCalories)) \(NSLocalizedString("mainWidget.kcal", comment: ""))"
         caloriesProgressLabel.font = .systemFont(ofSize: 12)
         caloriesProgressLabel.textColor = .black
@@ -243,7 +351,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         // MARK: - БЕЛКИ ПРОГРЕСС БАР
         
-//        let proteinProgressBackground = UIView()
         proteinProgressBackground.backgroundColor = .gray.withAlphaComponent(0.2)
         proteinProgressBackground.layer.cornerRadius = 2
         addSubview(proteinProgressBackground)
@@ -255,7 +362,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.trailing.equalTo(self.snp_trailingMargin).inset(10)
         }
         
-//        let proteinProgressBar = UIView()
         proteinProgressBar.backgroundColor = hexColor(hex: "FDBE7D")
         proteinProgressBar.layer.cornerRadius = 2
         addSubview(proteinProgressBar)
@@ -270,7 +376,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         // MARK: - ЖИРЫ ПРОГРЕСС БАР
         
-        let fatsProgressBackground = UIView()
         fatsProgressBackground.backgroundColor = .gray.withAlphaComponent(0.2)
         fatsProgressBackground.layer.cornerRadius = 2
         addSubview(fatsProgressBackground)
@@ -282,7 +387,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.trailing.equalTo(self.snp_trailingMargin).inset(10)
         }
         
-        let fatsProgressBar = UIView()
         fatsProgressBar.backgroundColor = hexColor(hex: "B5B3DC")
         fatsProgressBar.layer.cornerRadius = 2
         addSubview(fatsProgressBar)
@@ -297,7 +401,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         // MARK: - КАЛОРИИ ПРОГРЕСС БАР
         
-        let caloriesProgressBackground = UIView()
         caloriesProgressBackground.backgroundColor = .gray.withAlphaComponent(0.2)
         caloriesProgressBackground.layer.cornerRadius = 2
         addSubview(caloriesProgressBackground)
@@ -309,7 +412,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.trailing.equalTo(self.snp_trailingMargin).inset(10)
         }
         
-        let caloriesProgressBar = UIView()
         caloriesProgressBar.backgroundColor = hexColor(hex: "F79498")
         caloriesProgressBar.layer.cornerRadius = 2
         addSubview(caloriesProgressBar)
@@ -324,7 +426,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         // MARK: - КАЛОРИИ В ПРОЦЕНТАХ
         
-        let caloriesInPercentLabel = UILabel()
         caloriesInPercentLabel.text = NSLocalizedString("mainWidget.сomposition", comment: "")
         caloriesInPercentLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         caloriesInPercentLabel.textColor = .black
@@ -337,7 +438,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         // MARK: - ОБЩИЙ ПРОГРЕСС БАР ЧТОБЫ НАЛОЖИТЬ ОСТАЛЬНЫЕ НА НЕЕ
         
-        let overallProgressBar = UIView()
         overallProgressBar.layer.cornerRadius = 2
         overallProgressBar.backgroundColor = .white.withAlphaComponent(0)
         addSubview(overallProgressBar)
@@ -351,7 +451,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         // MARK: - УГЛЕВОДЫ В ПРОЦЕНТАХ ПРОГРЕСС БАР
         
-        let carbsProgressBarInPercent = UIView()
         carbsProgressBarInPercent.layer.cornerRadius = 2
         carbsProgressBarInPercent.backgroundColor = hexColor(hex: "F9440B")
         addSubview(carbsProgressBarInPercent)
@@ -365,7 +464,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         // MARK: - ЖИРЫ В ПРОЦЕНТАХ ПРОГРЕСС БАР
         
-        let fatsProgressBarInPercent = UIView()
         fatsProgressBarInPercent.layer.cornerRadius = 2
         fatsProgressBarInPercent.backgroundColor = hexColor(hex: "91D0B6")
         addSubview(fatsProgressBarInPercent)
@@ -379,7 +477,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         // MARK: - БЕЛКИ В ПРОЦЕНТАХ ПРОГРЕСС БАР
         
-        let proteinProgressBarInPercent = UIView()
         proteinProgressBarInPercent.layer.cornerRadius = 2
         proteinProgressBarInPercent.backgroundColor = hexColor(hex: "91D0B6")
         addSubview(proteinProgressBarInPercent)
@@ -393,7 +490,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         // MARK: - УГЛЕВОДЫ В ПРОЦЕНТАХ ЛЕЙБЛ
         
-        let carbsInPercentLabel = UILabel()
         carbsInPercentLabel.text = "\(getPercent(value: ketoDiet.markCarbs / getSumOfPFC())) \(NSLocalizedString("mainWidget.carbsSmall", comment: ""))"
         carbsInPercentLabel.font = .systemFont(ofSize: 12)
         carbsInPercentLabel.textColor = .black
@@ -401,12 +497,11 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         carbsInPercentLabel.snp.makeConstraints { make in
             make.top.equalTo(carbsProgressBarInPercent.snp_bottomMargin).offset(12)
-            make.centerX.equalTo(self.snp.centerX).multipliedBy(0.35)
+            make.leading.equalTo(self.snp_leadingMargin).inset(16)
         }
         
         // MARK: - ЖИРЫ В ПРОЦЕНТАХ ЛЕЙБЛ
         
-        let fatsInPercentLabel = UILabel()
         fatsInPercentLabel.text = "\(getPercent(value: ketoDiet.markFats / getSumOfPFC())) \(NSLocalizedString("mainWidget.fatsSmall", comment: ""))"
         fatsInPercentLabel.font = .systemFont(ofSize: 12)
         fatsInPercentLabel.textColor = .black
@@ -419,7 +514,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
         // MARK: - БЕЛКИ В ПРОЦЕНТАХ ЛЕЙБЛ
         
-        let proteinsInPercentLabel = UILabel()
         proteinsInPercentLabel.text = "\(getPercent(value: ketoDiet.markProteins / getSumOfPFC())) \(NSLocalizedString("mainWidget.proteinsSmall", comment: ""))"
         proteinsInPercentLabel.font = .systemFont(ofSize: 12)
         proteinsInPercentLabel.textColor = .black

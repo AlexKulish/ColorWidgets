@@ -7,14 +7,28 @@
 
 import Foundation
 
-struct KetoDiet {
+class KetoDiet {
     
-    let eatCalories: Double
-    let markCalories: Double
-    let burnedCalories: Double
+    var eatCalories: Double
+    var markCalories: Double
+    var burnedCalories: Double
     
-    let eatCarbs, eatProteins, eatFats: Double
-    let markCarbs, markProteins, markFats: Double
+    var eatCarbs, eatProteins, eatFats: Double
+    var markCarbs, markProteins, markFats: Double
+    
+    init(eatCalories: Double, markCalories: Double, burnedCalories: Double,
+         eatCarbs: Double, eatProteins: Double, eatFats: Double,
+         markCarbs: Double, markProteins: Double, markFats: Double) {
+        self.eatCalories = eatCalories
+        self.markCalories = markCalories
+        self.burnedCalories = burnedCalories
+        self.eatCarbs = eatCarbs
+        self.eatProteins = eatProteins
+        self.eatFats = eatFats
+        self.markCarbs = markCarbs
+        self.markProteins = markProteins
+        self.markFats = markFats
+    }
     
     static func getDiet() -> KetoDiet {
         
