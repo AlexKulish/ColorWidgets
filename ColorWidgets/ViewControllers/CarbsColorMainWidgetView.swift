@@ -10,7 +10,7 @@ import SnapKit
 
 class CarbsColorMainWidgetView: GradientView, MainWidget {
     
-    let ketoDiet = KetoDiet.getDiet()
+    var ketoDiet = KetoDiet.getDiet()
     
     private let circularView = CircularProgressView(progressColor: .white, circleColor: .white.withAlphaComponent(0.2), isClosed: false, radius: 66)
     

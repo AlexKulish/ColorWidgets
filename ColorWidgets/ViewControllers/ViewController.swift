@@ -144,46 +144,58 @@ class ViewController: UIViewController {
     @objc func buttonTapped() {
 
 
-
-
-
         if count == 0 {
-            carbsWhiteMainWidget.ketoDiet.eatProteins = 45
-            carbsWhiteMainWidget.ketoDiet.eatFats = 93
-            carbsWhiteMainWidget.ketoDiet.eatCalories = 1400
-            carbsWhiteMainWidget.ketoDiet.eatCarbs = 54
-            carbsWhiteMainWidget.ketoDiet.markCarbs = 160
-            carbsWhiteMainWidget.ketoDiet.markProteins = 89
-            carbsWhiteMainWidget.ketoDiet.markFats = 80
-            carbsWhiteMainWidget.update()
+            
+            caloriesColorMainWidget.ketoDiet = KetoDiet.getRandomDiet()
+            caloriesColorMainWidget.update()
+            
+
             caloriesColorMainWidget.set(theme: .greenGradient)
-            caloriesWhiteMainWidget.set(theme: .greenGradient)
             carbsColorMainWidget.set(theme: .greenGradient)
+            
             count += 1
         } else if count == 1 {
-            carbsColorMainWidget.ketoDiet.eatProteins = 45
-            carbsColorMainWidget.ketoDiet.eatFats = 93
-            carbsColorMainWidget.ketoDiet.eatCalories = 1400
-            carbsColorMainWidget.ketoDiet.eatCarbs = 54
-            carbsColorMainWidget.ketoDiet.markCarbs = 160
-            carbsColorMainWidget.ketoDiet.markProteins = 89
-            carbsColorMainWidget.ketoDiet.markFats = 80
-            carbsColorMainWidget.update()
+            
+            caloriesWhiteMainWidget.ketoDiet = KetoDiet.getRandomDiet()
+            caloriesWhiteMainWidget.update()
+            
+            
+            
             caloriesColorMainWidget.set(theme: .greenFlat)
             carbsColorMainWidget.set(theme: .greenFlat)
+            
             count += 1
         } else if count == 2 {
-            carbsBlackMainWidget.ketoDiet.eatProteins = 45
-            carbsBlackMainWidget.ketoDiet.eatFats = 93
-            carbsBlackMainWidget.ketoDiet.eatCalories = 1400
-            carbsBlackMainWidget.ketoDiet.eatCarbs = 54
-            carbsBlackMainWidget.ketoDiet.markCarbs = 160
-            carbsBlackMainWidget.ketoDiet.markProteins = 89
-            carbsBlackMainWidget.ketoDiet.markFats = 80
-            carbsBlackMainWidget.update()
             
+            carbsColorMainWidget.ketoDiet = KetoDiet.getRandomDiet()
+            carbsColorMainWidget.update()
+        
             caloriesColorMainWidget.set(theme: .orangeFlat)
             carbsColorMainWidget.set(theme: .orangeFlat)
+            
+            count += 1
+            
+        } else if count == 3 {
+            
+            carbsWhiteMainWidget.ketoDiet = KetoDiet.getRandomDiet()
+            carbsWhiteMainWidget.update()
+            
+            count += 1
+            
+        } else if count == 4 {
+            
+            caloriesBlackMainWidget.ketoDiet = KetoDiet.getRandomDiet()
+            
+            caloriesBlackMainWidget.update()
+
+            
+            count += 1
+            
+        } else if count == 5 {
+            
+            carbsBlackMainWidget.ketoDiet = KetoDiet.getRandomDiet()
+            carbsBlackMainWidget.update()
+            
         }
 
     }
