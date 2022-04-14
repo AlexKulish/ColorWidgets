@@ -21,6 +21,7 @@ class CircularProgressView: UIView {
     
     private var circleLayer = CAShapeLayer()
     private var progressLayer = CAShapeLayer()
+    private var shapeMask = CAShapeLayer()
     
     private override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,6 +31,13 @@ class CircularProgressView: UIView {
         self.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         createCircularPath()
+    }
+    
+    public convenience init(firstColor: UIColor, secondColor: UIColor) {
+        self.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        createGradientCircularPath(firstColor: firstColor, secondColor: secondColor)
     }
     
     public convenience init(progressColor: UIColor, circleColor: UIColor, isClosed: Bool, radius: CGFloat, lineWidth: CGFloat = 3, progressWidth: CGFloat = 6) {
@@ -82,6 +90,66 @@ class CircularProgressView: UIView {
         layer.addSublayer(progressLayer)
     }
     
+    public func createGradientCircularPath(firstColor: UIColor, secondColor: UIColor) {
+        
+        var circularPath = UIBezierPath(arcCenter: CGPoint(x: radius, y: radius), radius: radius,
+                                        startAngle: 2.5 * -.pi / 2,
+                                        endAngle: .pi / 3.5,
+                                        clockwise: true)
+        
+        if isClosed {
+            circularPath = UIBezierPath(arcCenter: CGPoint(x: radius, y: radius), radius: radius,
+                                        startAngle: -.pi / 2,
+                                        endAngle: .pi * 1.5,
+                                        clockwise: true)
+        }
+        
+        // отдельная вью с градиентом
+        // отдельный circularProgress view
+        // сделать на градиент.маск вью целиком
+        // применить на виджете
+        
+        
+        circleLayer.path = circularPath.cgPath
+        circleLayer.fillColor = UIColor.clear.cgColor
+        circleLayer.lineCap = .round
+        circleLayer.lineWidth = lineWidth ?? 6
+        circleLayer.strokeColor = customCircleColor == nil ? UIColor.gray.withAlphaComponent(0.3).cgColor : customCircleColor?.cgColor
+        
+        let gradient = CAGradientLayer()
+        gradient.frame = CGRect(x: 0, y: 0, width: circularPath.bounds.size.width + 10, height: circularPath.bounds.size.height + 10)
+//        gradient.frame = circularPath.accessibilityFrame
+//        gradient.frame = circularPath.bounds
+        gradient.colors = [firstColor.cgColor, secondColor.cgColor]
+        
+//        progressLayer.path = circularPath.cgPath
+//        progressLayer.fillColor = UIColor.clear.cgColor
+//        progressLayer.lineCap = .round
+//        progressLayer.lineWidth = progressWidth ?? 6
+//        progressLayer.strokeEnd = 0.0
+//        progressLayer.strokeColor = UIColor.white.cgColor
+//        gradient.mask = progressLayer
+        
+        shapeMask.path = circularPath.cgPath
+        shapeMask.fillColor = UIColor.clear.cgColor
+        shapeMask.lineCap = .round
+        shapeMask.lineWidth = 6
+        shapeMask.strokeEnd = 0.0
+        shapeMask.strokeColor = UIColor.white.cgColor
+        gradient.mask = shapeMask
+        
+//        progressLayer.strokeColor = customProgressColor == nil ? UIColor.red.cgColor : customProgressColor!.cgColor
+        
+        
+        layer.addSublayer(circleLayer)
+        layer.addSublayer(gradient)
+//        layer.addSublayer(progressLayer)
+        
+
+        
+        
+    }
+    
     public func progressAnimation(duration: TimeInterval, value: Double) {
         let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
         circularProgressAnimation.duration = duration
@@ -89,5 +157,6 @@ class CircularProgressView: UIView {
         circularProgressAnimation.fillMode = .forwards
         circularProgressAnimation.isRemovedOnCompletion = false
         progressLayer.add(circularProgressAnimation, forKey: "progressAnim")
+        shapeMask.add(circularProgressAnimation, forKey: "progressAnimation")
     }
 }

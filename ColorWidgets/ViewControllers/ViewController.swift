@@ -44,20 +44,21 @@ class ViewController: UIViewController {
         for (index, widget) in widgets.enumerated() {
             scrollView.addSubview(widget)
             widget.snp.makeConstraints { make in
-                if index == 4 {
+                
+                if index == 0 {
                     make.centerY.equalTo(view.snp.centerY)
-                    make.width.equalToSuperview()
-                    make.height.equalTo(264)
-                    make.leading.equalToSuperview().inset(view.frame.size.width * CGFloat(index))
-                } else if index == 5 {
+                    make.width.equalToSuperview().inset(16)
+                    make.height.equalTo(225)
+                    make.leading.equalTo(scrollView.contentLayoutGuide.snp.leading).offset(16)
+                } else if index == 1 || index == 2 || index == 3 {
                     make.centerY.equalTo(view.snp.centerY)
-                    make.width.equalToSuperview()
-                    make.height.equalTo(264)
-                    make.leading.equalToSuperview().inset(view.frame.size.width * CGFloat(index))
+                    make.width.equalToSuperview().inset(16)
+                    make.height.equalTo(225)
+                    make.leading.equalTo(widgets[index - 1].snp.trailing).offset(32)
                 } else {
                     make.centerY.equalTo(view.snp.centerY)
                     make.width.equalToSuperview()
-                    make.height.equalTo(225)
+                    make.height.equalTo(264)
                     make.leading.equalToSuperview().inset(view.frame.size.width * CGFloat(index))
                 }
                 
@@ -237,21 +238,25 @@ class ViewController: UIViewController {
     @objc func testOrangeGradientButtonTapped() {
         caloriesColorMainWidget.set(theme: .orangeGradient)
         carbsColorMainWidget.set(theme: .orangeGradient)
+//        carbsWhiteMainWidget.set(theme: .orangeGradient)
     }
     
     @objc func testGreenGradientButtonTapped() {
         caloriesColorMainWidget.set(theme: .greenGradient)
         carbsColorMainWidget.set(theme: .greenGradient)
+//        carbsWhiteMainWidget.set(theme: .greenGradient)
     }
     
     @objc func testOrangeFlatButtonTapped() {
         caloriesColorMainWidget.set(theme: .orangeFlat)
         carbsColorMainWidget.set(theme: .orangeFlat)
+//        carbsWhiteMainWidget.set(theme: .orangeFlat)
     }
     
     @objc func testGreenFlatButtonTapped() {
         caloriesColorMainWidget.set(theme: .greenFlat)
         carbsColorMainWidget.set(theme: .greenFlat)
+//        carbsWhiteMainWidget.set(theme: .greenFlat)
     }
 
 }
