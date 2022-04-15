@@ -113,21 +113,21 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         
         carbsProgressBarInPercent.snp.remakeConstraints { make in
             make.height.equalTo(4)
-            make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(12)
+            make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(14)
             make.leading.equalTo(self.snp_leadingMargin).inset(16)
             make.width.equalTo(overallProgressBar).multipliedBy(ketoDiet.markCarbs / getSumOfPFC())
         }
         
         fatsProgressBarInPercent.snp.remakeConstraints { make in
             make.height.equalTo(4)
-            make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(12)
+            make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(14)
             make.leading.equalTo(carbsProgressBarInPercent.snp_trailingMargin).offset(14)
             make.width.equalTo(overallProgressBar).multipliedBy(ketoDiet.markFats / getSumOfPFC())
         }
         
         proteinProgressBarInPercent.snp.remakeConstraints { make in
             make.height.equalTo(4)
-            make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(12)
+            make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(14)
             make.leading.equalTo(fatsProgressBarInPercent.snp_trailingMargin).offset(14)
             make.width.equalTo(overallProgressBar).multipliedBy(ketoDiet.markProteins / getSumOfPFC())
         }
@@ -188,7 +188,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
             make.height.equalTo(95)
             make.width.equalTo(95)
             make.leading.equalTo(self.snp_leadingMargin).inset(16)
-            make.top.equalTo(self.snp_topMargin).inset(21)
+            make.top.equalTo(self.snp_topMargin).inset(28)
         }
         
         // MARK: - ВЫ ДОСТИГЛИ ПРЕДЕЛА ЛЕЙБЛ
@@ -200,8 +200,8 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         addSubview(doneLabel)
         
         doneLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.snp_topMargin).inset(28)
-            make.leading.equalTo(mainCircularView.snp_trailingMargin).offset(16)
+            make.top.equalTo(self.snp_topMargin).inset(32)
+            make.leading.equalTo(mainCircularView.snp_trailingMargin).offset(18)
         }
         
         // MARK: - КОЛИЧЕСТВО УГЛЕВОДОВ ОСТАЛОСЬ ЛЕЙБЛ
@@ -213,8 +213,8 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         addSubview(carbsLeftLabel)
         
         carbsLeftLabel.snp.makeConstraints { make in
-            make.top.equalTo(doneLabel.snp_bottomMargin).offset(16)
-            make.leading.equalTo(mainCircularView.snp_trailingMargin).offset(16)
+            make.top.equalTo(doneLabel.snp_bottomMargin).offset(20)
+            make.leading.equalTo(mainCircularView.snp_trailingMargin).offset(20)
         }
         
         // MARK: - УГЛЕВОДЫ ГЛАВНЫЙ ПРОГРЕСС ЛЕЙБЛ
@@ -227,7 +227,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         
         carbsMainProgressLabel.snp.makeConstraints { make in
             make.top.equalTo(carbsLeftLabel.snp_bottomMargin).offset(12)
-            make.leading.equalTo(mainCircularView.snp_trailingMargin).offset(16)
+            make.leading.equalTo(mainCircularView.snp_trailingMargin).offset(20)
         }
         
         
@@ -238,7 +238,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         addSubview(carbsCircularView)
         
         carbsCircularView.snp.makeConstraints { make in
-            make.top.equalTo(mainCircularView.snp_bottomMargin).offset(36)
+            make.top.equalTo(mainCircularView.snp_bottomMargin).offset(34)
             make.centerX.equalTo(self.snp.centerX).multipliedBy(0.11)
         }
         
@@ -251,7 +251,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         addSubview(carbsLabel)
         
         carbsLabel.snp.makeConstraints { make in
-            make.top.equalTo(mainCircularView.snp_bottomMargin).offset(38)
+            make.top.equalTo(mainCircularView.snp_bottomMargin).offset(36)
             make.leading.equalTo(carbsCircularView.snp_trailingMargin).offset(48)
         }
         
@@ -264,7 +264,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         addSubview(carbsProgressLabel)
         
         carbsProgressLabel.snp.makeConstraints { make in
-            make.top.equalTo(carbsLabel.snp_bottomMargin).offset(14)
+            make.top.equalTo(carbsLabel.snp_bottomMargin).offset(12)
             make.leading.equalTo(carbsCircularView.snp_trailingMargin).offset(48)
         }
         
@@ -274,7 +274,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         addSubview(proteinCircularView)
         
         proteinCircularView.snp.makeConstraints { make in
-            make.top.equalTo(mainCircularView.snp_bottomMargin).offset(36)
+            make.top.equalTo(mainCircularView.snp_bottomMargin).offset(34)
             make.centerX.equalTo(self.snp.centerX).multipliedBy(0.73)
         }
         
@@ -287,7 +287,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         addSubview(proteinsLabel)
         
         proteinsLabel.snp.makeConstraints { make in
-            make.top.equalTo(mainCircularView.snp_bottomMargin).offset(38)
+            make.top.equalTo(mainCircularView.snp_bottomMargin).offset(36)
             make.leading.equalTo(proteinCircularView.snp_trailingMargin).offset(48)
         }
         
@@ -299,7 +299,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         addSubview(proteinsProgressLabel)
         
         proteinsProgressLabel.snp.makeConstraints { make in
-            make.top.equalTo(carbsLabel.snp_bottomMargin).offset(14)
+            make.top.equalTo(carbsLabel.snp_bottomMargin).offset(12)
             make.leading.equalTo(proteinCircularView.snp_trailingMargin).offset(48)
         }
         
@@ -310,7 +310,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         addSubview(fatsCircularView)
         
         fatsCircularView.snp.makeConstraints { make in
-            make.top.equalTo(mainCircularView.snp_bottomMargin).offset(36)
+            make.top.equalTo(mainCircularView.snp_bottomMargin).offset(34)
             make.centerX.equalTo(self.snp.centerX).multipliedBy(1.35)
         }
         
@@ -323,7 +323,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         addSubview(fatsLabel)
         
         fatsLabel.snp.makeConstraints { make in
-            make.top.equalTo(mainCircularView.snp_bottomMargin).offset(38)
+            make.top.equalTo(mainCircularView.snp_bottomMargin).offset(36)
             make.leading.equalTo(fatsCircularView.snp_trailingMargin).offset(48)
         }
         
@@ -335,7 +335,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         addSubview(fatsProgressLabel)
         
         fatsProgressLabel.snp.makeConstraints { make in
-            make.top.equalTo(carbsLabel.snp_bottomMargin).offset(14)
+            make.top.equalTo(carbsLabel.snp_bottomMargin).offset(12)
             make.leading.equalTo(fatsCircularView.snp_trailingMargin).offset(48)
         }
         
@@ -347,7 +347,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         addSubview(caloriesInPercentLabel)
         
         caloriesInPercentLabel.snp.makeConstraints { make in
-            make.top.equalTo(carbsCircularView.snp_bottomMargin).offset(60)
+            make.top.equalTo(carbsCircularView.snp_bottomMargin).offset(56)
             make.leading.equalTo(self.snp_leadingMargin).inset(16)
         }
         
@@ -361,7 +361,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
             make.height.equalTo(4)
             make.leading.equalTo(self.snp_leadingMargin).inset(16)
             make.trailing.equalTo(self.snp_trailingMargin).inset(20)
-            make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(12)
+            make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(14)
         }
         
         // MARK: - УГЛЕВОДЫ В ПРОЦЕНТАХ ПРОГРЕСС БАР
@@ -372,7 +372,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         
         carbsProgressBarInPercent.snp.makeConstraints { make in
             make.height.equalTo(4)
-            make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(12)
+            make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(14)
             make.leading.equalTo(self.snp_leadingMargin).inset(16)
             make.width.equalTo(overallProgressBar).multipliedBy(ketoDiet.markCarbs / getSumOfPFC())
         }
@@ -385,7 +385,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         
         fatsProgressBarInPercent.snp.makeConstraints { make in
             make.height.equalTo(4)
-            make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(12)
+            make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(14)
             make.leading.equalTo(carbsProgressBarInPercent.snp_trailingMargin).offset(14)
             make.width.equalTo(overallProgressBar).multipliedBy(ketoDiet.markFats / getSumOfPFC())
         }
@@ -398,7 +398,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         
         proteinProgressBarInPercent.snp.makeConstraints { make in
             make.height.equalTo(4)
-            make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(12)
+            make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(14)
             make.leading.equalTo(fatsProgressBarInPercent.snp_trailingMargin).offset(14)
             make.width.equalTo(overallProgressBar).multipliedBy(ketoDiet.markProteins / getSumOfPFC())
         }
@@ -411,8 +411,8 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         addSubview(carbsInPercentLabel)
         
         carbsInPercentLabel.snp.makeConstraints { make in
-            make.top.equalTo(carbsProgressBarInPercent.snp_bottomMargin).offset(12)
-            make.leading.equalTo(self.snp_leadingMargin).inset(16)
+            make.top.equalTo(carbsProgressBarInPercent.snp_bottomMargin).offset(14)
+            make.leading.equalTo(self.snp_leadingMargin).inset(22)
         }
         
         // MARK: - ЖИРЫ В ПРОЦЕНТАХ ЛЕЙБЛ
@@ -423,7 +423,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         addSubview(fatsInPercentLabel)
         
         fatsInPercentLabel.snp.makeConstraints { make in
-            make.top.equalTo(carbsProgressBarInPercent.snp_bottomMargin).offset(12)
+            make.top.equalTo(carbsProgressBarInPercent.snp_bottomMargin).offset(14)
             make.centerX.equalTo(self.snp.centerX)
         }
         
@@ -434,7 +434,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         proteinsInPercentLabel.textColor = hexColor(hex: "A9A9A9")
         addSubview(proteinsInPercentLabel)
         
-        proteinsInPercentLabel.snp.makeConstraints { make in            make.top.equalTo(carbsProgressBarInPercent.snp_bottomMargin).offset(12)
+        proteinsInPercentLabel.snp.makeConstraints { make in            make.top.equalTo(carbsProgressBarInPercent.snp_bottomMargin).offset(14)
             make.centerX.equalTo(self.snp.centerX).multipliedBy(1.65)
         }
     }

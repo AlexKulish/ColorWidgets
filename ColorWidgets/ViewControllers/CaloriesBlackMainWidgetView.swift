@@ -118,7 +118,7 @@ class CaloriesBlackMainWidgetView: GradientView, MainWidget {
             // если хочешь поменять расположение по центру, меняй высоту и ширину
             make.height.equalTo(130)
             make.width.equalTo(130)
-            make.top.equalTo(self.snp_topMargin).inset(21)
+            make.top.equalTo(self.snp_topMargin).inset(24)
             make.centerX.equalTo(self.snp.centerX)
         }
         
@@ -133,7 +133,7 @@ class CaloriesBlackMainWidgetView: GradientView, MainWidget {
         
         caloriesLabel.snp.makeConstraints { make in
             make.width.equalTo(30)
-            make.top.equalTo(mainCircularView.snp_topMargin).inset(26)
+            make.top.equalTo(mainCircularView.snp_topMargin).inset(22)
             make.leading.equalTo(mainCircularView.snp_leadingMargin).inset(44)
         }
         
@@ -187,7 +187,7 @@ class CaloriesBlackMainWidgetView: GradientView, MainWidget {
         
         eatenCaloriesCountLabel.snp.makeConstraints { make in
             make.width.equalTo(60)
-            make.top.equalTo(eatImageView.snp_bottomMargin).offset(10)
+            make.top.equalTo(eatImageView.snp_bottomMargin).offset(12)
             make.centerX.equalTo(self.snp.centerX).multipliedBy(0.3)
         }
         
@@ -227,7 +227,7 @@ class CaloriesBlackMainWidgetView: GradientView, MainWidget {
         
         burnedCaloriesCountLabel.snp.makeConstraints { make in
             make.width.equalTo(60)
-            make.top.equalTo(runImageView.snp_bottomMargin).offset(10)
+            make.top.equalTo(runImageView.snp_bottomMargin).offset(12)
             make.centerX.equalTo(self.snp.centerX).multipliedBy(1.7)
         }
         
@@ -278,7 +278,7 @@ class CaloriesBlackMainWidgetView: GradientView, MainWidget {
         addSubview(carbsProgressLabel)
         
         carbsProgressLabel.snp.makeConstraints { make in
-            make.top.equalTo(carbsLabel.snp_bottomMargin).offset(14)
+            make.top.equalTo(carbsLabel.snp_bottomMargin).offset(12)
             make.leading.equalTo(carbsCircularView.snp_trailingMargin).offset(48)
         }
         
@@ -314,7 +314,7 @@ class CaloriesBlackMainWidgetView: GradientView, MainWidget {
         addSubview(proteinsProgressLabel)
         
         proteinsProgressLabel.snp.makeConstraints { make in
-            make.top.equalTo(carbsLabel.snp_bottomMargin).offset(14)
+            make.top.equalTo(carbsLabel.snp_bottomMargin).offset(12)
             make.leading.equalTo(proteinCircularView.snp_trailingMargin).offset(48)
         }
         
@@ -350,7 +350,7 @@ class CaloriesBlackMainWidgetView: GradientView, MainWidget {
         addSubview(fatsProgressLabel)
         
         fatsProgressLabel.snp.makeConstraints { make in
-            make.top.equalTo(carbsLabel.snp_bottomMargin).offset(14)
+            make.top.equalTo(carbsLabel.snp_bottomMargin).offset(12)
             make.leading.equalTo(fatsCircularView.snp_trailingMargin).offset(48)
         }
         

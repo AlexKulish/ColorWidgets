@@ -74,21 +74,21 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
         
         carbsProgressBar.snp.remakeConstraints { make in
             make.height.equalTo(4)
-            make.top.equalTo(carbsLabel.snp_bottomMargin).offset(12)
+            make.top.equalTo(carbsLabel.snp_bottomMargin).offset(14)
             make.leading.equalTo(self.snp_leadingMargin).inset(16)
             make.width.equalTo(carbsProgressBackground).multipliedBy(setProgressBar(valueOne: ketoDiet.eatCarbs, valueTwo: ketoDiet.markCarbs))
         }
         
         proteinProgressBar.snp.remakeConstraints { make in
             make.height.equalTo(4)
-            make.top.equalTo(proteinLabel.snp_bottomMargin).offset(12)
+            make.top.equalTo(proteinLabel.snp_bottomMargin).offset(14)
             make.leading.equalTo(carbsProgressBackground.snp_trailingMargin).offset(23)
             make.width.equalTo(proteinProgressBackground).multipliedBy(setProgressBar(valueOne: ketoDiet.eatProteins, valueTwo: ketoDiet.markProteins))
         }
         
         fatsProgressBar.snp.remakeConstraints { make in
             make.height.equalTo(4)
-            make.top.equalTo(fatsLabel.snp_bottomMargin).offset(12)
+            make.top.equalTo(fatsLabel.snp_bottomMargin).offset(14)
             make.leading.equalTo(proteinProgressBackground.snp_trailingMargin).offset(23)
             make.width.equalTo(fatsProgressBackground).multipliedBy(setProgressBar(valueOne: ketoDiet.eatFats, valueTwo: ketoDiet.markFats))
         }
@@ -152,7 +152,7 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
         
         caloriesLabel.snp.makeConstraints { make in
             make.width.equalTo(30)
-            make.top.equalTo(circularView.snp_topMargin).inset(22)
+            make.top.equalTo(circularView.snp_topMargin).inset(20)
             make.leading.equalTo(circularView.snp_leadingMargin).inset(44)
         }
         
@@ -166,7 +166,7 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
         
         caloriesCountLabel.snp.makeConstraints { make in
             make.width.equalTo(80)
-            make.top.equalTo(caloriesLabel.snp_bottomMargin).offset(8)
+            make.top.equalTo(caloriesLabel.snp_bottomMargin).offset(10)
             make.leading.equalTo(circularView.snp_leadingMargin).inset(20)
         }
         
@@ -192,7 +192,7 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
         addSubview(eatImageView)
         
         eatImageView.snp.makeConstraints { make in
-            make.top.equalTo(self.snp_topMargin).inset(48)
+            make.top.equalTo(self.snp_topMargin).inset(50)
             make.centerX.equalTo(self.snp.centerX).multipliedBy(0.35)
         }
         
@@ -206,7 +206,7 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
         
         eatenCaloriesCountLabel.snp.makeConstraints { make in
             make.width.equalTo(60)
-            make.top.equalTo(eatImageView.snp_bottomMargin).offset(10)
+            make.top.equalTo(eatImageView.snp_bottomMargin).offset(8)
             make.centerX.equalTo(self.snp.centerX).multipliedBy(0.35)
         }
         
@@ -221,7 +221,7 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
         
         eatenLabel.snp.makeConstraints { make in
             make.width.equalTo(60)
-            make.top.equalTo(eatenCaloriesCountLabel.snp_bottomMargin).offset(10)
+            make.top.equalTo(eatenCaloriesCountLabel.snp_bottomMargin).offset(8)
             make.centerX.equalTo(self.snp.centerX).multipliedBy(0.35)
         }
         
@@ -232,7 +232,7 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
         addSubview(runImageView)
         
         runImageView.snp.makeConstraints { make in
-            make.top.equalTo(self.snp_topMargin).inset(48)
+            make.top.equalTo(self.snp_topMargin).inset(50)
             make.centerX.equalTo(self.snp.centerX).multipliedBy(1.65)
         }
         
@@ -246,7 +246,7 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
         
         burnedCaloriesCountLabel.snp.makeConstraints { make in
             make.width.equalTo(60)
-            make.top.equalTo(runImageView.snp_bottomMargin).offset(10)
+            make.top.equalTo(runImageView.snp_bottomMargin).offset(8)
             make.centerX.equalTo(self.snp.centerX).multipliedBy(1.65)
         }
         
@@ -261,7 +261,7 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
         
         burnedLabel.snp.makeConstraints { make in
             make.width.equalTo(60)
-            make.top.equalTo(burnedCaloriesCountLabel.snp_bottomMargin).offset(10)
+            make.top.equalTo(burnedCaloriesCountLabel.snp_bottomMargin).offset(8)
             make.centerX.equalTo(self.snp.centerX).multipliedBy(1.65)
         }
         
@@ -318,7 +318,7 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
             make.height.equalTo(4)
             make.leading.equalTo(self.snp_leadingMargin).inset(16)
             make.trailing.equalTo(self.snp_trailingMargin).inset(16)
-            make.top.equalTo(proteinLabel.snp_bottomMargin).offset(12)
+            make.top.equalTo(proteinLabel.snp_bottomMargin).offset(14)
         }
         
         // MARK: - УГЛЕВОДЫ ПРОГРЕСС БАР
@@ -329,7 +329,7 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
         
         carbsProgressBackground.snp.makeConstraints { make in
             make.height.equalTo(4)
-            make.top.equalTo(carbsLabel.snp_bottomMargin).offset(12)
+            make.top.equalTo(carbsLabel.snp_bottomMargin).offset(14)
             make.leading.equalTo(self.snp_leadingMargin).inset(16)
             make.width.equalTo(overallProgressBar).multipliedBy(0.3)
         }
@@ -340,7 +340,7 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
         
         carbsProgressBar.snp.makeConstraints { make in
             make.height.equalTo(4)
-            make.top.equalTo(carbsLabel.snp_bottomMargin).offset(12)
+            make.top.equalTo(carbsLabel.snp_bottomMargin).offset(14)
             make.leading.equalTo(self.snp_leadingMargin).inset(16)
             make.width.equalTo(carbsProgressBackground).multipliedBy(setProgressBar(valueOne: ketoDiet.eatCarbs, valueTwo: ketoDiet.markCarbs))
         }
@@ -353,7 +353,7 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
         
         proteinProgressBackground.snp.makeConstraints { make in
             make.height.equalTo(4)
-            make.top.equalTo(proteinLabel.snp_bottomMargin).offset(12)
+            make.top.equalTo(proteinLabel.snp_bottomMargin).offset(14)
             make.leading.equalTo(carbsProgressBackground.snp_trailingMargin).offset(23)
             make.width.equalTo(overallProgressBar).multipliedBy(0.3)
         }
@@ -364,7 +364,7 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
         
         proteinProgressBar.snp.makeConstraints { make in
             make.height.equalTo(4)
-            make.top.equalTo(proteinLabel.snp_bottomMargin).offset(12)
+            make.top.equalTo(proteinLabel.snp_bottomMargin).offset(14)
             make.leading.equalTo(carbsProgressBackground.snp_trailingMargin).offset(23)
             make.width.equalTo(proteinProgressBackground).multipliedBy(setProgressBar(valueOne: ketoDiet.eatProteins, valueTwo: ketoDiet.markProteins))
         }
@@ -377,7 +377,7 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
         
         fatsProgressBackground.snp.makeConstraints { make in
             make.height.equalTo(4)
-            make.top.equalTo(fatsLabel.snp_bottomMargin).offset(12)
+            make.top.equalTo(fatsLabel.snp_bottomMargin).offset(14)
             make.leading.equalTo(proteinProgressBackground.snp_trailingMargin).offset(23)
             make.width.equalTo(overallProgressBar).multipliedBy(0.33)
         }
@@ -388,7 +388,7 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
         
         fatsProgressBar.snp.makeConstraints { make in
             make.height.equalTo(4)
-            make.top.equalTo(fatsLabel.snp_bottomMargin).offset(12)
+            make.top.equalTo(fatsLabel.snp_bottomMargin).offset(14)
             make.leading.equalTo(proteinProgressBackground.snp_trailingMargin).offset(23)
             make.width.equalTo(fatsProgressBackground).multipliedBy(setProgressBar(valueOne: ketoDiet.eatFats, valueTwo: ketoDiet.markFats))
         }
@@ -403,7 +403,7 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
         
         carbsProgressLabel.snp.makeConstraints { make in
             make.width.equalTo(65)
-            make.top.equalTo(carbsProgressBackground.snp_bottomMargin).offset(12)
+            make.top.equalTo(carbsProgressBackground.snp_bottomMargin).offset(14)
             make.centerX.equalTo(self.snp.centerX).multipliedBy(0.4)
         }
         
@@ -417,7 +417,7 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
         
         proteinProgressLabel.snp.makeConstraints { make in
             make.width.equalTo(65)
-            make.top.equalTo(carbsProgressBackground.snp_bottomMargin).offset(12)
+            make.top.equalTo(carbsProgressBackground.snp_bottomMargin).offset(14)
             make.centerX.equalTo(self.snp.centerX)
         }
         
@@ -431,7 +431,7 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
         
         fatsProgressLabel.snp.makeConstraints { make in
             make.width.equalTo(65)
-            make.top.equalTo(carbsProgressBackground.snp_bottomMargin).offset(12)
+            make.top.equalTo(carbsProgressBackground.snp_bottomMargin).offset(14)
             make.centerX.equalTo(self.snp.centerX).multipliedBy(1.6)
         }
         
