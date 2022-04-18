@@ -14,10 +14,10 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
     
     private var mainCircularView: CircularProgressView!
     private var carbsCircularView: CircularProgressView!
-    private var proteinCircularView: CircularProgressView!
+    private var proteinsCircularView: CircularProgressView!
     private var fatsCircularView: CircularProgressView!
     
-    private let carbsLeftLabel = UILabel()
+    private let carbsRemainsLabel = UILabel()
     private let carbsMainProgressLabel = UILabel()
     private let carbsProgressLabel = UILabel()
     private let proteinsProgressLabel = UILabel()
@@ -27,7 +27,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
     private let overallProgressBar = UIView()
     private let carbsProgressBarInPercent = UIView()
     private let fatsProgressBarInPercent = UIView()
-    private let proteinProgressBarInPercent = UIView()
+    private let proteinsProgressBarInPercent = UIView()
     private let carbsInPercentLabel = UILabel()
     private let fatsInPercentLabel = UILabel()
     private let proteinsInPercentLabel = UILabel()
@@ -37,7 +37,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         super.init(frame: frame)
         self.mainCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 45, lineWidth: 14, progressWidth: 14)
         self.carbsCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 17, lineWidth: 5, progressWidth: 5)
-        self.proteinCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 17, lineWidth: 5, progressWidth: 5)
+        self.proteinsCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 17, lineWidth: 5, progressWidth: 5)
         self.fatsCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 17, lineWidth: 5, progressWidth: 5)
         
         set(cornerRadius: 25)
@@ -70,17 +70,17 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
     
     func update() {
         
-        mainCircularView.progressAndColorAnimation(duration: 5, value: setProgressBar(valueOne: ketoDiet.eatCarbs, valueTwo: ketoDiet.markCarbs), greenColor: hexColor(hex: "49DD58"), yellowColor: hexColor(hex: "EDDE5A"), redColor: hexColor(hex: "FF794F"))
+        mainCircularView.progressAndColorAnimation(duration: 5, value: setProgressBar(eatValue: ketoDiet.eatCarbs, markValue: ketoDiet.markCarbs), greenColor: hexColor(hex: "49DD58"), yellowColor: hexColor(hex: "EDDE5A"), redColor: hexColor(hex: "FF794F"))
         
-        carbsCircularView.progressAndColorAnimation(duration: 5, value: setProgressBar(valueOne: ketoDiet.eatCarbs, valueTwo: ketoDiet.markCarbs), greenColor: hexColor(hex: "49DD58"), yellowColor: hexColor(hex: "EDDE5A"), redColor: hexColor(hex: "FF794F"))
+        carbsCircularView.progressAndColorAnimation(duration: 5, value: setProgressBar(eatValue: ketoDiet.eatCarbs, markValue: ketoDiet.markCarbs), greenColor: hexColor(hex: "49DD58"), yellowColor: hexColor(hex: "EDDE5A"), redColor: hexColor(hex: "FF794F"))
         
-        proteinCircularView.progressAndColorAnimation(duration: 5, value: setProgressBar(valueOne: ketoDiet.eatProteins, valueTwo: ketoDiet.markProteins), greenColor: hexColor(hex: "49DD58"), yellowColor: hexColor(hex: "EDDE5A"), redColor: hexColor(hex: "FF794F"))
+        proteinsCircularView.progressAndColorAnimation(duration: 5, value: setProgressBar(eatValue: ketoDiet.eatProteins, markValue: ketoDiet.markProteins), greenColor: hexColor(hex: "49DD58"), yellowColor: hexColor(hex: "EDDE5A"), redColor: hexColor(hex: "FF794F"))
         
-        fatsCircularView.progressAndColorAnimation(duration: 5, value: setProgressBar(valueOne: ketoDiet.eatFats, valueTwo: ketoDiet.markFats), greenColor: hexColor(hex: "49DD58"), yellowColor: hexColor(hex: "EDDE5A"), redColor: hexColor(hex: "FF794F"))
+        fatsCircularView.progressAndColorAnimation(duration: 5, value: setProgressBar(eatValue: ketoDiet.eatFats, markValue: ketoDiet.markFats), greenColor: hexColor(hex: "49DD58"), yellowColor: hexColor(hex: "EDDE5A"), redColor: hexColor(hex: "FF794F"))
         
         doneLabel.text = returnDoneLabel()
         
-        carbsLeftLabel.text = "\(String(format: "%.0f", setCarbsRemained(valueOne: ketoDiet.markCarbs, valueTwo: ketoDiet.eatCarbs))) \(NSLocalizedString("mainWidget.g", comment: "")) \(NSLocalizedString("mainWidget.carbsInPlural", comment: "")) \(NSLocalizedString("mainWidget.remainedSmall", comment: ""))"
+        carbsRemainsLabel.text = "\(String(format: "%.0f", setCarbsRemained(markValue: ketoDiet.markCarbs, eatValue: ketoDiet.eatCarbs))) \(NSLocalizedString("mainWidget.g", comment: "")) \(NSLocalizedString("mainWidget.carbsInPlural", comment: "")) \(NSLocalizedString("mainWidget.remainedSmall", comment: ""))"
         
         carbsMainProgressLabel.text = "\(String(format: "%.0f", ketoDiet.eatCarbs)) \(NSLocalizedString("mainWidget.g", comment: "")) \(NSLocalizedString("mainWidget.eatenSmall", comment: "")) / \(String(format: "%.0f", ketoDiet.markCarbs)) \(NSLocalizedString("mainWidget.g", comment: "")) \(NSLocalizedString("mainWidget.maximum", comment: ""))"
         
@@ -110,7 +110,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
             make.width.equalTo(overallProgressBar).multipliedBy(ketoDiet.markFats / getSumOfPFC())
         }
         
-        proteinProgressBarInPercent.snp.remakeConstraints { make in
+        proteinsProgressBarInPercent.snp.remakeConstraints { make in
             make.height.equalTo(4)
             make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(14)
             make.leading.equalTo(fatsProgressBarInPercent.snp_trailingMargin).offset(14)
@@ -142,23 +142,23 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
     }
     
     
-    private func setProgressBar(valueOne: Double, valueTwo: Double) -> Double {
+    private func setProgressBar(eatValue: Double, markValue: Double) -> Double {
         
-        if valueOne > valueTwo {
+        if eatValue > markValue {
             return 1
         }
         
-        return valueOne / valueTwo
+        return eatValue / markValue
         
     }
     
-    private func setCarbsRemained(valueOne: Double, valueTwo: Double) -> Double {
+    private func setCarbsRemained(markValue: Double, eatValue: Double) -> Double {
         
-        if valueTwo > valueOne {
+        if eatValue > markValue {
             return 0
         }
         
-        return valueOne - valueTwo
+        return markValue - eatValue
         
     }
     
@@ -183,7 +183,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         
         // MARK: - КРУГЛЫЙ ГЛАВНЫЙ ПРОГРЕСС БАР
         
-        mainCircularView.progressAndColorAnimation(duration: 5, value: setProgressBar(valueOne: ketoDiet.eatCarbs, valueTwo: ketoDiet.markCarbs), greenColor: hexColor(hex: "49DD58"), yellowColor: hexColor(hex: "EDDE5A"), redColor: hexColor(hex: "FF794F"))
+        mainCircularView.progressAndColorAnimation(duration: 5, value: setProgressBar(eatValue: ketoDiet.eatCarbs, markValue: ketoDiet.markCarbs), greenColor: hexColor(hex: "49DD58"), yellowColor: hexColor(hex: "EDDE5A"), redColor: hexColor(hex: "FF794F"))
         addSubview(mainCircularView)
         
         mainCircularView.snp.makeConstraints { make in
@@ -209,12 +209,12 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - КОЛИЧЕСТВО УГЛЕВОДОВ ОСТАЛОСЬ ЛЕЙБЛ
         
         
-        carbsLeftLabel.text = "\(String(format: "%.0f", setCarbsRemained(valueOne: ketoDiet.markCarbs, valueTwo: ketoDiet.eatCarbs))) \(NSLocalizedString("mainWidget.g", comment: "")) \(NSLocalizedString("mainWidget.carbsInPlural", comment: "")) \(NSLocalizedString("mainWidget.remainedSmall", comment: ""))"
-        carbsLeftLabel.font = .systemFont(ofSize: 14)
-        carbsLeftLabel.textColor = .white
-        addSubview(carbsLeftLabel)
+        carbsRemainsLabel.text = "\(String(format: "%.0f", setCarbsRemained(markValue: ketoDiet.markCarbs, eatValue: ketoDiet.eatCarbs))) \(NSLocalizedString("mainWidget.g", comment: "")) \(NSLocalizedString("mainWidget.carbsInPlural", comment: "")) \(NSLocalizedString("mainWidget.remainedSmall", comment: ""))"
+        carbsRemainsLabel.font = .systemFont(ofSize: 14)
+        carbsRemainsLabel.textColor = .white
+        addSubview(carbsRemainsLabel)
         
-        carbsLeftLabel.snp.makeConstraints { make in
+        carbsRemainsLabel.snp.makeConstraints { make in
             make.top.equalTo(doneLabel.snp_bottomMargin).offset(20)
             make.leading.equalTo(mainCircularView.snp_trailingMargin).offset(20)
         }
@@ -228,7 +228,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         addSubview(carbsMainProgressLabel)
         
         carbsMainProgressLabel.snp.makeConstraints { make in
-            make.top.equalTo(carbsLeftLabel.snp_bottomMargin).offset(12)
+            make.top.equalTo(carbsRemainsLabel.snp_bottomMargin).offset(12)
             make.leading.equalTo(mainCircularView.snp_trailingMargin).offset(20)
         }
         
@@ -236,7 +236,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         // MARK: - КРУГЛЫЙ УГЛЕВОДЫ ПРОГРЕСС БАР
         
 
-        carbsCircularView.progressAndColorAnimation(duration: 5, value: setProgressBar(valueOne: ketoDiet.eatCarbs, valueTwo: ketoDiet.markCarbs), greenColor: hexColor(hex: "49DD58"), yellowColor: hexColor(hex: "EDDE5A"), redColor: hexColor(hex: "FF794F"))
+        carbsCircularView.progressAndColorAnimation(duration: 5, value: setProgressBar(eatValue: ketoDiet.eatCarbs, markValue: ketoDiet.markCarbs), greenColor: hexColor(hex: "49DD58"), yellowColor: hexColor(hex: "EDDE5A"), redColor: hexColor(hex: "FF794F"))
         addSubview(carbsCircularView)
         
         carbsCircularView.snp.makeConstraints { make in
@@ -272,10 +272,10 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         
         // MARK: - КРУГЛЫЙ БЕЛКИ ПРОГРЕСС БАР
         
-        proteinCircularView.progressAndColorAnimation(duration: 5, value: setProgressBar(valueOne: ketoDiet.eatProteins, valueTwo: ketoDiet.markProteins), greenColor: hexColor(hex: "49DD58"), yellowColor: hexColor(hex: "EDDE5A"), redColor: hexColor(hex: "FF794F"))
-        addSubview(proteinCircularView)
+        proteinsCircularView.progressAndColorAnimation(duration: 5, value: setProgressBar(eatValue: ketoDiet.eatProteins, markValue: ketoDiet.markProteins), greenColor: hexColor(hex: "49DD58"), yellowColor: hexColor(hex: "EDDE5A"), redColor: hexColor(hex: "FF794F"))
+        addSubview(proteinsCircularView)
         
-        proteinCircularView.snp.makeConstraints { make in
+        proteinsCircularView.snp.makeConstraints { make in
             make.top.equalTo(mainCircularView.snp_bottomMargin).offset(34)
             make.centerX.equalTo(self.snp.centerX).multipliedBy(0.73)
         }
@@ -290,7 +290,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         
         proteinsLabel.snp.makeConstraints { make in
             make.top.equalTo(mainCircularView.snp_bottomMargin).offset(36)
-            make.leading.equalTo(proteinCircularView.snp_trailingMargin).offset(48)
+            make.leading.equalTo(proteinsCircularView.snp_trailingMargin).offset(48)
         }
         
         // MARK: - БЕЛКИ ПРОГРЕСС ЛЕЙБЛ
@@ -302,13 +302,13 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         
         proteinsProgressLabel.snp.makeConstraints { make in
             make.top.equalTo(carbsLabel.snp_bottomMargin).offset(12)
-            make.leading.equalTo(proteinCircularView.snp_trailingMargin).offset(48)
+            make.leading.equalTo(proteinsCircularView.snp_trailingMargin).offset(48)
         }
         
         // MARK: - КРУГЛЫЙ ЖИРЫ ПРОГРЕСС БАР
         
         
-        fatsCircularView.progressAndColorAnimation(duration: 5, value: setProgressBar(valueOne: ketoDiet.eatFats, valueTwo: ketoDiet.markFats), greenColor: hexColor(hex: "49DD58"), yellowColor: hexColor(hex: "EDDE5A"), redColor: hexColor(hex: "FF794F"))
+        fatsCircularView.progressAndColorAnimation(duration: 5, value: setProgressBar(eatValue: ketoDiet.eatFats, markValue: ketoDiet.markFats), greenColor: hexColor(hex: "49DD58"), yellowColor: hexColor(hex: "EDDE5A"), redColor: hexColor(hex: "FF794F"))
         addSubview(fatsCircularView)
         
         fatsCircularView.snp.makeConstraints { make in
@@ -394,11 +394,11 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         
         // MARK: - БЕЛКИ В ПРОЦЕНТАХ ПРОГРЕСС БАР
         
-        proteinProgressBarInPercent.layer.cornerRadius = 2
-        proteinProgressBarInPercent.backgroundColor = hexColor(hex: "49DD58")
-        addSubview(proteinProgressBarInPercent)
+        proteinsProgressBarInPercent.layer.cornerRadius = 2
+        proteinsProgressBarInPercent.backgroundColor = hexColor(hex: "49DD58")
+        addSubview(proteinsProgressBarInPercent)
         
-        proteinProgressBarInPercent.snp.makeConstraints { make in
+        proteinsProgressBarInPercent.snp.makeConstraints { make in
             make.height.equalTo(4)
             make.top.equalTo(caloriesInPercentLabel.snp_bottomMargin).offset(14)
             make.leading.equalTo(fatsProgressBarInPercent.snp_trailingMargin).offset(14)
