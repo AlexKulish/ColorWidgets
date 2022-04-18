@@ -31,6 +31,7 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
     private let carbsInPercentLabel = UILabel()
     private let fatsInPercentLabel = UILabel()
     private let proteinsInPercentLabel = UILabel()
+    private let doneLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -76,6 +77,8 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         proteinCircularView.progressAndColorAnimation(duration: 5, value: setProgressBar(valueOne: ketoDiet.eatProteins, valueTwo: ketoDiet.markProteins), greenColor: hexColor(hex: "49DD58"), yellowColor: hexColor(hex: "EDDE5A"), redColor: hexColor(hex: "FF794F"))
         
         fatsCircularView.progressAndColorAnimation(duration: 5, value: setProgressBar(valueOne: ketoDiet.eatFats, valueTwo: ketoDiet.markFats), greenColor: hexColor(hex: "49DD58"), yellowColor: hexColor(hex: "EDDE5A"), redColor: hexColor(hex: "FF794F"))
+        
+        doneLabel.text = returnDoneLabel()
         
         carbsLeftLabel.text = "\(String(format: "%.0f", setCarbsRemained(valueOne: ketoDiet.markCarbs, valueTwo: ketoDiet.eatCarbs))) \(NSLocalizedString("mainWidget.g", comment: "")) \(NSLocalizedString("mainWidget.carbsInPlural", comment: "")) \(NSLocalizedString("mainWidget.remainedSmall", comment: ""))"
         
@@ -159,6 +162,23 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         
     }
     
+    private func checkCarbs(eatCarbs: Double, markCarbs: Double) -> Bool {
+        
+        if eatCarbs >= markCarbs {
+            
+            return true
+        }
+        
+        return false
+        
+    }
+    
+    private func returnDoneLabel() -> String {
+        
+        checkCarbs(eatCarbs: ketoDiet.eatCarbs, markCarbs: ketoDiet.markCarbs) ? NSLocalizedString("mainWidget.yourMaximum", comment: "") : NSLocalizedString("mainWidget.yourPlan", comment: "")
+        
+    }
+    
     private func setupView() {
         
         // MARK: - КРУГЛЫЙ ГЛАВНЫЙ ПРОГРЕСС БАР
@@ -175,8 +195,8 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
         
         // MARK: - ВЫ ДОСТИГЛИ ПРЕДЕЛА ЛЕЙБЛ
         
-        let doneLabel = UILabel()
-        doneLabel.text = NSLocalizedString("mainWidget.yourMaximum", comment: "")
+        
+        doneLabel.text = returnDoneLabel()
         doneLabel.font = .systemFont(ofSize: 20, weight: .semibold)
         doneLabel.textColor = .white
         addSubview(doneLabel)

@@ -23,6 +23,7 @@
 "mainWidget.maximum" = "maximum";
 "mainWidget.сomposition" = "Composition, %";
 "mainWidget.yourMaximum" = "You have limit";
+"mainWidget.yourPlan" = "Your plan";
 "mainWidget.from" = "from";
 "mainWidget.calories" = "Calories";
 

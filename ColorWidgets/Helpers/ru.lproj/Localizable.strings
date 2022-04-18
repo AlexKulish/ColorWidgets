@@ -23,5 +23,6 @@
 "mainWidget.maximum" = "максимум";
 "mainWidget.сomposition" = "Калории в процентах";
 "mainWidget.yourMaximum" = "Вы достигли предела";
+"mainWidget.yourPlan" = "Ваш план";
 "mainWidget.from" = "из";
 "mainWidget.calories" = "Калории";
