@@ -159,4 +159,64 @@ class CircularProgressView: UIView {
         progressLayer.add(circularProgressAnimation, forKey: "progressAnim")
         shapeMask.add(circularProgressAnimation, forKey: "progressAnimation")
     }
+    
+    public func progressAndColorAnimation(duration: TimeInterval, value: Double, greenColor: UIColor, yellowColor: UIColor, redColor: UIColor) {
+        
+        if value >= 0.75 && value < 0.95 {
+            
+            let yellowCircularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
+            yellowCircularProgressAnimation.fromValue = 0.0
+            yellowCircularProgressAnimation.toValue = value
+            
+            let circularColorAnimation = CABasicAnimation(keyPath: "strokeColor")
+            circularColorAnimation.toValue = yellowColor.cgColor
+            circularColorAnimation.duration = duration
+            
+            let progressAndColorAnimation = CAAnimationGroup()
+            progressAndColorAnimation.animations = [yellowCircularProgressAnimation, circularColorAnimation]
+            progressAndColorAnimation.duration = duration
+            progressAndColorAnimation.fillMode = .forwards
+            progressAndColorAnimation.isRemovedOnCompletion = false
+            
+            progressLayer.add(progressAndColorAnimation, forKey: "strokeEndAndColor")
+            
+        } else if value >= 0.95 {
+            
+            let redCircularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
+            redCircularProgressAnimation.fromValue = 0.0
+            redCircularProgressAnimation.toValue = value
+            
+            let circularColorAnimation = CABasicAnimation(keyPath: "strokeColor")
+            circularColorAnimation.toValue = redColor.cgColor
+            circularColorAnimation.duration = duration
+            
+            let progressAndColorAnimation = CAAnimationGroup()
+            progressAndColorAnimation.animations = [redCircularProgressAnimation, circularColorAnimation]
+            progressAndColorAnimation.duration = duration
+            progressAndColorAnimation.fillMode = .forwards
+            progressAndColorAnimation.isRemovedOnCompletion = false
+            
+            progressLayer.add(progressAndColorAnimation, forKey: "strokeEndAndColor")
+            
+        } else {
+            
+            let greenCircularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
+            greenCircularProgressAnimation.fromValue = 0.0
+            greenCircularProgressAnimation.toValue = value
+            
+            let circularColorAnimation = CABasicAnimation(keyPath: "strokeColor")
+            circularColorAnimation.toValue = greenColor.cgColor
+            circularColorAnimation.duration = duration
+            
+            let progressAndColorAnimation = CAAnimationGroup()
+            progressAndColorAnimation.animations = [greenCircularProgressAnimation, circularColorAnimation]
+            progressAndColorAnimation.duration = duration
+            progressAndColorAnimation.fillMode = .forwards
+            progressAndColorAnimation.isRemovedOnCompletion = false
+            
+            progressLayer.add(progressAndColorAnimation, forKey: "strokeEndAndColor")
+            
+        }
+    }
+    
 }

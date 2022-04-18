@@ -47,13 +47,13 @@ class KetoDiet {
     static func getRandomDiet() -> KetoDiet {
         
         KetoDiet(eatCalories: Double.random(in: 1...1000),
-                 markCalories: Double.random(in: 1000...2000),
+                 markCalories: Double.random(in: 1000...1200),
                  burnedCalories: Double.random(in: 250...1200),
                  eatCarbs: Double.random(in: 1...50),
                  eatProteins: Double.random(in: 1...50),
                  eatFats: Double.random(in: 1...50),
-                 markCarbs: Double.random(in: 45...100),
-                 markProteins: Double.random(in: 45...100),
-                 markFats: Double.random(in: 45...100))
+                 markCarbs: Double.random(in: 45...60),
+                 markProteins: Double.random(in: 45...60),
+                 markFats: Double.random(in: 45...60))
     }
 }
