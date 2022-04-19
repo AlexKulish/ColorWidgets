@@ -12,7 +12,9 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
     
     var ketoDiet = KetoDiet.getDiet()
     
-    private var circularView: CircularProgressView! // ! для пробы
+    // MARK: - ПРИВАТНЫЕ СВОЙСТВА
+    
+    private var circularView: CircularProgressView!
     
     private let proteinsLabel = UILabel()
     private let proteinsProgressLabel = UILabel()
@@ -41,11 +43,11 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
     private let fatsInPercentLabel = UILabel()
     private let proteinsInPercentLabel = UILabel()
     
+    // MARK: - ИНИЦИАЛИЗАТОРЫ
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        self.circularView = CircularProgressView(progressColor: getCustomColor(), circleColor: .gray.withAlphaComponent(0.2), isClosed: false, radius: 66)
-//        self.circularView = CircularProgressView(firstColor: hexColor(hex: "FCAD80"), secondColor: hexColor(hex: "F8637E"))
-        set(theme: .greenGradient)
+        circularView = CircularProgressView(firstColor: hexColor(hex: "FCAD80"), secondColor: hexColor(hex: "F8637E"))
         set(cornerRadius: 25)
         setupView()
     }
@@ -54,32 +56,18 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func getCustomColor() -> UIColor {
-        
-        let opacity: CGFloat = 0.6
-        let one = hexColor(hex: "92F5C7")
-        let two = hexColor(hex: "58C3AA")
-        
-        let combine = one.withAlphaComponent(opacity) + two.withAlphaComponent(opacity)
-        
-        return combine
-        
-    }
+    // MARK: - ПУБЛИЧНЫЕ МЕТОДЫ
     
     func set(theme: ColorTheme) {
         switch theme {
         case .orangeGradient:
-            circularView = CircularProgressView(firstColor: hexColor(hex: "FCAD80"), secondColor: hexColor(hex: "F8637E"))
-            setupView()
+            circularView.createGradientCircularPath(firstColor: hexColor(hex: "FCAD80"), secondColor: hexColor(hex: "F8637E"))
         case .orangeFlat:
-            circularView = CircularProgressView(firstColor: hexColor(hex: "FCAD80"), secondColor: hexColor(hex: "F8637E"))
-            setupView()
+            circularView.createGradientCircularPath(firstColor: hexColor(hex: "FCAD80"), secondColor: hexColor(hex: "F8637E"))
         case .greenGradient:
-            circularView = CircularProgressView(firstColor: hexColor(hex: "92F5C7"), secondColor: hexColor(hex: "58C3AA"))
-            setupView()
+            circularView.createGradientCircularPath(firstColor: hexColor(hex: "92F5C7"), secondColor: hexColor(hex: "58C3AA"))
         case .greenFlat:
-            circularView = CircularProgressView(firstColor: hexColor(hex: "92F5C7"), secondColor: hexColor(hex: "58C3AA"))
-            setupView()
+            circularView.createGradientCircularPath(firstColor: hexColor(hex: "92F5C7"), secondColor: hexColor(hex: "58C3AA"))
         }
     }
     
@@ -158,6 +146,8 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         
     }
     
+    // MARK: - ПРИВАТНЫЕ МЕТОДЫ
+    
     private func getPercent(value: Double) -> String {
         
         let formatter = NumberFormatter()
@@ -195,7 +185,6 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
         return markValue - eatValue
         
     }
-
     
     private func setupView() {
         
@@ -502,37 +491,5 @@ class CarbsWhiteMainWidgetView: GradientView, MainWidget {
             make.top.equalTo(carbsProgressBarInPercent.snp_bottomMargin).offset(14)
             make.centerX.equalTo(self.snp.centerX).multipliedBy(1.65)
         }
-        
-        
-    }
-    
-    
-    
-}
-
-extension UIColor {
-    func add(_ overlay: UIColor) -> UIColor {
-        var bgR: CGFloat = 0
-        var bgG: CGFloat = 0
-        var bgB: CGFloat = 0
-        var bgA: CGFloat = 0
-        
-        var fgR: CGFloat = 0
-        var fgG: CGFloat = 0
-        var fgB: CGFloat = 0
-        var fgA: CGFloat = 0
-        
-        self.getRed(&bgR, green: &bgG, blue: &bgB, alpha: &bgA)
-        overlay.getRed(&fgR, green: &fgG, blue: &fgB, alpha: &fgA)
-        
-        let r = fgA * fgR + (1 - fgA) * bgR
-        let g = fgA * fgG + (1 - fgA) * bgG
-        let b = fgA * fgB + (1 - fgA) * bgB
-        
-        return UIColor(red: r, green: g, blue: b, alpha: 1.0)
-    }
-    
-    static func +(lhs: UIColor, rhs: UIColor) -> UIColor {
-        return lhs.add(rhs)
     }
 }

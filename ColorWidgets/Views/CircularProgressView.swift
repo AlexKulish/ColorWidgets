@@ -21,7 +21,7 @@ class CircularProgressView: UIView {
     
     private var circleLayer = CAShapeLayer()
     private var progressLayer = CAShapeLayer()
-    private var shapeMask = CAShapeLayer()
+    private var gradient = CAGradientLayer()
     
     private override init(frame: CGRect) {
         super.init(frame: frame)
@@ -92,61 +92,37 @@ class CircularProgressView: UIView {
     
     public func createGradientCircularPath(firstColor: UIColor, secondColor: UIColor) {
         
-        var circularPath = UIBezierPath(arcCenter: CGPoint(x: radius, y: radius), radius: radius,
+        var circularPath = UIBezierPath(arcCenter: CGPoint(x: radius, y: radius), radius: radius - 5.55,
                                         startAngle: 2.5 * -.pi / 2,
                                         endAngle: .pi / 3.5,
                                         clockwise: true)
         
         if isClosed {
-            circularPath = UIBezierPath(arcCenter: CGPoint(x: radius, y: radius), radius: radius,
+            circularPath = UIBezierPath(arcCenter: CGPoint(x: radius, y: radius), radius: radius - 5.55,
                                         startAngle: -.pi / 2,
                                         endAngle: .pi * 1.5,
                                         clockwise: true)
         }
         
-        // отдельная вью с градиентом
-        // отдельный circularProgress view
-        // сделать на градиент.маск вью целиком
-        // применить на виджете
-        
-        
         circleLayer.path = circularPath.cgPath
         circleLayer.fillColor = UIColor.clear.cgColor
         circleLayer.lineCap = .round
-        circleLayer.lineWidth = lineWidth ?? 6
+        circleLayer.lineWidth = lineWidth ?? 3
         circleLayer.strokeColor = customCircleColor == nil ? UIColor.gray.withAlphaComponent(0.3).cgColor : customCircleColor?.cgColor
         
-        let gradient = CAGradientLayer()
-        gradient.frame = CGRect(x: 0, y: 0, width: circularPath.bounds.size.width + 10, height: circularPath.bounds.size.height + 10)
-//        gradient.frame = circularPath.accessibilityFrame
-//        gradient.frame = circularPath.bounds
+        gradient.frame = CGRect(x: 0, y: 0, width: circularPath.cgPath.boundingBox.size.width, height: circularPath.cgPath.boundingBox.size.height + 10)
         gradient.colors = [firstColor.cgColor, secondColor.cgColor]
         
-//        progressLayer.path = circularPath.cgPath
-//        progressLayer.fillColor = UIColor.clear.cgColor
-//        progressLayer.lineCap = .round
-//        progressLayer.lineWidth = progressWidth ?? 6
-//        progressLayer.strokeEnd = 0.0
-//        progressLayer.strokeColor = UIColor.white.cgColor
-//        gradient.mask = progressLayer
-        
-        shapeMask.path = circularPath.cgPath
-        shapeMask.fillColor = UIColor.clear.cgColor
-        shapeMask.lineCap = .round
-        shapeMask.lineWidth = 6
-        shapeMask.strokeEnd = 0.0
-        shapeMask.strokeColor = UIColor.white.cgColor
-        gradient.mask = shapeMask
-        
-//        progressLayer.strokeColor = customProgressColor == nil ? UIColor.red.cgColor : customProgressColor!.cgColor
-        
+        progressLayer.path = circularPath.cgPath
+        progressLayer.fillColor = UIColor.clear.cgColor
+        progressLayer.lineCap = .round
+        progressLayer.lineWidth = progressWidth ?? 6
+        progressLayer.strokeEnd = 0.0
+        progressLayer.strokeColor = UIColor.white.cgColor
+        gradient.mask = progressLayer
         
         layer.addSublayer(circleLayer)
         layer.addSublayer(gradient)
-//        layer.addSublayer(progressLayer)
-        
-
-        
         
     }
     
@@ -157,66 +133,37 @@ class CircularProgressView: UIView {
         circularProgressAnimation.fillMode = .forwards
         circularProgressAnimation.isRemovedOnCompletion = false
         progressLayer.add(circularProgressAnimation, forKey: "progressAnim")
-        shapeMask.add(circularProgressAnimation, forKey: "progressAnimation")
     }
     
     public func progressAndColorAnimation(duration: TimeInterval, value: Double, greenColor: UIColor, yellowColor: UIColor, redColor: UIColor) {
         
         if value >= 0.75 && value < 0.95 {
-            
-            let yellowCircularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
-            yellowCircularProgressAnimation.fromValue = 0.0
-            yellowCircularProgressAnimation.toValue = value
-            
-            let circularColorAnimation = CABasicAnimation(keyPath: "strokeColor")
-            circularColorAnimation.toValue = yellowColor.cgColor
-            circularColorAnimation.duration = duration
-            
-            let progressAndColorAnimation = CAAnimationGroup()
-            progressAndColorAnimation.animations = [yellowCircularProgressAnimation, circularColorAnimation]
-            progressAndColorAnimation.duration = duration
-            progressAndColorAnimation.fillMode = .forwards
-            progressAndColorAnimation.isRemovedOnCompletion = false
-            
-            progressLayer.add(progressAndColorAnimation, forKey: "strokeEndAndColor")
-            
+            setupColorAnimation(duration: duration, value: value, color: yellowColor)
         } else if value >= 0.95 {
-            
-            let redCircularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
-            redCircularProgressAnimation.fromValue = 0.0
-            redCircularProgressAnimation.toValue = value
-            
-            let circularColorAnimation = CABasicAnimation(keyPath: "strokeColor")
-            circularColorAnimation.toValue = redColor.cgColor
-            circularColorAnimation.duration = duration
-            
-            let progressAndColorAnimation = CAAnimationGroup()
-            progressAndColorAnimation.animations = [redCircularProgressAnimation, circularColorAnimation]
-            progressAndColorAnimation.duration = duration
-            progressAndColorAnimation.fillMode = .forwards
-            progressAndColorAnimation.isRemovedOnCompletion = false
-            
-            progressLayer.add(progressAndColorAnimation, forKey: "strokeEndAndColor")
-            
+            setupColorAnimation(duration: duration, value: value, color: redColor)
         } else {
-            
-            let greenCircularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
-            greenCircularProgressAnimation.fromValue = 0.0
-            greenCircularProgressAnimation.toValue = value
-            
-            let circularColorAnimation = CABasicAnimation(keyPath: "strokeColor")
-            circularColorAnimation.toValue = greenColor.cgColor
-            circularColorAnimation.duration = duration
-            
-            let progressAndColorAnimation = CAAnimationGroup()
-            progressAndColorAnimation.animations = [greenCircularProgressAnimation, circularColorAnimation]
-            progressAndColorAnimation.duration = duration
-            progressAndColorAnimation.fillMode = .forwards
-            progressAndColorAnimation.isRemovedOnCompletion = false
-            
-            progressLayer.add(progressAndColorAnimation, forKey: "strokeEndAndColor")
-            
+            setupColorAnimation(duration: duration, value: value, color: greenColor)
         }
+    }
+    
+    private func setupColorAnimation(duration: TimeInterval, value: Double, color: UIColor) {
+        
+        let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        circularProgressAnimation.fromValue = 0.0
+        circularProgressAnimation.toValue = value
+        
+        let circularColorAnimation = CABasicAnimation(keyPath: "strokeColor")
+        circularColorAnimation.toValue = color.cgColor
+        circularColorAnimation.duration = duration
+        
+        let progressAndColorAnimation = CAAnimationGroup()
+        progressAndColorAnimation.animations = [circularProgressAnimation, circularColorAnimation]
+        progressAndColorAnimation.duration = duration
+        progressAndColorAnimation.fillMode = .forwards
+        progressAndColorAnimation.isRemovedOnCompletion = false
+        
+        progressLayer.add(progressAndColorAnimation, forKey: "strokeEndAndColor")
+        
     }
     
 }

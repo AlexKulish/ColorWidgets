@@ -12,6 +12,8 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
     
     var ketoDiet = KetoDiet.getDiet()
     
+    // MARK: - ПРИВАТНЫЕ СВОЙСТВА
+    
     private var circularView: CircularProgressView! // ! для пробы
     
     private let caloriesCountLabel = UILabel()
@@ -34,9 +36,11 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
     private let proteinsProgressLabel = UILabel()
     private let fatsProgressLabel = UILabel()
     
+    // MARK: - ИНИЦИАЛИЗАТОРЫ
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.circularView = CircularProgressView(progressColor: setProgressColor("FCAD80"), circleColor: .gray.withAlphaComponent(0.2), isClosed: false, radius: 66)
+        circularView = CircularProgressView(firstColor: hexColor(hex: "FCAD80"), secondColor: hexColor(hex: "F8637E"))
         set(cornerRadius: 25)
         setupView()
     }
@@ -45,25 +49,18 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    private func setProgressColor(_ hexOne: String) -> UIColor {
-        hexColor(hex: hexOne)
-    }
+    // MARK: - ПУБЛИЧНЫЕ МЕТОДЫ
     
     func set(theme: ColorTheme) {
         switch theme {
         case .orangeGradient:
-            set(colors: [hexColor(hex: "FCAD80").cgColor,
-                         hexColor(hex: "F8637E").cgColor])
+            circularView.createGradientCircularPath(firstColor: hexColor(hex: "FCAD80"), secondColor: hexColor(hex: "F8637E"))
         case .orangeFlat:
-            set(colors: [hexColor(hex: "FB825B").cgColor,
-                         hexColor(hex: "FB825B").cgColor])
+            circularView.createGradientCircularPath(firstColor: hexColor(hex: "FCAD80"), secondColor: hexColor(hex: "F8637E"))
         case .greenGradient:
-            set(colors: [hexColor(hex: "92F5C7").cgColor,
-                         hexColor(hex: "58C3AA").cgColor])
+            circularView.createGradientCircularPath(firstColor: hexColor(hex: "92F5C7"), secondColor: hexColor(hex: "58C3AA"))
         case .greenFlat:
-            set(colors: [hexColor(hex: "65D29A").cgColor,
-                         hexColor(hex: "65D29A").cgColor])
+            circularView.createGradientCircularPath(firstColor: hexColor(hex: "92F5C7"), secondColor: hexColor(hex: "58C3AA"))
         }
     }
     
@@ -110,6 +107,8 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
                 }
         
     }
+    
+    // MARK: - ПРИВАТНЫЕ МЕТОДЫ
     
     private func setProgressBar(eatValue: Double, markValue: Double) -> Double {
         
@@ -439,8 +438,5 @@ class CaloriesWhiteMainWidgetView: GradientView, MainWidget {
             make.top.equalTo(carbsProgressBackground.snp_bottomMargin).offset(14)
             make.centerX.equalTo(self.snp.centerX).multipliedBy(1.6)
         }
-        
     }
-    
-    
 }

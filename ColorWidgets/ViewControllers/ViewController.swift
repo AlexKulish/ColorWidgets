@@ -8,6 +8,18 @@
 import UIKit
 import SnapKit
 
+protocol MainWidget: UIView {
+    func set(theme: ColorTheme)
+    func update()
+}
+
+enum ColorTheme {
+    case orangeGradient
+    case orangeFlat
+    case greenGradient
+    case greenFlat
+}
+
 class ViewController: UIViewController {
     
     
@@ -65,76 +77,6 @@ class ViewController: UIViewController {
             }
             
         }
-        
-        // КАЛОРИИ ЦВЕТНОЙ ВИДЖЕТ
-        
-//        view.addSubview(caloriesColorMainWidget)
-//
-//        caloriesColorMainWidget.snp.makeConstraints { make in
-//            make.top.equalTo(view.snp_topMargin).inset(40)
-//            make.centerX.equalTo(view.snp.centerX)
-//            make.width.equalToSuperview().inset(16)
-//            make.height.equalTo(225)
-//        }
-        
-        // КАЛОРИИ БЕЛЫЙ ВИДЖЕТ
-        
-//        view.addSubview(caloriesWhiteMainWidget)
-//
-//        caloriesWhiteMainWidget.snp.makeConstraints { make in
-//            make.top.equalTo(caloriesColorMainWidget.snp_bottomMargin).offset(20)
-//            make.centerX.equalTo(view.snp.centerX)
-//            make.width.equalToSuperview().inset(16)
-//            make.height.equalTo(225)
-//        }
-        
-        
-        // УГЛЕВОДЫ ЦВЕТНОЙ ВИДЖЕТ
-        
-//        view.addSubview(carbsColorMainWidget)
-//
-//        carbsColorMainWidget.snp.makeConstraints { make in
-//            make.top.equalTo(view.snp_topMargin).inset(40)
-//            make.centerX.equalTo(view.snp.centerX)
-//            make.width.equalToSuperview().inset(16)
-//            make.height.equalTo(225)
-//        }
-        
-        // УГЛЕВОДЫ БЕЛЫЙ ВИДЖЕТ
-        
-//        view.addSubview(carbsWhiteMainWidget)
-//
-//        carbsWhiteMainWidget.snp.makeConstraints { make in
-//            make.top.equalTo(carbsColorMainWidget.snp_bottomMargin).offset(20)
-//            make.centerX.equalTo(view.snp.centerX)
-////            make.center.equalToSuperview()
-//            make.width.equalToSuperview().inset(16)
-//            make.height.equalTo(225)
-//        }
-        
-        
-        // КАЛОРИИ ЧЕРНЫЙ ВИДЖЕТ
-        
-//        view.addSubview(caloriesBlackMainWidget)
-//
-//        caloriesBlackMainWidget.snp.makeConstraints { make in
-//            make.top.equalTo(view.snp_topMargin).inset(40)
-//            make.centerX.equalTo(view.snp.centerX)
-//            make.width.equalToSuperview().inset(16)
-//            make.height.equalTo(264)
-//        }
-        
-        // УГЛЕВОДЫ ЧЕРНЫЙ ВИДЖЕТ
-        
-//        view.addSubview(carbsBlackMainWidget)
-//
-//        carbsBlackMainWidget.snp.makeConstraints { make in
-//            make.top.equalTo(caloriesBlackMainWidget.snp_bottomMargin).offset(20)
-//            make.centerX.equalTo(view.snp.centerX)
-//            make.width.equalToSuperview().inset(16)
-//            make.height.equalTo(264)
-//        }
-        
         
         let testValuesButton = UIButton()
         testValuesButton.backgroundColor = .black
@@ -238,40 +180,29 @@ class ViewController: UIViewController {
     @objc func testOrangeGradientButtonTapped() {
         caloriesColorMainWidget.set(theme: .orangeGradient)
         carbsColorMainWidget.set(theme: .orangeGradient)
-//        carbsWhiteMainWidget.set(theme: .orangeGradient)
+        carbsWhiteMainWidget.set(theme: .orangeGradient)
+        caloriesWhiteMainWidget.set(theme: .orangeGradient)
     }
     
     @objc func testGreenGradientButtonTapped() {
         caloriesColorMainWidget.set(theme: .greenGradient)
         carbsColorMainWidget.set(theme: .greenGradient)
-//        carbsWhiteMainWidget.set(theme: .greenGradient)
+        carbsWhiteMainWidget.set(theme: .greenGradient)
+        caloriesWhiteMainWidget.set(theme: .greenGradient)
     }
     
     @objc func testOrangeFlatButtonTapped() {
         caloriesColorMainWidget.set(theme: .orangeFlat)
         carbsColorMainWidget.set(theme: .orangeFlat)
-//        carbsWhiteMainWidget.set(theme: .orangeFlat)
+        carbsWhiteMainWidget.set(theme: .orangeFlat)
+        caloriesWhiteMainWidget.set(theme: .orangeFlat)
     }
     
     @objc func testGreenFlatButtonTapped() {
         caloriesColorMainWidget.set(theme: .greenFlat)
         carbsColorMainWidget.set(theme: .greenFlat)
-//        carbsWhiteMainWidget.set(theme: .greenFlat)
+        carbsWhiteMainWidget.set(theme: .greenFlat)
+        caloriesWhiteMainWidget.set(theme: .greenFlat)
     }
 
 }
-
-protocol MainWidget: UIView {
-    func set(theme: ColorTheme)
-    func update()
-}
-
-enum ColorTheme {
-    case orangeGradient
-    case orangeFlat
-    case greenGradient
-    case greenFlat
-}
-
-
-
