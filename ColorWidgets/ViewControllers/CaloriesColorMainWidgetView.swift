@@ -12,6 +12,8 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
     
     var ketoDiet = KetoDiet.getDiet()
     
+    // MARK: - ПРИВАТНЫЕ СВОЙСТВА
+    
     private let circularView = CircularProgressView(progressColor: .white, circleColor: .white.withAlphaComponent(0.2), isClosed: false, radius: 66)
     
     private let caloriesCountLabel = UILabel()
@@ -34,6 +36,8 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
     private let proteinsProgressLabel = UILabel()
     private let fatsProgressLabel = UILabel()
     
+    // MARK: - ИНИЦИАЛИЗАТОРЫ
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         set(cornerRadius: 25)
@@ -44,6 +48,8 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - ПУБЛИЧНЫЕ МЕТОДЫ
     
     func set(theme: ColorTheme) {
         switch theme {
@@ -105,6 +111,8 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
                 }
         
     }
+    
+    // MARK: - ПРИВАТНЫЕ МЕТОДЫ
     
     private func setProgressBar(eatValue: Double, markValue: Double) -> Double {
         
@@ -434,7 +442,5 @@ class CaloriesColorMainWidgetView: GradientView, MainWidget {
             make.top.equalTo(carbsProgressBackground.snp_bottomMargin).offset(14)
             make.centerX.equalTo(self.snp.centerX).multipliedBy(1.6)
         }
-        
     }
-    
 }

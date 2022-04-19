@@ -12,6 +12,8 @@ class CaloriesBlackMainWidgetView: GradientView, MainWidget {
     
     var ketoDiet = KetoDiet.getDiet()
     
+    // MARK: - ПРИВАТНЫЕ МЕТОДЫ
+    
     private var mainCircularView: CircularProgressView!
     private var carbsCircularView: CircularProgressView!
     private var proteinsCircularView: CircularProgressView!
@@ -25,12 +27,14 @@ class CaloriesBlackMainWidgetView: GradientView, MainWidget {
     private let proteinsProgressLabel = UILabel()
     private let fatsProgressLabel = UILabel()
     
+    // MARK: - ИНИЦИАЛИЗАТОРЫ
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.mainCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 65, lineWidth: 20, progressWidth: 20)
-        self.carbsCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 17, lineWidth: 5, progressWidth: 5)
-        self.proteinsCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 17, lineWidth: 5, progressWidth: 5)
-        self.fatsCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 17, lineWidth: 5, progressWidth: 5)
+        mainCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 65, lineWidth: 20, progressWidth: 20)
+        carbsCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 17, lineWidth: 5, progressWidth: 5)
+        proteinsCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 17, lineWidth: 5, progressWidth: 5)
+        fatsCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 17, lineWidth: 5, progressWidth: 5)
         set(cornerRadius: 25)
         set(maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
         setupView()
@@ -42,7 +46,7 @@ class CaloriesBlackMainWidgetView: GradientView, MainWidget {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    // MARK: - ПУБЛИЧНЫЕ МЕТОДЫ
     
     func set(theme: ColorTheme) {
         switch theme {
@@ -85,6 +89,8 @@ class CaloriesBlackMainWidgetView: GradientView, MainWidget {
         
         
     }
+    
+    // MARK: - ПРИВАТНЫЕ МЕТОДЫ
     
     private func setProgressBar(eatValue: Double, markValue: Double) -> Double {
         
@@ -353,10 +359,5 @@ class CaloriesBlackMainWidgetView: GradientView, MainWidget {
             make.top.equalTo(carbsLabel.snp_bottomMargin).offset(12)
             make.leading.equalTo(fatsCircularView.snp_trailingMargin).offset(48)
         }
-        
-        
     }
-    
-    
-    
 }

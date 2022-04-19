@@ -12,6 +12,8 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
     
     var ketoDiet = KetoDiet.getDiet()
     
+    // MARK: - ПРИВАТНЫЕ СВОЙСТВА
+    
     private var mainCircularView: CircularProgressView!
     private var carbsCircularView: CircularProgressView!
     private var proteinsCircularView: CircularProgressView!
@@ -33,12 +35,14 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
     private let proteinsInPercentLabel = UILabel()
     private let doneLabel = UILabel()
     
+    // MARK: - ИНИЦИАЛИЗАТОРЫ
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.mainCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 45, lineWidth: 14, progressWidth: 14)
-        self.carbsCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 17, lineWidth: 5, progressWidth: 5)
-        self.proteinsCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 17, lineWidth: 5, progressWidth: 5)
-        self.fatsCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 17, lineWidth: 5, progressWidth: 5)
+        mainCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 45, lineWidth: 14, progressWidth: 14)
+        carbsCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 17, lineWidth: 5, progressWidth: 5)
+        proteinsCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 17, lineWidth: 5, progressWidth: 5)
+        fatsCircularView = CircularProgressView(progressColor: hexColor(hex: "49DD58"), circleColor: hexColor(hex: "4F4F4F"), isClosed: true, radius: 17, lineWidth: 5, progressWidth: 5)
         
         set(cornerRadius: 25)
         set(maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
@@ -50,6 +54,8 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - ПУБЛИЧНЫЕ МЕТОДЫ
     
     func set(theme: ColorTheme) {
         switch theme {
@@ -122,6 +128,8 @@ class CarbsBlackMainWidgetView: GradientView, MainWidget {
                 }
         
     }
+    
+    // MARK: - ПРИВАТНЫЕ МЕТОДЫ
     
     private func getPercent(value: Double) -> String {
         

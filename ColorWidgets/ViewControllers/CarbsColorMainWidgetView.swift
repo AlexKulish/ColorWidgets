@@ -12,6 +12,8 @@ class CarbsColorMainWidgetView: GradientView, MainWidget {
     
     var ketoDiet = KetoDiet.getDiet()
     
+    // MARK: - ПРИВАТНЫЕ СВОЙСТВА
+    
     private let circularView = CircularProgressView(progressColor: .white, circleColor: .white.withAlphaComponent(0.2), isClosed: false, radius: 66)
     
     private let proteinsLabel = UILabel()
@@ -41,6 +43,8 @@ class CarbsColorMainWidgetView: GradientView, MainWidget {
     private let fatsInPercentLabel = UILabel()
     private let proteinsInPercentLabel = UILabel()
     
+    // MARK: - ИНИЦИАЛИЗАТОРЫ
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         set(cornerRadius: 25)
@@ -51,6 +55,8 @@ class CarbsColorMainWidgetView: GradientView, MainWidget {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - ПУБЛИЧНЫЕ МЕТОДЫ
     
     func set(theme: ColorTheme) {
         switch theme {
@@ -141,6 +147,8 @@ class CarbsColorMainWidgetView: GradientView, MainWidget {
                     self.layoutIfNeeded()
                 }
     }
+    
+    // MARK: - ПРИВАТНЫЕ МЕТОДЫ
     
     private func getPercent(value: Double) -> String {
         
@@ -484,9 +492,6 @@ class CarbsColorMainWidgetView: GradientView, MainWidget {
         proteinsInPercentLabel.snp.makeConstraints { make in            make.top.equalTo(carbsProgressBarInPercent.snp_bottomMargin).offset(14)
             make.centerX.equalTo(self.snp.centerX).multipliedBy(1.65)
         }
-        
     }
-    
-    
 }
 
