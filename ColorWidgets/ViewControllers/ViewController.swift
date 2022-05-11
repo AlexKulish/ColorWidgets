@@ -32,7 +32,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .systemGray5
         setupView()
     }
     
@@ -80,6 +80,7 @@ class ViewController: UIViewController {
         
         let testValuesButton = UIButton()
         testValuesButton.backgroundColor = .black
+        testValuesButton.layer.cornerRadius = 20
         testValuesButton.setTitle("Test values", for: .normal)
 
         view.addSubview(testValuesButton)
